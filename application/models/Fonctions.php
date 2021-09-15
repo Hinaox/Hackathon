@@ -21,11 +21,10 @@
         $result = $this->db->query($query)->row_array();
         return $result;
       }
-      public function searchBook($id,$page,$nbParPage,$idCat)
+      public function searchBook($id,$page,$nbParPage)
       {
-        $categorie = $this->getCatById($idCat);
-        $query = "select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites from livre where idlivre='%s'and categories like '%'%s'%' limit '%s','%s'";
-        $query = sprintf($query,$id,$categorie,$page,$nbParPage);
+        $query = "select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites from livre where idlivre='%s' limit '%s','%s'";
+        $query = sprintf($query,$id,$page,$nbParPage);
         $result = $this->db->query($query);
         $book = array();
         foreach ($result->result_array() as $key) {
