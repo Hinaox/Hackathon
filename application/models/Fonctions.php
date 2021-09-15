@@ -32,7 +32,7 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query ="select * from livre where etat='done' and categories like '%s' limit '%s','%s'";
+        $query ="select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites,categories from livre where etat='done' and categories like '%s' limit '%s','%s'";
         $query = sprintf($query,$categorie,$limite,$nbPage);
         foreach($query->result_array() as $row)
         {
@@ -61,7 +61,7 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query = "select * from article where etat='done' limit '%s','%s'";
+        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where etat='done' limit '%s','%s'";
         $query = sprintf($query,$limite,$nbPage);
 
         foreach($query->result_array() as $row)
@@ -80,7 +80,7 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query = "select * from article where etat='done' and categories like '%s' limit '%s','%s'";
+        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where etat='done' and categories like '%s' limit '%s','%s'";
         $query = sprintf($query,$categorie,$limite,$nbPage);
         foreach($query->result_array() as $row)
         {
@@ -104,7 +104,7 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $argument='%'.$categ.'%';
-        $query = "select * from livre where nom like '%s' and etat = 'done' limit '%s','%s'";
+        $query = "select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites,categories from livre where nom like '%s' and etat = 'done' limit '%s','%s'";
         $query = sprintf($query,$argument,$limite,$nbPage);
         $si = 0;
         $retour = array();
@@ -122,7 +122,7 @@
         if($pgActuel != 1) $limite = $pgActuel * $nbPage;
         $retour = array();
         $argument='%'.$nom.'%';
-        $query = "select * from article where nom like '%s' and etat = 'done' limit '%s','%s'";
+        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where nom like '%s' and etat = 'done' limit '%s','%s'";
         $query = sprintf($query,$argument,$limite,$nbPage);
         $i = 0;
         $retour = array();
@@ -138,7 +138,7 @@
       {
         $retour = array();
         $i = 0;
-        $query = "select * from livre where etat = 'done' order by visites desc limit 3";
+        $query = "select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites,categories from livre where etat = 'done' order by visites desc limit 3";
         foreach($query->result_array() as $row)
         {
           $retour[$i]=$row;
@@ -151,7 +151,7 @@
       {
         $retour = array();
         $i = 0;
-        $query = "select * from article where etat = 'done' order by visites desc limit 3";
+        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where etat = 'done' order by visites desc limit 3";
         foreach($query->result_array() as $row)
         {
           $retour[$i]=$row;
