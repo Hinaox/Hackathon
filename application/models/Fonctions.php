@@ -2,15 +2,16 @@
   if(! defined('BASEPATH')) exit('No direct script access allowed');
   class Fonctions extends CI_Model
   {
-      public function getAllBook($pgActuel,$nbParPage)
+      public function getAllBook($pgActuel,$nbParPage,$etat)
       {
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbParPage;
         $retour = array();
         $i = 0;
-        $query ="select * from livre where etat='done' limit '%s','%s'";
-        $query = sprintf($query,$limite,$nbParPage);
-        foreach($query->result_array() as $row)
+        $query ="select * from livre where etat='%s' limit '%s','%s'";
+        $query = sprintf($query,$etat,$limite,$nbParPage);
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
         {
           $retour[$i]=$row;
           $i++;
@@ -24,7 +25,7 @@
         $result = $this->db->query($query)->row_array();
         return $result;
       }
-      public function getBookCat($pgActuel,$nbPage,$idCat)
+      public function getBookCat($pgActuel,$nbPage,$idCat,$etat)
       {
         $limite = 1;
         $categorie = $this->getCategorie($idCat);
@@ -32,21 +33,22 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query ="select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites,categories from livre where etat='done' and categories like '%s' limit '%s','%s'";
-        $query = sprintf($query,$categorie,$limite,$nbPage);
-        foreach($query->result_array() as $row)
+        $query ="select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites,categories from livre where etat='%s' and categories like '%s' limit '%s','%s'";
+        $query = sprintf($query,$etat,$categorie,$limite,$nbPage);
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
         {
           $retour[$i]=$row;
           $i++;
         }
         return $retour;
       }
-      public function getBookById($id,$pgActuel,$nbPage)
+      public function getBookById($id,$pgActuel,$nbPage,$etat)
       {
         $limite = 1;
         if($pgActuel != 1) $limite = $pgActuel * $nbPage;
-        $query = "select * from livre where idlivre='%s' and etat='done' limit '%s','%s'";
-        $query = sprintf($query,$id,$limite,$nbPage);
+        $query = "select * from livre where idlivre='%s' and etat='%s' limit '%s','%s'";
+        $query = sprintf($query,$id,$etat,$limite,$nbPage);
         $result = $this->db->query($query);
         $book = array();
         foreach ($result->result_array() as $key) {
@@ -55,16 +57,16 @@
         return $book[0];
       }
 
-      public function getAllArticle($pgActuel,$nbPage)
+      public function getAllArticle($pgActuel,$nbPage,$etat)
       {
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where etat='done' limit '%s','%s'";
-        $query = sprintf($query,$limite,$nbPage);
-
-        foreach($query->result_array() as $row)
+        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where etat='%s' limit '%s','%s'";
+        $query = sprintf($query,$etat,$limite,$nbPage);
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
         {
           $retour[$i]=$row;
           $i++;
@@ -72,7 +74,7 @@
         return $retour;
       }
 
-      public function getArticleCat($pgActuel,$nbPage,$idCat)
+      public function getArticleCat($pgActuel,$nbPage,$idCat,$etat)
       {
         $categorie = $this->getCategorie($idCat);
         $categorie='%'.$categorie.'%';
@@ -80,9 +82,10 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where etat='done' and categories like '%s' limit '%s','%s'";
-        $query = sprintf($query,$categorie,$limite,$nbPage);
-        foreach($query->result_array() as $row)
+        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where etat='%s' and categories like '%s' limit '%s','%s'";
+        $query = sprintf($query,$etat,$categorie,$limite,$nbPage);
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
         {
           $retour[$i]=$row;
           $i++;
@@ -90,25 +93,26 @@
         return $retour;
       }
 
-      public function getArticleById($id)
+      public function getArticleById($id,$etat)
       {
-        $query = "select * from article where idarticle='%s' and etat ='done' limit 1";
-        $query = sprintf($query,$id);
+        $query = "select * from article where idarticle='%s' and etat ='%s' limit 1";
+        $query = sprintf($query,$id,$etat);
         $result = $this->db->query($query)->result_array();
         return $result;
       }
 
-      public function simpleSearchBook($categ,$pgActuel,$nbPage)
+      public function simpleSearchBook($categ,$pgActuel,$nbPage,$etat)
       {
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $argument='%'.$categ.'%';
-        $query = "select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites,categories from livre where nom like '%s' and etat = 'done' limit '%s','%s'";
-        $query = sprintf($query,$argument,$limite,$nbPage);
+        $query = "select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites,categories from livre where nom like '%s' and etat = '%s' limit %s,%s";
+        $query = sprintf($query,$argument,$etat,$limite,$nbPage);
+        $result = $this->db->query($query);
         $si = 0;
         $retour = array();
-        foreach($query->result_array() as $row)
+        foreach($result->result_array() as $row)
         {
           $retour[$i]=$row;
           $i++;
@@ -116,17 +120,18 @@
         return $retour;
       }
 
-      public function simpleSearchArticle($nom,$pgActuel,$nbPage)
+      public function simpleSearchArticle($nom,$pgActuel,$nbPage,$etat)
       {
         $limite = 1;
         if($pgActuel != 1) $limite = $pgActuel * $nbPage;
         $retour = array();
         $argument='%'.$nom.'%';
-        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where nom like '%s' and etat = 'done' limit '%s','%s'";
-        $query = sprintf($query,$argument,$limite,$nbPage);
+        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where nom like '%s' and etat = '%s' limit '%s','%s'";
+        $query = sprintf($query,$argument,$etat,$limite,$nbPage);
+        $result = $this->db->query($query);
         $i = 0;
         $retour = array();
-        foreach($query->result_array() as $row)
+        foreach($result->result_array() as $row)
         {
           $retour[$i]=$row;
           $i++;
@@ -134,12 +139,14 @@
         return $retour;
       }
 
-      public function bookOrderByVisite()
+      public function bookOrderByVisite($etat)
       {
         $retour = array();
         $i = 0;
-        $query = "select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites,categories from livre where etat = 'done' order by visites desc limit 3";
-        foreach($query->result_array() as $row)
+        $query = "select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites,categories from livre where etat = '%s' order by visites desc limit 3";
+        $query = sprintf($query,$etat);
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
         {
           $retour[$i]=$row;
           $i++;
@@ -147,12 +154,14 @@
         return $retour;
       }
 
-      public function articleOrderByVisite()
+      public function articleOrderByVisite($etat)
       {
         $retour = array();
         $i = 0;
-        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where etat = 'done' order by visites desc limit 3";
-        foreach($query->result_array() as $row)
+        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where etat = '%s' order by visites desc limit 3";
+        $query = sprintf($query,$etat);
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
         {
           $retour[$i]=$row;
           $i++;
