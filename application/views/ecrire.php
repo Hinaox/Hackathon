@@ -15,7 +15,7 @@
         <form class="col-md-9 m-auto" method="post" role="form">
             <hr>
             <br>
-            <h2 class="h2">Hanoratra boky</h2>
+            <h2 class="h2">Hanoratra Lahatsoratra</h2>
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="inputname">Lohateny</label>
