@@ -1,2 +1,2 @@
-# Hackaton
+# Hackathon
 Repository for github
