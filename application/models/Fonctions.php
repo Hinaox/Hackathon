@@ -189,6 +189,65 @@
 
       // INSERT 
 
-    
+      public function insertArticle($nom,$iduser,$idadmin,$text,$photo,$video,$date,$categories)
+      {
+        if($iduser == null)
+        {
+          $iduser = null;
+          $etat = "no";
+        }
+        if($idadmin == null)
+        {
+          $idadmin = null;
+          $etat = "no";
+        }
+        $visite = 0;
+        $query = "insert into article values (null,'%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')";
+        $query = sprintf($query,$nom,$iduser,$idadmin,$text,$photo,$video,$etat,$date,$visite,$categories);
+        $this->db->query($query);
+      }
+
+      public function insertBook($titre,$desc,$auteur,$date,$fichier,$categories)
+      {
+        $etat = "no";
+        $visite = 0;
+        $query = "insert into livre values (null,'%s','%s','%s','%s','%s','%s','%s','%s')";
+        $query = sprintf($query,$titre,$desc,$auteur,$date,$etat,$fichier,$visite,$categories);
+        $this->db->query($query);
+      }
+      
+      public function updateBookEtat($id)
+      {
+        $etat = "done";
+        $query = "update livre set etat = '%s' where idlivre = '%s'";
+        $query = sprintf($query,$etat,$id);
+        $this->db->query($query);
+      }
+
+      public function updateBookText($id,$titre,$desc,$auteur,$date,$fichier,$cat)
+      {
+        $etat = "no";
+        $visite = 0;
+        $query = "update livre set titre = '%s', description = '%s', auteur = '%s', daty = '%s', etat = '%s', fichier = '%s', visites = '%s', categories = '%s' where idlivre = '%s'";
+        $query = sprintf($query,$titre,$desc,$auteur,$date,$etat,$fichier,$visite,$cat,$id);
+        $this->db->query($query);
+      }
+      
+      public function updateArticleEtat($id)
+      {
+        $etat = "done";
+        $query = "update article set etat = '%s' where idarticle = '%s'";
+        $query = sprintf($query,$etat,$id);
+        $this->db->query($query);
+      }
+
+      public function updateArticleText($id,$titre,$text,$photo,$video,$date,$cat)
+      {
+        $etat = "no";
+        $visite = 0;
+        $query = "update article set titre = '%s', texte = '%s', photo = '%s', video = '%s', etat = '%s', daty = '%s', visites = '%s', categories = '%s'";
+        $query = sprintf($query,$titre,$text,$photo,$video,$etat,$date,$visite,$cat);
+        $this->db->query($query);
+      }
   }
  ?>
