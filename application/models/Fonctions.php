@@ -191,15 +191,18 @@
 
       public function insertArticle($nom,$iduser,$idadmin,$text,$photo,$video,$date,$categories)
       {
+        $etat = "no";
         if($iduser == null)
         {
           $iduser = null;
-          $etat = "no";
         }
-        if($idadmin == null)
+        else if($idadmin == null)
         {
           $idadmin = null;
-          $etat = "no";
+        }
+        else if($idadmin != null)
+        {
+          $etat = "done";
         }
         $visite = 0;
         $query = "insert into article values (null,'%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')";
@@ -241,12 +244,24 @@
         $this->db->query($query);
       }
 
-      public function updateArticleText($id,$titre,$text,$photo,$video,$date,$cat)
+      public function updateArticleText($id,$titre,$iduser,$idadmin,$text,$photo,$video,$date,$cat)
       {
         $etat = "no";
         $visite = 0;
-        $query = "update article set titre = '%s', texte = '%s', photo = '%s', video = '%s', etat = '%s', daty = '%s', visites = '%s', categories = '%s'";
-        $query = sprintf($query,$titre,$text,$photo,$video,$etat,$date,$visite,$cat);
+        if($iduser == null)
+        {
+          $iduser = null;
+        }
+        else if($idadmin == null)
+        {
+          $idadmin = null;
+        }
+        else if($idadmin != null)
+        {
+          $etat = "done";
+        }
+        $query = "update article set titre = '%s', iduser = '%s', idadmin = '%s', texte = '%s', photo = '%s', video = '%s', etat = '%s', daty = '%s', visites = '%s', categories = '%s'";
+        $query = sprintf($query,$titre,$iduser,$idadmin,$text,$photo,$video,$etat,$date,$visite,$cat);
         $this->db->query($query);
       }
   }
