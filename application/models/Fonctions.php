@@ -2,6 +2,9 @@
   if(! defined('BASEPATH')) exit('No direct script access allowed');
   class Fonctions extends CI_Model
   {
+
+    // SELECT 
+    
       public function getAllBook($pgActuel,$nbPage)
       {
         $limite = 0;
@@ -26,7 +29,7 @@
         }
         return $retour;
       }
-
+      
       public function getBookById($id,$pgActuel,$nbPage)
       {
          $limite = 0;
@@ -40,6 +43,18 @@
         }
         $query = "select * from livre where idlivre='%s' and etat='done' limit '%s','%s'";
         $query = sprintf($query,$id,$limite,$nbPage);
+        $result = $this->db->query($query);
+        $book = array();
+        foreach ($result->result_array() as $key) {
+          $book[] = $key;
+        }
+        return $book[0];
+      }
+
+      public function searchBook($id,$page,$nbParPage)
+      {
+        $query = "select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites from livre where idlivre='%s' limit '%s','%s'";
+        $query = sprintf($query,$id,$page,$nbParPage);
         $result = $this->db->query($query);
         $book = array();
         foreach ($result->result_array() as $key) {
