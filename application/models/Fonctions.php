@@ -2,137 +2,142 @@
   if(! defined('BASEPATH')) exit('No direct script access allowed');
   class Fonctions extends CI_Model
   {
-      public function getAllBook($pgActuel,$nbParPage)
+    public function getAllBook($pgActuel,$nbParPage)
+    {
+      $limite = 1;
+      if($pgActuel != 1)  $limite = $pgActuel * $nbParPage;
+      $retour = array();
+      $i = 0;
+      $query ="select * from livre where etat='done' limit %s,%s";
+      $query = sprintf($query,$limite,$nbParPage);
+      $result = $this->db->query($query);
+      foreach($result->result_array() as $row)
       {
-        $limite = 1;
-        if($pgActuel != 1)  $limite = $pgActuel * $nbParPage;
-        $retour = array();
-        $i = 0;
-        $query ="select * from livre where etat='done' limit '%s','%s'";
-        $query = sprintf($query,$limite,$nbParPage);
-        foreach($query->result_array() as $row)
-        {
-          $retour[$i]=$row;
-          $i++;
-        }
-        return $retour;
+        $retour[$i]=$row;
+        $i++;
       }
-      public function getCatById($id)
+      return $retour;
+    }
+    public function getCatById($id)
+    {
+      $query = "select nom from categorie where idcategorie = '%s' limit 1";
+      $query = sprintf($query,$id);
+      $result = $this->db->query($query)->row_array();
+      return $result;
+    }
+    public function getBookCat($pgActuel,$nbPage,$idCat)
+    {
+      $limite = 1;
+      $categorie = $this->getCategorie($idCat);
+      $categorie='%'.$categorie.'%';
+      if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
+      $retour = array();
+      $i = 0;
+      $query ="select * from livre where etat='done' and categories like '%s' limit %s,%s";
+      $query = sprintf($query,$categorie,$limite,$nbPage);
+      $result = $this->db->query($query);
+      foreach($result->result_array() as $row)
       {
-        $query = "select nom from categorie where idcategorie = '%s' limit 1";
-        $query = sprintf($query,$id);
-        $result = $this->db->query($query)->row_array();
-        return $result;
+        $retour[$i]=$row;
+        $i++;
       }
-      public function getBookCat($pgActuel,$nbPage,$idCat)
-      {
-        $limite = 1;
-        $categorie = $this->getCategorie($idCat);
-        $categorie='%'.$categorie.'%';
-        if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
-        $retour = array();
-        $i = 0;
-        $query ="select * from livre where etat='done' and categories like '%s' limit '%s','%s'";
-        $query = sprintf($query,$categorie,$limite,$nbPage);
-        foreach($query->result_array() as $row)
-        {
-          $retour[$i]=$row;
-          $i++;
-        }
-        return $retour;
+      return $retour;
+    }
+    public function getBookById($id,$pgActuel,$nbPage)
+    {
+      $limite = 1;
+      if($pgActuel != 1) $limite = $pgActuel * $nbPage;
+      $query = "select * from livre where idlivre='%s' and etat='done' limit %s,%s";
+      $query = sprintf($query,$id,$limite,$nbPage);
+      $result = $this->db->query($query);
+      $book = array();
+      foreach ($result->result_array() as $key) {
+        $book[] = $key;
       }
-      public function getBookById($id,$pgActuel,$nbPage)
-      {
-        $limite = 1;
-        if($pgActuel != 1) $limite = $pgActuel * $nbPage;
-        $query = "select * from livre where idlivre='%s' and etat='done' limit '%s','%s'";
-        $query = sprintf($query,$id,$limite,$nbPage);
-        $result = $this->db->query($query);
-        $book = array();
-        foreach ($result->result_array() as $key) {
-          $book[] = $key;
-        }
-        return $book[0];
-      }
+      return $book[0];
+    }
 
-      public function getAllArticle($pgActuel,$nbPage)
+    public function getAllArticle($pgActuel,$nbPage)
+    {
+      $limite = 1;
+      if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
+      $retour = array();
+      $i = 0;
+      $query = "select * from article where etat='done' limit %s,%s";
+      $query = sprintf($query,$limite,$nbPage);
+      $result = $this->db->query($query);
+      foreach($result->result_array() as $row)
       {
-        $limite = 1;
-        if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
-        $retour = array();
-        $i = 0;
-        $query = "select * from article where etat='done' limit '%s','%s'";
-        $query = sprintf($query,$limite,$nbPage);
-
-        foreach($query->result_array() as $row)
-        {
-          $retour[$i]=$row;
-          $i++;
-        }
-        return $retour;
+        $retour[$i]=$row;
+        $i++;
       }
+      return $retour;
+    }
 
-      public function getArticleCat($pgActuel,$nbPage,$idCat)
+    public function getArticleCat($pgActuel,$nbPage,$idCat)
+    {
+      $categorie = $this->getCategorie($idCat);
+      $categorie='%'.$categorie.'%';
+      $limite = 1;
+      if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
+      $retour = array();
+      $i = 0;
+      $query = "select * from article where etat='done' and categories like '%s' limit %s,%s";
+      $query = sprintf($query,$categorie,$limite,$nbPage);
+      $result = $this->db->query($query);
+      foreach($result->result_array() as $row)
       {
-        $categorie = $this->getCategorie($idCat);
-        $categorie='%'.$categorie.'%';
-        $limite = 1;
-        if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
-        $retour = array();
-        $i = 0;
-        $query = "select * from article where etat='done' and categories like '%s' limit '%s','%s'";
-        $query = sprintf($query,$categorie,$limite,$nbPage);
-        foreach($query->result_array() as $row)
-        {
-          $retour[$i]=$row;
-          $i++;
-        }
-        return $retour;
+        $retour[$i]=$row;
+        $i++;
       }
+      return $retour;
+    }
 
-      public function getArticleById($id)
-      {
-        $query = "select * from article where idarticle='%s' and etat ='done' limit 1";
-        $query = sprintf($query,$id);
-        $result = $this->db->query($query)->result_array();
-        return $result;
-      }
+    public function getArticleById($id)
+    {
+      $query = "select * from article where idarticle='%s' and etat ='done' limit 1";
+      $query = sprintf($query,$id);
+      $result = $this->db->query($query)->result_array();
+      return $result;
+    }
 
-      public function simpleSearchBook($categ,$pgActuel,$nbPage)
+    public function simpleSearchBook($categ,$pgActuel,$nbPage)
+    {
+      $limite = 1;
+      if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
+      $retour = array();
+      $argument='%'.$categ.'%';
+      $query = "select * from livre where nom like '%s' and etat = 'done' limit %s,%s";
+      $query = sprintf($query,$argument,$limite,$nbPage);
+      $si = 0;
+      $retour = array();
+      $result = $this->db->query($query);
+      foreach($result->result_array() as $row)
       {
-        $limite = 1;
-        if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
-        $retour = array();
-        $argument='%'.$categ.'%';
-        $query = "select * from livre where nom like '%s' and etat = 'done' limit '%s','%s'";
-        $query = sprintf($query,$argument,$limite,$nbPage);
-        $si = 0;
-        $retour = array();
-        foreach($query->result_array() as $row)
-        {
-          $retour[$i]=$row;
-          $i++;
-        }
-        return $retour;
+        $retour[$i]=$row;
+        $i++;
       }
+      return $retour;
+    }
 
-      public function simpleSearchArticle($nom,$pgActuel,$nbPage)
+    public function simpleSearchArticle($nom,$pgActuel,$nbPage)
+    {
+      $limite = 1;
+      if($pgActuel != 1) $limite = $pgActuel * $nbPage;
+      $retour = array();
+      $argument='%'.$nom.'%';
+      $query = "select * from article where nom like '%s' and etat = 'done' limit %s,%s";
+      $query = sprintf($query,$argument,$limite,$nbPage);
+      $i = 0;
+      $retour = array();
+      $result = $this->db->query($query);
+      foreach($result->result_array() as $row)
       {
-        $limite = 1;
-        if($pgActuel != 1) $limite = $pgActuel * $nbPage;
-        $retour = array();
-        $argument='%'.$nom.'%';
-        $query = "select * from article where nom like '%s' and etat = 'done' limit '%s','%s'";
-        $query = sprintf($query,$argument,$limite,$nbPage);
-        $i = 0;
-        $retour = array();
-        foreach($query->result_array() as $row)
-        {
-          $retour[$i]=$row;
-          $i++;
-        }
-        return $retour;
+        $retour[$i]=$row;
+        $i++;
       }
+      return $retour;
+    }
 
       public function bookOrderByVisite()
       {
