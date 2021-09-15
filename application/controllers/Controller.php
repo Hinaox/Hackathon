@@ -20,7 +20,14 @@ class Controller extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['page']='accueil_user';
+		$data['page']='accueil';
 		$this->load->view('template',$data);	
 	}
+
+	public function accueil(){
+		$data['page']='accueil';
+		$this->load->view('template',$data);
+	}
+	
+
 }
