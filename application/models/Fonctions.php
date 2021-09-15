@@ -17,7 +17,8 @@
         }
         return $retour;
       }
-      public function getCatById($id)
+      
+      public function getBookById($id,$pgActuel,$nbPage)
       {
         $query = "select nom from categorie where idcategorie = '%s' limit 1";
         $query = sprintf($query,$id);
@@ -36,18 +37,22 @@
         $query = sprintf($query,$categorie,$limite,$nbPage);
         foreach($query->result_array() as $row)
         {
-          $retour[$i]=$row;
-          $i++;
+          $limite = 1;
+        }
+        $query = "select * from livre where idlivre='%s' and etat='done' limit '%s','%s'";
+        $query = sprintf($query,$id,$limite,$nbPage);
+        $result = $this->db->query($query);
+        $book = array();
+        foreach ($result->result_array() as $key) {
+          $book[] = $key;
         }
         return $retour;
       }
 
       public function getBookById($id,$pgActuel,$nbPage)
       {
-        $limite = 1;
-        if($pgActuel != 1) $limite = $pgActuel * $nbPage;
-        $query = "select * from livre where idlivre='%s' and etat='done' limit '%s','%s'";
-        $query = sprintf($query,$id,$limite,$nbPage);
+        $query = "select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites from livre where idlivre='%s' limit '%s','%s'";
+        $query = sprintf($query,$id,$page,$nbParPage);
         $result = $this->db->query($query);
         $book = array();
         foreach ($result->result_array() as $key) {
