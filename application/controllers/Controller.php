@@ -20,12 +20,16 @@ class Controller extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['page']='ficheLivre';
+		$data['page']='accueil';
 		$this->load->view('template',$data);	
 	}
 
 	public function livre(){
 		$data['page']='livre';
+		$this->load->view('template',$data);
+	}
+	public function login(){
+		$data['page']='login';
 		$this->load->view('template',$data);
 	}
 	

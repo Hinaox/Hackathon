@@ -1,6 +1,6 @@
 <?php
   if (!isset($page) || $page == null ) {
-      $page = 'ficheLivre';
+      $page = 'accueil';
   }
   // echo $page;
 ?>
@@ -24,6 +24,10 @@
     <link rel="apple-touch-icon" href="<?php echo site_url("assets/img/favicon.ico") ?>">
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo site_url("assets/img/apple-icon.png") ?>">
 
+    <link href="<?php echo site_url("assets/css/bootstrap.css") ?>" rel="stylesheet">
+    <link href="<?php echo site_url("assets/css/style.css") ?>" rel="stylesheet">
+    <link href="<?php echo site_url("assets/css/responsive.css") ?>" rel="stylesheet">
+    
     <link href="<?php echo site_url("assets/css/bootstrap.min.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/templatemo.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/custom.css") ?>" rel="stylesheet">
@@ -55,7 +59,7 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">+261 34 34 334 34</a>
                 </div>
                 <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://fb.com/" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
@@ -82,16 +86,16 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Accueil</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/index'); ?>">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Boky</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/livre'); ?>">Boky</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Article</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/livre'); ?>">Article</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Mombamonba</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/livre'); ?>">Mombamonba</a>
                         </li>
                     </ul>
                 </div>
@@ -108,7 +112,7 @@ https://templatemo.com/tm-559-zay-shop
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
                     
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="<?php echo base_url('Controller/login'); ?>">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span> -->
                     Hiditra
