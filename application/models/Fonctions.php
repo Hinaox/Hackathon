@@ -251,5 +251,43 @@
         $query = sprintf($query,$id);
         $this->db->query($query);
       }
+	  public function deconnect()
+	  {
+		  $this->session->sess_destroy();
+      redirect(site_url());
+	  }
+    public function tcheckLoginAdminSup($login,$mdp)
+    {
+      $query = "select count(login) as c,nom from adminsup where login='%s' and mdp=sha1('%s')";
+      $query = sprintf($query,$this->db->escape($login),$this->db->escape($mdp));
+      $res = $query->row_array();
+      if($res['c']==1){
+        $this->session->set_userdata('adminSup',$res['nom']);
+        return "ko";
+      }
+      else return "ko";
+    }
+    public function tcheckLoginAdmin($login,$mdp)
+    {
+      $query = "select count(idadmin) as c,idadmin from admin where login='%s' and mdp=sha1('%s')";
+      $query = sprintf($query,$this->db->escape($login),$this->db->escape($mdp));
+      $res = $query->row_array();
+      if($res['c']==1) {
+        $this->session->set_userdata('admin',$res['idadmin']);
+        return "ok";
+      }
+      else return "ko";
+    }
+    public function tcheckLoginUser($login,$mdp)
+    {
+      $query = "select count(iduser) as c,iduser from user where login='%s' and mdp=sha1('%s')";
+      $query = sprintf($query,$this->db->escape($login),$this->db->escape($mdp));
+      $res = $query->row_array();
+      if($res['c']==1) {
+        $this->session->set_userdata('user',$res['iduser']);
+        return "ok";
+      }
+      else return "ko";
+    }
   }
  ?>

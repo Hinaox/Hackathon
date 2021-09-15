@@ -10,6 +10,7 @@ create table adminsup(
 
 create table admin(
   idadmin int not null auto_increment primary key,
+  nom varchar(50),
   login varchar(100) not null,
   mdp varchar(100)
 );
@@ -26,6 +27,14 @@ create table categorie(
   idcategorie int not null auto_increment primary key,
   nom varchar(30)
 );
+
+insert into categorie values(null,"Zava-maniry");
+insert into categorie values(null,"Biby");
+insert into categorie values(null,"Tantara");
+insert into categorie values(null,"Arena an-kibon'ny tany");
+insert into categorie values(null,"Toerana");
+insert into categorie values(null,"Fihaviana");
+insert into categorie values(null,"Isan-karazany");
 
 create table article(
   idarticle int not null auto_increment primary key,
