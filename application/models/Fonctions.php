@@ -39,7 +39,7 @@
           $limite = 1;
         }
         $query = "select * from livre where idlivre='%s' and etat='done' limit '%s','%s'";
-        $query = sprintf($query,$id,$limit,$nbPage);
+        $query = sprintf($query,$id,$limite,$nbPage);
         $result = $this->db->query($query);
         $book = array();
         foreach ($result->result_array() as $key) {
@@ -61,7 +61,7 @@
         }
         $retour = array();
         $i = 0;
-        $query = $"select * from article where etat='done' limit '%s','%s'";
+        $query = "select * from article where etat='done' limit '%s','%s'";
         $query = sprintf($query,$limite,$nbPage);
 
         foreach($query->result_array() as $row)
@@ -176,7 +176,7 @@
         }
         $query = "select * from article where etat = 'done' order by visites limit '%s','%s'";
         $query = sprintf($limite,$nbPage);
-        
+
         foreach($query->result_array() as $row)
         {
           $retour[$i]=$row;
