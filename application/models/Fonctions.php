@@ -221,18 +221,9 @@
       {
         $etat = "no";
         $visite = 0;
-        if($iduser == null)
-        {
-          $iduser = null;
-        }
-        else if($idadmin == null)
-        {
-          $idadmin = null;
-        }
-        else if($idadmin != null)
-        {
-          $etat = "done";
-        }
+        if($iduser == null) $iduser = null;
+        else if($idadmin == null) $idadmin = null;
+        else if($idadmin != null) $etat = "done";
         $query = "update article set titre = '%s', iduser = '%s', idadmin = '%s', texte = '%s', photo = '%s', video = '%s', etat = '%s', daty = '%s', visites = '%s', categories = '%s'";
         $query = sprintf($query,$titre,$iduser,$idadmin,$text,$photo,$video,$etat,$date,$visite,$cat);
         $this->db->query($query);
