@@ -291,13 +291,22 @@
       }
       public function getMarkers($idarticle){
         $retour = array();
-        $query = " select * from geoloc where idarticle='%s'";
+        $query = " select * from geolocalisation where idarticle='%s'";
         $query = sprintf($query,$this->db->escape($idarticle));
         $res = $db->query($query);
         foreach($res->result_array() as $row){
           array_push($retour,$row);
         }
         return $retour;
+      }
+
+      public function insertMarkers($idarticle,$listCoord)
+      {
+        for($i=0;$i<count($listCoord);$i++){
+          $query = "insert into geolocalisation values('%s','%s','%s')";
+          $query = sprintf($query,$this->db->escape($listCoord[$i][0]),$this->db->escape($listCoord[$i][1]));
+          $this->db->query($query);
+        }
       }
 
   }

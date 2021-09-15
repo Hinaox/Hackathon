@@ -81,19 +81,13 @@ insert into livre values (null,"Madagasikara","Nosy goavana i Madagasikara ary f
 --   FOREIGN KEY (idlivre) references livre(idlivre)
 -- );
 
-create table geojoinarticle(
-  idgeololisation int not null auto_increment primary key,
-  idarticle int,
-  FOREIGN KEY (idarticle) references article(idarticle)
-);
+
 create table geolocalisation(
-  idgeololisation int,
+  idarticle int,
   latitude float,
   longitude float,
-  FOREIGN KEY (idgeololisation) references geojoinarticle(idgeololisation)
+  FOREIGN KEY (idarticle) references article(idarticle),
 );
-
-create view geoloc as select g.idarticle as idarticle,g.geolocalisation as geolocalisation,ge.latitude as latitude,ge.longitude as longitude from geojoinarticle g join geolocalisation ge on (g.idgeololisation=ge.idgeololisation);
 
 
 insert into article values(NULL,"Ifaramalemy sy Ikotobekibo, ny tantara tsy mety maty malagasy",NULL,NULL,"27 martsa 2020 Taloha, rehefa nilentika ny masoandro, ny tanora
