@@ -32,6 +32,24 @@ class Controller extends CI_Controller {
 		$data['page']='login';
 		$this->load->view('template',$data);
 	}
+	public function inscription(){
+		$data['page']='inscription';
+		$this->load->helper('Date');
+		$this->load->view('template',$data);
+		
+	}
+	public function ficheLivre(){
+		$data['page']='ficheLivre';
+		$this->load->view('template',$data);
+	}
+	public function ficheArticle(){
+		$data['page']='ficheArticle';
+		$this->load->view('template',$data);
+	}
+	public function article(){
+		$data['page']='article';
+		$this->load->view('template',$data);
+	}
 	
 
 }

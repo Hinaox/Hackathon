@@ -27,7 +27,7 @@
     <link href="<?php echo site_url("assets/css/bootstrap.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/style.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/responsive.css") ?>" rel="stylesheet">
-    
+
     <link href="<?php echo site_url("assets/css/bootstrap.min.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/templatemo.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/custom.css") ?>" rel="stylesheet">
@@ -86,13 +86,13 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/index'); ?>">Accueil</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/index'); ?>">Pejy Fandraisana</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo site_url('controller/livre'); ?>">Boky</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/livre'); ?>">Article</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/article'); ?>">Lahatsoratra</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo site_url('controller/livre'); ?>">Mombamonba</a>
@@ -117,6 +117,8 @@ https://templatemo.com/tm-559-zay-shop
                         <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span> -->
                     Hiditra
                     </a>
+                    
+
                 </div>
             </div>
 
@@ -175,7 +177,7 @@ https://templatemo.com/tm-559-zay-shop
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Article</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Lahatsoratra</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="#">Luxury</a></li>
                         <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
