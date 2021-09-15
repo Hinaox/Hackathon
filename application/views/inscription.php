@@ -22,6 +22,13 @@
         color: white;
         opacity: 1;
     }
+    #bt_connect_client{
+        border :1px solid #59ab6e;
+        background-color : #59ab6e;
+    }
+    #bt_connect_client:hover{
+        color : #000;
+    }
 </style>
 <section class="contact_section layout_padding-bottom layout_padding2-top">
     <div class="container">
@@ -29,54 +36,25 @@
             <div class="row">
                 <div class="" style="margin:auto">
                 <br>
-                    <h2 style="text-align:center;color:#000" class="h2 border-bottom pb-3 ">S'inscrire</h2>
+                    <h2 style="text-align:center;color:#000" class="h2 border-bottom pb-3 ">Famoronana kaonty</h2>
                     <form action="<?php echo site_url('ClientController/inscription'); ?>" method="post">
                         <div style="display: flex;">
                             <div class="col-md-6">
-                                <input type="text" name="nom" placeholder="Nom" style="font-size: 15px; padding: 4px;" />
+                                <input type="text" name="nom" placeholder="Anarana" style="font-size: 15px; padding: 4px;" />
                             </div>
                             <div class="col-md-6">
-                                <input type="text" name="prenom" placeholder="Prénom" style="font-size: 15px; padding: 4px;" />
+                                <input type="text" name="prenom" placeholder="Fanampin'Anarana" style="font-size: 15px; padding: 4px;" />
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <input type="email" name="email" placeholder="Email" style="font-size: 15px; padding: 4px;" />
+                            <input type="email" name="email" placeholder="Mailaka" style="font-size: 15px; padding: 4px;" />
                         </div>
                         <div class="col-md-12">
-                            <input type="password" name="mdp" placeholder="Mot de passe" style="font-size: 15px; padding: 4px;" />
+                            <input type="password" name="mdp" placeholder="Teny miafina" style="font-size: 15px; padding: 4px;" />
                         </div>
-                        <div class="col-md-12">
-                            <select style="font-size: 15px; padding: 4px; width:100%;" name="sexe">
-                                <option value="">Sexe</option>
-                                <option value="H">Homme</option>
-                                <option value="F">Femme</option>
-                            </select>
-                        </div>
-                        <br>
-                        <div class="col-md-12">
-                            <label class="col-form-label">Date de Naissance : </label>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div style="width: 30%;">
-                                    <select class="col" style="font-size: 14px; padding: 4px;" name="jour">
-                                        <option>Jour</option>
-                                        <?php printJourMois(1, 2001); ?>
-                                    </select>
-                                </div>
-                                <div style="width: 30%;">
-                                    <select class="col" style="font-size: 14px; padding: 4px;" name="mois">
-                                        <option>Mois</option>
-                                        <?php printMois(); ?>
-                                    </select>
-                                </div>
-                                <div style="width: 30%;">
-                                    <select class="col" style="font-size: 14px; padding: 4px;" name="annee">
-                                        <option>Année</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                            <button>
-                                S'inscrire
+                        
+                            <button id="bt_connect_client">
+                                Hamorina kaonty
                             </button>
                         </div>
                     </form>

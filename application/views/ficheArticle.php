@@ -128,7 +128,7 @@
                         <div class="card-body">
                             <h1 class="h2">Lahatsoratra Momban ny Vato</h1>
                             <p class="py-2">
-                                <span class="list-inline-item text-dark"> 89 olona nijery </span>
+                                <span class="list-inline-item text-dark">Nojeren'olona 89  </span>
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
