@@ -44,7 +44,7 @@ create table article(
   texte longtext,
   photo varchar(100),
   video varchar(100),
-  etat varchar(100),
+  etat varchar(100), --ok and ko
   daty date,
   visites int(10),
   categories varchar(200),
@@ -58,7 +58,7 @@ create table livre(
   description text,
   auteur varchar(100),
   daty date,
-  etat varchar(100),
+  etat varchar(100), --ok and ko 
   fichier varchar(100),
   visites int(10),
   categories varchar(200),

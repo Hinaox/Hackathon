@@ -309,5 +309,17 @@
         }
       }
 
+      public function visiteLivreCount($idLivre){
+        $query = "update livre set visites = (visites+1) where idlivre='%s'";
+        $query = sprintf($query,$idLivre);
+        $this->db->query($query);
+      }
+
+      public function visiteArticleCount($idArticle){
+        $query = "update article set visites = (visites+1) where idArticle='%s'";
+        $query = sprintf($query,$idArticle);
+        $this->db->query($query);
+      }
+
   }
  ?>
