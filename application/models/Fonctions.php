@@ -138,7 +138,7 @@
       {
         $retour = array();
         $i = 0;
-        $query = "select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites,categories from livre where etat = 'done' order by visites desc limit 3";
+        $query = "select * from livre where etat = 'done' order by visites desc limit 3";
         foreach($query->result_array() as $row)
         {
           $retour[$i]=$row;
@@ -280,5 +280,16 @@
         }
         else return "ko";
       }
+      public function getMarkers($idarticle){
+        $retour = array();
+        $query = " select * from geoloc where idarticle='%s'";
+        $query = sprintf($query,$this->db->escape($idarticle));
+        $res = $db->query($query);
+        foreach($res->result_array() as $row){
+          array_push($retour,$row);
+        }
+        return $retour;
+      }
+
   }
  ?>

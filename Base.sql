@@ -89,9 +89,11 @@ create table geojoinarticle(
 create table geolocalisation(
   idgeololisation int,
   latitude float,
-  logitude float,
+  longitude float,
   FOREIGN KEY (idgeololisation) references geojoinarticle(idgeololisation)
 );
+
+create view geoloc as select g.idarticle as idarticle,g.geolocalisation as geolocalisation,ge.latitude as latitude,ge.longitude as longitude from geojoinarticle g join geolocalisation ge on (g.idgeololisation=ge.idgeololisation);
 
 
 insert into article values(NULL,"Ifaramalemy sy Ikotobekibo, ny tantara tsy mety maty malagasy",NULL,NULL,"27 martsa 2020 Taloha, rehefa nilentika ny masoandro, ny tanora
