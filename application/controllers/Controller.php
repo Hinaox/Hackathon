@@ -42,6 +42,10 @@ class Controller extends CI_Controller {
 		$data['page']='ficheLivre';
 		$this->load->view('template',$data);
 	}
+	public function ficheArticle(){
+		$data['page']='ficheArticle';
+		$this->load->view('template',$data);
+	}
 	
 
 }
