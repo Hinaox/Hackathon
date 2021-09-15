@@ -27,7 +27,7 @@
     <link href="<?php echo site_url("assets/css/bootstrap.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/style.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/responsive.css") ?>" rel="stylesheet">
-    
+
     <link href="<?php echo site_url("assets/css/bootstrap.min.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/templatemo.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/custom.css") ?>" rel="stylesheet">
@@ -117,6 +117,8 @@ https://templatemo.com/tm-559-zay-shop
                         <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span> -->
                     Hiditra
                     </a>
+                    
+
                 </div>
             </div>
 
