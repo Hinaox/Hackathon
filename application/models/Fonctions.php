@@ -320,6 +320,15 @@
         $query = sprintf($query,$idArticle);
         $this->db->query($query);
       }
+      public function getAllCoord($strLat,$strLong){
+        $retour = array();
+        for($i=0;$i<$strLat.length;$i++){
+          $retour[$i]=array();
+          $retour[$i][0]=floatval($strLat[$i]);
+          $retour[$i][1]=floatval($strLong[$i]);
+        }
+        return $retour;
+      }
 
   }
  ?>
