@@ -50,6 +50,10 @@ class Controller extends CI_Controller {
 		$data['page']='article';
 		$this->load->view('template',$data);
 	}
+	public function recherche(){
+		$data['page']='resultatRecherche';
+		$this->load->view('template',$data);
+	}
 	
 
 }
