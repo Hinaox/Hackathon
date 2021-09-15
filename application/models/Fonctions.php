@@ -264,5 +264,19 @@
         $query = sprintf($query,$titre,$iduser,$idadmin,$text,$photo,$video,$etat,$date,$visite,$cat);
         $this->db->query($query);
       }
+
+      public function deleteArticle($id)
+      {
+        $query = "delete from article where idarticle = %s";
+        $query = sprintf($query,$id);
+        $this->db->query($query);
+      }
+
+      public function deleteBook($id)
+      {
+        $query = "delete from livre where idlivre = %s";
+        $query = sprintf($query,$id);
+        $this->db->query($query);
+      }
   }
  ?>
