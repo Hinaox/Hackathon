@@ -92,7 +92,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="<?php echo site_url('controller/livre'); ?>">Boky</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/livre'); ?>">Lahatsoratra</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/article'); ?>">Lahatsoratra</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo site_url('controller/livre'); ?>">Mombamonba</a>
