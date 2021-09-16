@@ -281,7 +281,7 @@
       public function updateBookEtat($id)
       {
         $etat = "done";
-        $query = "update livre set etat = '%s' where idlivre = '%s'";
+        $query = "update livre set etat = %s where idlivre = %s";
         $query = sprintf($query,$etat,$id);
         $this->db->query($query);
       }
@@ -290,7 +290,7 @@
       {
         $etat = "no";
         $visite = 0;
-        $query = "update livre set titre = '%s', description = '%s', auteur = '%s', daty = '%s', etat = '%s', fichier = '%s', visites = '%s', categories = '%s' where idlivre = '%s'";
+        $query = "update livre set titre = %s, description = %s, auteur = %s, daty = %s, etat = %s, fichier = %s, visites = %s, categories = %s where idlivre = %s";
         $query = sprintf($query,$titre,$desc,$auteur,$date,$etat,$fichier,$visite,$cat,$id);
         $this->db->query($query);
       }
@@ -298,7 +298,7 @@
       public function updateArticleEtat($id)
       {
         $etat = "done";
-        $query = "update article set etat = '%s' where idarticle = '%s'";
+        $query = "update article set etat = %s where idarticle = %s";
         $query = sprintf($query,$etat,$id);
         $this->db->query($query);
       }
@@ -310,7 +310,7 @@
         if($iduser == null) $iduser = null;
         else if($idadmin == null) $idadmin = null;
         else if($idadmin != null) $etat = "done";
-        $query = "update article set titre = '%s', iduser = '%s', idadmin = '%s', texte = '%s', photo = '%s', video = '%s', etat = '%s', daty = '%s', visites = '%s', categories = '%s'";
+        $query = "update article set titre = %s, iduser = %s, idadmin = %s, texte = %s, photo = %s, video = %s, etat = %s, daty = %s, visites = %s, categories = %s";
         $query = sprintf($query,$titre,$iduser,$idadmin,$text,$photo,$video,$etat,$date,$visite,$cat);
         $this->db->query($query);
       }
@@ -335,36 +335,46 @@
       }
       public function tcheckLoginAdminSup($login,$mdp)
       {
-        $query = "select count(login) as c,nom from adminsup where login='%s' and mdp=sha1('%s')";
+        $query = "select count(login) as c,nom from adminsup where login=%s and mdp=sha1(%s)";
         $query = sprintf($query,$this->db->escape($login),$this->db->escape($mdp));
-        $res = $query->row_array();
-        if($res['c']==1){
-          $this->session->set_userdata('adminSup',$res['nom']);
-          return "ok";
+        $result = $this->db->query($query);
+        foreach($result->row_array() as $row)
+        {
+          if($row['c'] == 1) {
+            $this->session->set_userdata('adminsup',$row['idadminsup']);
+            return "ok";
+          }
         }
-        else return "ko";
+        return "ko";
+
       }
       public function tcheckLoginAdmin($login,$mdp)
       {
-        $query = "select count(idadmin) as c,idadmin from admin where login='%s' and mdp=sha1('%s')";
+        $query = "select count(idadmin) as c,idadmin from admin where login=%s and mdp=sha1(%s)";
         $query = sprintf($query,$this->db->escape($login),$this->db->escape($mdp));
-        $res = $query->row_array();
-        if($res['c']==1) {
-          $this->session->set_userdata('admin',$res['idadmin']);
-          return "ok";
+        $result = $this->db->query($query);
+        foreach($result->row_array() as $row)
+        {
+          if($row['c'] == 1) {
+            $this->session->set_userdata('admin',$row['idadmin']);
+            return "ok";
+          }
         }
-        else return "ko";
+        return "ko";
       }
       public function tcheckLoginUser($login,$mdp)
       {
-        $query = "select count(iduser) as c,iduser from user where login='%s' and mdp=sha1('%s')";
+        $query = "select count(iduser) as c,iduser from user where login= %s and mdp=sha1(%s)";
         $query = sprintf($query,$this->db->escape($login),$this->db->escape($mdp));
-        $res = $query->row_array();
-        if($res['c']==1) {
-          $this->session->set_userdata('user',$res['iduser']);
-          return "ok";
+        $result = $this->db->query($query);
+        foreach($result->row_array() as $row)
+        {
+          if($row['c'] == 1) {
+            $this->session->set_userdata('user',$row['iduser']);
+            return "ok";
+          }
         }
-        else return "ko";
+        return "ko";        
       }
   }
  ?>

@@ -31,13 +31,18 @@
                 <div class="col-md-12">
                     <div class="" style="">
                         <div style="">
-                            <form action="<?php echo base_url('ClientController/login'); ?>" method="post">
+                            <form action="<?php echo base_url('Controller/authentification'); ?>" method="post">
                                 <div>
-                                    <input id="champ_email_client" name="email" type="email" placeholder="Email" />
+                                    <input id="champ_email_client" name="email" type="text" placeholder="Email" />
                                 </div>
                                 <div>
                                     <input id="champ_mdp_client" name="mdp" type="password" placeholder="Mot de passe" />
                                 </div>
+                                <?php if (isset($erreur)) 
+                                {
+                                    echo $erreur;
+                                }    
+                                ?>
                                 <div class="d-flex ">
                                     <button id="bt_connect_client">
                                         SE CONNECTER
