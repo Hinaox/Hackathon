@@ -331,19 +331,6 @@
         $this->session->sess_destroy();
         redirect(site_url());
       }
-      public function tcheckLoginAdminSup($login,$mdp)
-      {
-        $query = "select count(idadminsup) as c,idadminsup,nom from adminsup where login=%s and mdp=sha1(%s)";
-        $query = sprintf($query,$this->db->escape($login),$this->db->escape($mdp));
-        $result = $this->db->query($query);
-        $row = $result->row_array();  
-        if($row['c']!=0)
-        {
-          $this->session->set_userdata('adminsup',$row['idadminsup']);
-          return "ok";
-        }
-        return "ko";
-      }
 
       public function tcheckLoginAdmin($login,$mdp)
       {
