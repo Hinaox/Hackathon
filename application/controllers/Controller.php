@@ -21,7 +21,8 @@ class Controller extends CI_Controller {
 	public function index()
 	{
 		$data['page']='accueil';
-		$data['book_visited']=$this->Fonctions->bookOrderByVisite();
+		$livre = "livre";
+		$data['book_visited']=$this->Fonctions->contentOrderByVisite($livre);
 		$data['nom_image']=array();
 		$i=0;
 		foreach($data['book_visited'] as $book)
@@ -30,7 +31,8 @@ class Controller extends CI_Controller {
 			$i++;
 		}
 
-		$data['article_visited']=$this->Fonctions->articleOrderByVisite();
+		$article = "article";
+		$data['article_visited']=$this->Fonctions->contentOrderByVisite($article);
 		$data['article_image']=array();
 		$i=0;
 		foreach($data['article_visited'] as $article)
@@ -56,17 +58,28 @@ class Controller extends CI_Controller {
 		
 	}
 	public function ficheLivre(){
-		$data['page']='ficheLivre';
 		$vue = $this->input->get('id');
-		$data['boky'] = $this->Fonctions->getBookById($vue);
-		// foreach($data['boky'] as $book)
-		// {
-		// 	$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
-		// 	$i++;
-		// }
+		$type = $this->input->get('type');
+		$i=0;
+		$data['boky'] = $this->Fonctions->getContentById($vue,$type);
+		foreach($data['boky'] as $book)
+		{
+			$data['nom_image']=$this->Picture->getAllPics($book['photo']);
+			$data['default_image']=$this->Picture->getPrincipalPics($book['photo']);
+			$i++;
+		}
+		$data['page']='ficheLivre';
 		$this->load->view('template',$data);
 	}
 	public function ficheArticle(){
+		$vue = $this->input->get('id');
+		$type = $this->input->get('type');
+		$data['article'] = $this->Fonctions->getContentById($vue,$type);
+		foreach($data['article'] as $article)
+		{
+			$data['nom_image']=$this->Picture->getAllPics($article['photo']);
+			$data['default_image']=$this->Picture->getPrincipalPics($article['photo']);
+		}
 		$data['page']='ficheArticle';
 		$this->load->view('template',$data);
 	}

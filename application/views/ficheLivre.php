@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_10.jpg'); ?>" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="<?php echo $default_image; ?>" alt="Card image cap" id="product-detail">
                     </div>
                     <div class="row">
                         <!--Start Controls-->
@@ -22,21 +22,13 @@
                                 <!--First slide-->
                                 <div class="carousel-item active">
                                     <div class="row">
+                                        <?php for($i=0;$i<count($nom_image);$i++) {?>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_01.jpg'); ?>" alt="Product Image 1">
+                                                <img class="card-img img-fluid" src="<?php echo $nom_image[$i]; ?>" alt="Product Image".<?php echo $i; ?>>
                                             </a>
                                         </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_02.jpg'); ?>" alt="Product Image 2">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_03.jpg'); ?>" alt="Product Image 3">
-                                            </a>
-                                        </div>
+                                        <?php }?>
                                     </div>
                                 </div>
                                 <!--/.First slide-->
@@ -44,21 +36,13 @@
                                 <!--Second slide-->
                                 <div class="carousel-item">
                                     <div class="row">
+                                        <?php for($i=0;$i<count($nom_image);$i++) {?>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_04.jpg" alt="Product Image 4">
+                                                <img class="card-img img-fluid" src="<?php echo $nom_image[$i]; ?>" alt="Product Image".<?php echo $i; ?>>
                                             </a>
                                         </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_05.jpg" alt="Product Image 5">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_06.jpg" alt="Product Image 6">
-                                            </a>
-                                        </div>
+                                        <?php }?>
                                     </div>
                                 </div>
                                 <!--/.Second slide-->
@@ -66,21 +50,13 @@
                                 <!--Third slide-->
                                 <div class="carousel-item">
                                     <div class="row">
+                                        <?php for($i=0;$i<count($nom_image);$i++) {?>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_07.jpg" alt="Product Image 7">
+                                                <img class="card-img img-fluid" src="<?php echo $nom_image[$i]; ?>" alt="Product Image".<?php echo $i; ?>>
                                             </a>
                                         </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_08.jpg" alt="Product Image 8">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_09.jpg" alt="Product Image 9">
-                                            </a>
-                                        </div>
+                                        <?php }?>
                                     </div>
                                 </div>
                                 <!--/.Third slide-->
@@ -102,17 +78,17 @@
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            
-                            <h1 class="h2"><?php echo $boky['titre']; ?></h1>
+                        <?php for($i=0;$i<count($boky);$i++) {?>
+                            <h1 class="h2"><?php echo $boky[$i]['titre']; ?></h1>
                             <p class="py-2">
-                                <span class="list-inline-item text-dark"> <?php echo $boky['visites']; ?> olona nijery </span>
+                                <span class="list-inline-item text-dark"> <?php echo $boky[$i]['visites']; ?> olona nijery </span>
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Sokajy:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong><?php echo $boky['categories']; ?></strong></p>
+                                    <p class="text-muted"><strong><?php echo $boky[$i]['categories']; ?></strong></p>
                                 </li>
                             </ul>
 
@@ -121,12 +97,12 @@
                                     <h6>Mpanoratra:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong><?php echo $boky['auteur']; ?></strong></p>
+                                    <p class="text-muted"><strong><?php echo $boky[$i]['auteur']; ?></strong></p>
                                 </li>
                             </ul>
 
                             <h6>Mombamomba:</h6>
-                            <p><?php echo $boky['description']; ?></p>
+                            <p><?php echo $boky[$i]['texte']; ?></p>
 
                             <form action="" method="GET">
                                 <input type="hidden" name="product-title" value="Activewear">
@@ -139,7 +115,7 @@
                                     </div>
                                 </div>
                             </form>
-
+                        <?php }?>
                         </div>
                     </div>
                 </div>

@@ -2,19 +2,34 @@
   if(! defined('BASEPATH')) exit('No direct script access allowed');
   class Fonctions extends CI_Model
   {
-    public function getContentById($id,$pageActuel,$nbPage,$type)
+    // public function getContentById($id,$pageActuel,$nbPage,$type)
+    // {
+    //   $limit = 1;
+    //   if($pgActuel != 1) $limite = $pageActuel * $nbPage;
+    //   $query = "select * from %s where idcontenu=%s limit %s,%s";
+    //   $query = sprintf($query,$type,$id,$limite,$nbPage);
+    //   $result = $this->db->query($query);
+    //   $content = array();
+    //   foreach ($result->result_array() as $key) {
+    //     $content[] = $key;
+    //   }
+    //   $query->freeResult();
+    //   return $retour;
+    // }
+
+    public function getContentById($id,$type)
     {
-      $limit = 1;
-      if($pgActuel != 1) $limite = $pageActuel * $nbPage;
-      $query = "select * from %s where idcontenu=%s limit %s,%s";
-      $query = sprintf($query,$type,$id,$limite,$nbPage);
+      // $limit = 1;
+      // if($pgActuel != 1) $limite = $pageActuel * $nbPage;
+      $query = "select * from %s where idcontenu='%s'";
+      $query = sprintf($query,$type,$id);
       $result = $this->db->query($query);
       $content = array();
       foreach ($result->result_array() as $key) {
         $content[] = $key;
       }
+      return $content;
       $query->freeResult();
-      return $retour;
     }
 
     public function getCatById($id)
@@ -64,15 +79,6 @@
       $result->freeResult();
       return $retour;
     }
-
-      public function getCatById($id)
-      {
-        $query = "select nom from categorie where idcategorie = %s limit 1";
-        $query = sprintf($query,$id);
-        $result = $this->db->query($query)->row_array();
-        $query->freeResult();
-        return $result;
-      }
   
       public function getAllContent($pgActuel,$nbPage,$type)
       {
@@ -110,15 +116,6 @@
         }
         $result->freeResult();
         return $retour;
-      }
-
-      public function getContentById($id,$type)
-      {
-        $query = "select * from %s where idcontenu=%s limit 1";
-        $query = sprintf($query,$id,$type);
-        $result = $this->db->query($query)->result_array();
-        $result->freeResult();
-        return $result;
       }
 
       public function advancedSearchContent($titre,$categorie,$descri,$auteur,$nbdate,$nbPage,$type)      
@@ -167,14 +164,14 @@
         $retour = array();
         $i = 0;
         $query = "select * from %s order by visites desc limit 3";
-        $result=sprintf($result,$type);
+        $query=sprintf($query,$type);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
         {
           $retour[$i]=$row;
           $i++;
         }
-        $result->freeResult();
+        $result->free_result();
         return $retour;
       }
 
