@@ -38,7 +38,8 @@
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
         {
-          $limite = 1;
+          $retour[$i]=$row;
+          $i++;
         }
         return $retour;
       }
@@ -46,8 +47,8 @@
       {
         $limite = 1;
         if($pgActuel != 1) $limite = $pgActuel * $nbPage;
-        $query = "select * from livre where idlivre=%s and etat=%s limit %s,%s";
-        $query = sprintf($query,$id,$etat,$limite,$nbPage);
+        $query = "select * from livre where idlivre='%s' and etat='done' limit '%s','%s'";
+        $query = sprintf($query,$id,$limite,$nbPage);
         $result = $this->db->query($query);
         $book = array();
         foreach ($result->result_array() as $key) {

@@ -80,6 +80,19 @@ class Controller extends CI_Controller {
 		$data['page']='login';
 		$this->load->view('template',$data);
 	}
+	public function article(){
+		$data['page']='article';
+		$this->load->view('template',$data);
+	}
+	public function recherche(){
+		$data['page']='resultatRecherche';
+		$this->load->view('template',$data);
+	}
+	public function ecrire(){
+		$data['page']='ecrire';
+		$this->load->view('template',$data);
+	}
+	
 
 	public function upload()
 	{
