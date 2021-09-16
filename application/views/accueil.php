@@ -5,22 +5,18 @@
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image: url('<?php echo site_url("assets/img/back.png") ?>');">
+            <div class="carousel-item active">
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            
+                            <img class="img-fluid" src="<?php echo site_url("assets/img/fokonolona.jpeg") ?>" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
                                 <h1 class="h1 text-success"><b>Wiki</b> Madagascar</h1>
-                                <h3 class="h2">Tiny and Perfect eCommerce Template</h3>
+                                <h3 class="h2">Ny Fokonolona</h3>
                                 <p>
-                                    Zay Shop is an eCommerce HTML5 CSS template with latest version of Bootstrap 5 (beta 1). 
-                                    This template is 100% free provided by <a rel="sponsored" class="text-success" href="https://templatemo.com" target="_blank">TemplateMo</a> website. 
-                                    Image credits go to <a rel="sponsored" class="text-success" href="https://stories.freepik.com/" target="_blank">Freepik Stories</a>,
-                                    <a rel="sponsored" class="text-success" href="https://unsplash.com/" target="_blank">Unsplash</a> and
-                                    <a rel="sponsored" class="text-success" href="https://icons8.com/" target="_blank">Icons 8</a>.
+                                Ny fokonolona dia mitana toerana lehibe eo amin'ny tantara sy ny rafitry ny finoana ary ny soatoavin'ny vahoaka Malagasy. Ny andrim-panjakana dia manendry ny mpikambana rehetra ao amin'ny fiarahamonina ambanivohitra sy ny fivondronan'izy ireo handaminana ny raharahany isan'andro.
                                 </p>
                             </div>
                         </div>
@@ -31,15 +27,14 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="<?php echo site_url("assets/img/banner_img_02.jpg") ?>" alt="">
+                            <img class="img-fluid" src="<?php echo site_url("assets/img/harena.jpg") ?>" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">Proident occaecat</h1>
-                                <h3 class="h2">Aliquip ex ea commodo consequat</h3>
+                            <h1 class="h1 text-success"><b>Wiki</b> Madagasikara</h1>
+                                <h3 class="h2">Harena Malagasy</h3>
                                 <p>
-                                    You are permitted to use this Zay CSS template for your commercial websites. 
-                                    You are <strong>not permitted</strong> to re-distribute the template ZIP file in any kind of template collection websites.
+                                Misahotaka ny manampahaizana ara-tsiansa satria mihavery ny harena voajanahary eto Madagasiraka. Tandindomin-doza ny lazan’i Madagasikara amin’ny maha ivon’ny toerana ivangongon’ny harena voajanahary sy amin’ny maha ivon’ny toerana iarovana ny harena voajanahary azy, raha toa ka tsy misy fepetra faran’izay henjana raisina ho fiarovana azy ireo.
                                 </p>
                             </div>
                         </div>
@@ -50,15 +45,14 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="<?php echo site_url("assets/img/banner_img_03.jpg") ?>" alt="">
+                            <img class="img-fluid" src="<?php echo site_url("assets/img/tantara.jpg") ?>" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">Repr in voluptate</h1>
-                                <h3 class="h2">Ullamco laboris nisi ut </h3>
+                                <h1 class="h1 text-success"><b>Wiki</b> Madagasikara</h1>
+                                <h3 class="h2">Tantaran'i Madagasikara</h3>
                                 <p>
-                                    We bring you 100% free CSS templates for your websites. 
-                                    If you wish to support TemplateMo, please make a small contribution via PayPal or tell your friends about our website. Thank you.
+                                Ny tantaran'ny fametrahana an'i Madagasikara dia ny syntheta misy eo amin'ny Vazimba, tompon-tany amin'ny tany afovoany izay tsy dia fantatsika loatra, ary ny Indo-Melanesian sy Bantu dia mikoriana, faharoa ny Indiana sy Arabo, izay nonina tao amin'ny nosy hatramin'ny 1 voalohany Arivotaona hatramin'ny taonjato faha-15 na faha-16
                                 </p>
                             </div>
                         </div>
@@ -108,8 +102,7 @@
                 <div class="col-lg-6 m-auto">
                     <h1 class="h1">Boky be Mpijery indrindra</h1>
                     <p>
-                        Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident.
+                        Ireto  ny Boky anisan ny be Mpijery ndrindra sy ireo be mpanaraka tam ity herinandro ity 
                     </p>
                 </div>
             </div>
