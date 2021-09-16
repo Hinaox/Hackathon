@@ -25,7 +25,7 @@
   <section class="bg-light">
         <div class="container pb-5">
             <div class="row">
-                <div class="col-lg-5 mt-5">
+                <div class="col-lg-3 mt-5">
                     <div class="card mb-3">
                         <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_10.jpg'); ?>" alt="Card image cap" id="product-detail">
                     </div>
@@ -87,27 +87,6 @@
                                 </div>
                                 <!--/.Second slide-->
 
-                                <!--Third slide-->
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_07.jpg'); ?> " alt="Product Image 7">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_08.jpg'); ?> " alt="Product Image 8">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_09.jpg'); ?> " alt="Product Image 9">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/.Third slide-->
                             </div>
                             <!--End Slides-->
                         </div>
@@ -123,7 +102,7 @@
                     </div>
                 </div>
                 <!-- col end -->
-                <div class="col-lg-7 mt-5">
+                <div class="col-lg-9 mt-5">
                     <div class="card">
                         <div class="card-body">
                             <h1 class="h2">Lahatsoratra Momban ny Vato</h1>
@@ -191,7 +170,7 @@ function initialize() {
 
   var liste = new Array();
 //atsofoka eto le data avy any am base
-  alert(liste.length);
+  //alert(liste.length);
   for(let i = 0; i < liste.length; i++){
     marks = new google.maps.Marker({
       position:liste[i], //coordonnée de la position du clic sur la carte

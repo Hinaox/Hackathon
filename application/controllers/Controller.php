@@ -138,4 +138,12 @@ class Controller extends CI_Controller {
 		  echo "upload vita";
 		}
 	}
+	public function indexAdmin(){
+		$data['pageAdmin']='admin_accueil';
+		$this->load->view('template_admin',$data);
+	}
+	public function contenu(){
+		$data['page']='contenu';
+		$this->load->view('template',$data);
+	}
 }
