@@ -225,4 +225,9 @@ class Controller extends CI_Controller {
 		$data['page_insertion']='insertion_vocal';
 		$this->load->view('template',$data);
 	}
+	//lien vers methode de paiement
+	public function paiement(){
+		$data['page']='paiement';
+		$this->load->view('template',$data);
+	}
 }

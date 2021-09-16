@@ -1,11 +1,4 @@
 <style>
-   
-    a {
-        color: white;
-    }
-    h2 {
-        color: white;
-    }
     label {
         color : gray;
     }
@@ -27,13 +20,13 @@
         <div class="row justify-content-center col-md-6 container-bg" style="margin: auto; background-color: white; border=1px solid white;border-radius:10px; ">
             <div class="col-md-12" id="client_panel" style="padding: 0;">
             <br>
-                <h2 style="text-align:center" class="h2 text-light border-bottom pb-3 ">Miditra</h2>
+                <h2 style="text-align:center" class="h2  border-bottom pb-3 ">Miditra</h2>
                 <div class="col-md-12">
                     <div class="" style="">
                         <div style="">
                             <form action="<?php echo base_url('Controller/authentification'); ?>" method="post">
                                 <div>
-                                    <input id="champ_email_client" name="email" type="email" placeholder="Mailaka" />
+                                    <input id="champ_email_client" name="email" placeholder="Mailaka" />
                                 </div>
                                 <div>
                                     <input id="champ_mdp_client" name="mdp" type="password" placeholder="Teny Miafina" />
@@ -51,7 +44,7 @@
                                 </div>
                                 
                             </form>
-                            <center><a href="<?php echo site_url('controller/inscription')?>">Pas encore membre ? Inscrivez-vous</a></center>
+                            <center><a href="<?php echo site_url('controller/inscription')?>">Tsy Mbola manana kaonty ? Hamorina</a></center>
                             <br>
                         </div>
                     </div>

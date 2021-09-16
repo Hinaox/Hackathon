@@ -227,7 +227,7 @@
           $this->session->set_userdata('admin',$row['idadmin']);
           return "ok";
         }
-        $result->freeResult();
+        $result->free_result();
         return "ko";
       }
 

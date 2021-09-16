@@ -9,17 +9,7 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <h1>.</h1>
-                            <h1>.</h1>
-                            <h1>.</h1>
-                            <h1>.</h1>
-                            <h1>.</h1>
-                            <h1>.</h1>
-                            <h1>.</h1>
-                            <h1>.</h1>
-                            <h1>.</h1>
-                            <h1>.</h1>
-                            <h1>.</h1>     
+                            
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
@@ -90,10 +80,9 @@
     <section class="container py-5">
         <div class="row text-center pt-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Articles les plus visités</h1>
+                <h1 class="h1">Lahatsoratra be Mpijery indrindra</h1>
                 <p>
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
+                    Ireto ary ny lahatsoratra izay betsaka nitsika indrindra tamin'iny herinandro ity
                 </p>
             </div>
         </div>
@@ -101,7 +90,7 @@
         <?php for($i=0;$i<count($article_visited);$i++) { ?>
               
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="<?php echo site_url("controller/ficheArticle?id=".$article_visited[$i]['idcontenu']."&type=article"); ?>"><img src="<?php echo $article_image[$i] ?>" class="rounded-circle img-fluid border"></a>
+                <a href="<?php echo site_url("controller/ficheArticle?id=".$article_visited[$i]['idcontenu']."&type=article"); ?>"><img src="<?php echo $article_image[$i] ?>" class="rounded-circle img border" width="200px"></a>
                 <h5 class="text-center mt-3 mb-3"><?php echo $article_visited[$i]['titre']; ?></h5>
                 <p class="text-center"><a class="btn btn-success" href="<?php echo site_url("controller/ficheArticle?id=".$article_visited[$i]['idcontenu']."&type=article"); ?>">Hijery</a></p>
             </div>
