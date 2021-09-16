@@ -258,6 +258,11 @@ insert into contenu values(NULL,CURRENT_DATE(),"Vanille de Madagascar","zava-man
 ampiasaina mba hanalefaka ny kakao hanesorana ilay tsiro mangidy. Misy karazany 3 ny vanille : vanille Tahitensis, vanille planifolia, vanille pompona; ary ahitana ihany koa vanille diha izay atao hoe vanille du cerado.",
 "vanille","vanille.mp4",NULL,NULL,"done",15,8000,NULL,NULL,NULL);
 
+insert into contenu values(NULL,CURRENT_DATE(),"Afindrafindrao Malagasy","fomba sy vakoka","article",
+"18 ny foko misy eto Madagasikara ary samy manana ny fomba ara-mozikany avy izy ireo. Fa ny dihy afindrafindrao dia malaza tokoa manerana an'i Madagasikara satria manome fahafinaretana tokoa ity gadona mozika ity.
+Anisan'ny kolon-tsaina Malagasy tokoa ny afindrafindrao, izany hoe mozika nentim-paharazana izy io. Ny gadona afindrafindrao dia azo avy amin'ny 
+fampivondronan'ny mozika Basesa sy mozika eoropeana ary ampiasaina hanomboana sy hanafana lanonana");
+
 
 insert into contenu values(NULL,CURRENT_DATE(),"Mitaraina ny tany","toerana","livre",
 "texte texte texte texte"

@@ -200,31 +200,40 @@ class Controller extends CI_Controller {
 		$this->load->view('template_admin',$data);
 	}
 	public function contenu(){
-		$data['page']='contenu';
+		$article="article";
 		$data['categ']=$this->Fonctions->getCategorie();
+		$data['article']=$this->Fonctions->getAllContent(0,3,$article);
+		$livre="livre";
+		$data['livre']=$this->Fonctions->getAllContent(0,3,$livre);
+		$data['page']='contenu';
 		$this->load->view('template',$data);
 	}
 	public function contenu_accueil(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_accueil';
 		$this->load->view('template',$data);
 	}
 	public function contenu_video(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_video';
 		$this->load->view('template',$data);
 	}
 	public function contenu_livre(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_livre';
 		$this->load->view('template',$data);
 	}
 	public function contenu_audio(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_audio';
 		$this->load->view('template',$data);
 	}
 	public function contenu_article(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_article';
 		$this->load->view('template',$data);

@@ -109,7 +109,7 @@
           $retour[$i]=$row;
           $i++;
         }
-        $query->freeResult();
+        $result->free_result();
         return $retour;
       }
       public function getAllContentByCat($cat,$type)
