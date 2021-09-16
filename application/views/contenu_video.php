@@ -37,6 +37,5 @@
             <span  class="publiedBy">Publié par Fama </span>
             
         </div>
-    </div>
-
+    </div
 </div>

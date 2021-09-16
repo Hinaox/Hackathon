@@ -1,6 +1,6 @@
 <?php
   if (!isset($page_contenu) || $page_contenu == null ) {
-      $page_contenu = 'contenu_video';
+      $page_contenu = 'contenu_accueil';
   }
 ?>
 
