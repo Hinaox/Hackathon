@@ -104,17 +104,34 @@
                             <h6>Mombamomba:</h6>
                             <p><?php echo $boky[$i]['texte']; ?></p>
 
-                            <form action="" method="GET">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Boky pdf:</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <p class="text-muted"><strong><?php echo $boky[$i]['pdf']; ?></strong></p>
+                                </li>
+                            </ul>
+
+                            
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row pb-3">
-                                    <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="regarder">Hijery</button>
-                                    </div>
-                                    <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="download">Haka</button>
-                                    </div>
+
+                                    <form action="#" method="GET">
+                                        <div class="col d-grid">
+                                            <button type="submit" class="btn btn-success btn-lg" name="submit" value="regarder">Hijery</button>
+                                        </div>
+                                    </form>
+
+                                    <form action="<?php echo site_url('Controller/download') ?>" method="post">
+                                        <div class="col d-grid">
+                                            <button type="submit" class="btn btn-success btn-lg" name="download" value="<?php echo $boky[$i]['pdf']; ?>">Haka</button>
+                                        </div>
+                                    </form>
+
                                 </div>
-                            </form>
+                            
+
                         <?php }?>
                         </div>
                     </div>

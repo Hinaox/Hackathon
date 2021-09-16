@@ -63,8 +63,8 @@ insert into user values(null,'user1','Princia','Dysan',sha1('mdp'));
 insert into categorie values(null,"zava-maniry","fas fa-leaf");
 insert into categorie values(null,"biby","fas fa-monkey");
 insert into categorie values(null,"tantara","fas fa-landmark");
-insert into categorie values(null,"harena an-kibon'ny tany","fas fa-gem");
-insert into categorie values(null,"toerana sy faritra","fas fa-map-marked-alt");
+insert into categorie values(null,"harena an-kibon ny tany","fas fa-gem");
+insert into categorie values(null,"toerana","fas fa-map-marked-alt");
 insert into categorie values(null,"fomba sy vakoka","fas fa-scroll-old");
 insert into categorie values(null,"isan-karazany","fas fa-ellipsis-h");
 
@@ -257,6 +257,14 @@ insert into contenu values(NULL,CURRENT_DATE(),"Vanille de Madagascar","zava-man
 "Vanille de Madagascar dia zava-manitra teratany eto Madagasikara, hita bebe kokoa any faritra SAVA sy manerana ny Diego;
 ampiasaina mba hanalefaka ny kakao hanesorana ilay tsiro mangidy. Misy karazany 3 ny vanille : vanille Tahitensis, vanille planifolia, vanille pompona; ary ahitana ihany koa vanille diha izay atao hoe vanille du cerado.",
 "vanille","vanille.mp4",NULL,NULL,"done",15,8000,NULL,NULL,NULL);
+
+insert into contenu values(NULL,CURRENT_DATE(),"Afindrafindrao Malagasy","fomba sy vakoka","article",
+"18 ny foko misy eto Madagasikara ary samy manana ny fomba ara-mozikany avy izy ireo. Fa ny dihy afindrafindrao dia malaza tokoa manerana an'i Madagasikara satria manome fahafinaretana tokoa ity gadona mozika ity.
+Anisan'ny kolon-tsaina Malagasy tokoa ny afindrafindrao, izany hoe mozika nentim-paharazana izy io. Ny gadona afindrafindrao dia azo avy amin'ny 
+fampivondronan'ny mozika Basesa sy mozika eoropeana ary ampiasaina hanomboana sy hanafana lanonana. Ny afindrafindrao dia 
+fandihan'olon-droa, ny vehivavy eo aloha de lahy ao aorina, mifanao aloha sy aoriana lavalava ary mifampitantana ny olon-droa ary ny sandry sy tongotra mande avia sy havanana. Izany dihy izany dia maneho firaisan-kina
+sy fiaraha-mientana ny vahoaka tsirairay ao amin'ny foko samihafa eto Madagasikara","afindrafindrao","afindrafindrao.mp4",NULL,
+NULL,"done",20,0,NULL,NULL,NULL);
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Mitaraina ny tany","toerana","livre",

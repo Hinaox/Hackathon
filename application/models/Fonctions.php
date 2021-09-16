@@ -41,10 +41,24 @@
       return $result;
     }
 
+    public function getCategorie()
+    {
+      $query = "select * from categorie";
+      $result = $this->db->query($query);
+      $i=0;
+      $retour = array();
+      foreach($result->result_array() as $row)
+      {
+        $retour[$i]=$row;
+        $i++;
+      }
+      $result->free_Result();
+      return $retour;
+    }
+
     public function getContentByCat($type,$idCat,$pageActuel,$nbPage)
     {
       $limite = 1;
-      $categorie = $this->getCategorie($idCat);
       $categorie='%'.$categorie.'%';
       if($pageActuel != 1)  $limite = $pageActuel * $nbPage;
       $retour = array();
@@ -80,6 +94,7 @@
       return $retour;
     }
 
+
       public function getAllContent($pgActuel,$nbPage,$type)
       {
         $limite = 1;
@@ -94,13 +109,44 @@
           $retour[$i]=$row;
           $i++;
         }
-        $query->freeResult();
+        $result->free_result();
+        return $retour;
+      }
+
+      public function getVideo()
+      {
+        $retour = array();
+        $i=0;
+        $query = "select titre,video from contenu where video != 'null'";
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
+        {
+            $retour[$i]=$row;
+            $i++;
+        }
+        $result->free_result();
+        return $retour;
+      }
+
+      public function getAllContentByCat($cat,$type)
+      {
+        $categorie='%'.$cat.'%';
+        $retour = array();
+        $i = 0;
+        $query = "select * from %s where categories like '%s'";
+        $query = sprintf($query,$type,$categorie);
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
+        {
+          $retour[$i]=$row;
+          $i++;
+        }
+        $result->free_Result();
         return $retour;
       }
 
       public function getContentCat($pgActuel,$nbPage,$idCat,$type)
       {
-        $categorie = $this->getCategorie($idCat);
         $categorie='%'.$categorie.'%';
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
@@ -227,7 +273,7 @@
           $this->session->set_userdata('admin',$row['idadmin']);
           return "ok";
         }
-        $result->freeResult();
+        $result->free_result();
         return "ko";
       }
       public function tcheckOwner($userContenu)
@@ -262,7 +308,7 @@
           $this->session->set_userdata('user',$row['iduser']);
           return "ok";
         }
-        $result->freeResult();
+        $result->free_result();
         return "ko";
       }
       public function getMarkers($idarticle){
