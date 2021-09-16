@@ -170,4 +170,27 @@ class Controller extends CI_Controller {
 		$data['page_contenu']='contenu_article';
 		$this->load->view('template',$data);
 	}
+
+	//controller vers les pages d'insertion
+
+	public  function insertion_livre(){
+		$data['page']='insertion';
+		$data['page_insertion']='insertion_livre';
+		$this->load->view('template',$data);
+	}
+	public  function insertion_article(){
+		$data['page']='insertion';
+		$data['page_insertion']='insertion_article';
+		$this->load->view('template',$data);
+	}
+	public  function insertion_video(){
+		$data['page']='insertion';
+		$data['page_insertion']='insertion_video';
+		$this->load->view('template',$data);
+	}
+	public  function insertion_audio(){
+		$data['page']='insertion';
+		$data['page_insertion']='insertion_audio';
+		$this->load->view('template',$data);
+	}
 }
