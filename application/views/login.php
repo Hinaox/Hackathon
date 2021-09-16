@@ -26,7 +26,7 @@
                         <div style="">
                             <form action="<?php echo base_url('Controller/authentification'); ?>" method="post">
                                 <div>
-                                    <input id="champ_email_client" name="email" placeholder="Mailaka" />
+                                    <input id="champ_email_client" name="email" type="text" placeholder="Mailaka" />
                                 </div>
                                 <div>
                                     <input id="champ_mdp_client" name="mdp" type="password" placeholder="Teny Miafina" />

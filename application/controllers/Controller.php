@@ -18,6 +18,7 @@ class Controller extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
 	public function index()
 	{
 		$data['page']='accueil';
@@ -55,7 +56,7 @@ class Controller extends CI_Controller {
 		$data['page']='inscription';
 		$this->load->helper('Date');
 		$this->load->view('template',$data);
-		
+
 	}
 	public function ficheLivre(){
 		$vue = $this->input->get('id');
@@ -87,12 +88,14 @@ class Controller extends CI_Controller {
 	{
 		$login = $this->input->post('email');
 		$mdp = $this->input->post('mdp');
+		$livre = "livre";
+		$article = "article";
 		$data['user'] = $this->Fonctions->tcheckLoginUser($login,$mdp);
 		$data['admin'] = $this->Fonctions->tcheckLoginAdmin($login,$mdp);
 		if($data['user'] == "ok" || $data['admin'] == "ok")
 		{
 			$data['page']='accueil';
-			$data['book_visited']=$this->Fonctions->bookOrderByVisite();
+			$data['book_visited']=$this->Fonctions->contentOrderByVisite($livre);
 			$data['nom_image']=array();
 			$i=0;
 			foreach($data['book_visited'] as $book)
@@ -101,19 +104,19 @@ class Controller extends CI_Controller {
 				$i++;
 			}
 	
-			$data['article_visited']=$this->Fonctions->articleOrderByVisite();
+			$data['article_visited']=$this->Fonctions->contentOrderByVisite($article);
 			$data['article_image']=array();
 			$i=0;
 			foreach($data['article_visited'] as $article)
 			{
 				$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
 				$i++;
-			}		
+			}
 		}
 		else
 		{
 			$data['erreur'] = "Diso ny mailaka na ny teny miafina !!!";
-			$data['page']='login';	
+			$data['page']='login';
 		}
 		$this->load->view('template',$data);
 	}
@@ -129,7 +132,7 @@ class Controller extends CI_Controller {
 		$data['page']='insertion';
 		$this->load->view('template',$data);
 	}
-	
+
 
 	public function upload()
 	{
@@ -152,7 +155,7 @@ class Controller extends CI_Controller {
 				$nom = $_FILES['nomfichier']['name'];
 				$nomUpload = $_FILES['nomfichier']['tmp_name'];
 				// var_dump($nom);
-				$nomdestination = "F:/Info Mendrika/ITU LECONS/Rojo/PHP/05-php-S1/UwAmp/www/hack/Hackathon/application/upload/".$nom."";
+				$nomdestination = site_url('assets/pdf/'.nom.'');
 				move_uploaded_file($nomUpload, $nomdestination);
 				echo "tontonsa ny fampitanao";
 			
@@ -169,35 +172,68 @@ class Controller extends CI_Controller {
 		}
 		
 	}
+
+	public function download()
+	{
+		$file_name=$this->input->post('download');
+		echo "file : ".$file_name;
+		$url = site_url('assets/pdf/'.$file_name.''); 
+		echo "url : ".$url;
+
+		// $fichier_nom = basename($url);
+		$fichier_contenu = file_get_contents($url);
+		// $dossier_enregistrement = "telechargement/";
+
+		// if(file_put_contents($dossier_enregistrement . $fichier_nom, $fichier_contenu)) 
+		// { 
+		// 	echo "Fichier téléchargé avec succès"; 
+		// } 
+		// else 
+		// { 
+		// 	echo "Fichier non téléchargé"; 
+		// } 
+		force_download($file_name,$url);
+	}
+
 	public function indexAdmin(){
 		$data['pageAdmin']='admin_accueil';
 		$this->load->view('template_admin',$data);
 	}
 	public function contenu(){
+		$article="article";
+		$data['categ']=$this->Fonctions->getCategorie();
+		$data['article']=$this->Fonctions->getAllContent(0,3,$article);
+		$livre="livre";
+		$data['livre']=$this->Fonctions->getAllContent(0,3,$livre);
 		$data['page']='contenu';
 		$this->load->view('template',$data);
 	}
 	public function contenu_accueil(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_accueil';
 		$this->load->view('template',$data);
 	}
 	public function contenu_video(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_video';
 		$this->load->view('template',$data);
 	}
 	public function contenu_livre(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_livre';
 		$this->load->view('template',$data);
 	}
 	public function contenu_audio(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_audio';
 		$this->load->view('template',$data);
 	}
 	public function contenu_article(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_article';
 		$this->load->view('template',$data);
@@ -225,9 +261,45 @@ class Controller extends CI_Controller {
 		$data['page_insertion']='insertion_vocal';
 		$this->load->view('template',$data);
 	}
-	//lien vers methode de paiement
-	public function paiement(){
-		$data['page']='paiement';
-		$this->load->view('template',$data);
+	public function loadFPDF()
+	{
+		$retourlivre=array();
+		$retourarticle=array();
+		$categorie=$this->Fonctions->getCategorie();
+		$i=0;
+		$nb=1;
+		foreach($categorie as $cat)
+		{
+			$retourlivre[$i]=$nb."-".strtoupper($cat['nom']);
+			$livr=$this->Fonctions->getAllContentByCat($cat['nom'],'livre');
+			$i++;
+
+			foreach($livr as $li)
+			{
+				$retourlivre[$i]='    '.$li['titre'];
+				$i++;
+			}
+
+			$nb++;
+		}
+		$ar=0;
+		$nbar=1;
+		foreach($categorie as $cat)
+		{
+			$retourarticle[$ar]=$nbar."-".strtoupper($cat['nom']);
+			$articl=$this->Fonctions->getAllContentByCat($cat['nom'],'article');
+			$ar++;
+
+			foreach($articl as $li)
+			{
+				$retourarticle[$ar]='    '.$li['titre'];
+				$ar++;
+			}
+
+			$nbar++;
+		}
+		$data['livre']=$retourlivre;
+		$data['article']=$retourarticle;
+		$this->load->view('accueil_fpdf',$data);
 	}
 }

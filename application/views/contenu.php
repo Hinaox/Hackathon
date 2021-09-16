@@ -10,28 +10,22 @@
             <div class="col-lg-3">
                 <h1 class="h2 pb-4">Sokajin'Tahiry</h1>
                 <ul class="list-unstyled templatemo-accordion">
-                    <li class="pb-3">
-                        <a class=" h4 text-decoration-none" href="#">
-                        <i class="fas fa-leaf"></i>
-                        Zava-Maniry
-                        </a>
-                        <hr>
-                    </li>
-                    <li class="pb-3">
-                        <a class=" h4 text-decoration-none" href="#">
-                        <i class="fas fa-gem"></i>
-                        Harena an-kibon'ny tany
-                        </a>
-                        <hr>
-                    </li>
-                    <li class="pb-3">
-                        <a class=" h4 text-decoration-none" href="#">
-                        <i class="fas fa-landmark"></i>
-                        Tantara 
-                        </a>
-                        <hr>
-                    </li>
-                    
+
+                    <?php for($i=0;$i<count($categ);$i++) {?>
+                        <li class="pb-3">
+                            <a class=" h3 text-decoration-none" href="#">
+                            <i class="<?php echo $categ[$i]['icone']; ?>"></i>
+                            <?php echo $categ[$i]['nom']; ?>
+                            </a>
+                        </li>
+                    <?php }?>
+
+                        <li class="pb-3">
+                            <a class=" h3 text-decoration-none" href="#">
+                            <i class="far fa-monkey"></i>
+                            BAAAA
+                            </a>
+                        </li>
                 </ul>
             </div>
 

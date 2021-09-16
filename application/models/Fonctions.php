@@ -41,10 +41,24 @@
       return $result;
     }
 
+    public function getCategorie()
+    {
+      $query = "select * from categorie";
+      $result = $this->db->query($query);
+      $i=0;
+      $retour = array();
+      foreach($result->result_array() as $row)
+      {
+        $retour[$i]=$row;
+        $i++;
+      }
+      $result->free_Result();
+      return $retour;
+    }
+
     public function getContentByCat($type,$idCat,$pageActuel,$nbPage)
     {
       $limite = 1;
-      $categorie = $this->getCategorie($idCat);
       $categorie='%'.$categorie.'%';
       if($pageActuel != 1)  $limite = $pageActuel * $nbPage;
       $retour = array();
@@ -60,7 +74,7 @@
       $query->freeResult();
       return $retour;
     }
- 
+
     public function simpleSearchContent($titre,$type,$pgActuel,$nbPage)
     {
       $limite = 1;
@@ -80,6 +94,7 @@
       return $retour;
     }
   
+
       public function getAllContent($pgActuel,$nbPage,$type)
       {
         $limite = 1;
@@ -94,13 +109,28 @@
           $retour[$i]=$row;
           $i++;
         }
-        $query->freeResult();
+        $result->free_result();
+        return $retour;
+      }
+      public function getAllContentByCat($cat,$type)
+      {
+        $categorie='%'.$cat.'%';
+        $retour = array();
+        $i = 0;
+        $query = "select * from %s where categories like '%s'";
+        $query = sprintf($query,$type,$categorie);
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
+        {
+          $retour[$i]=$row;
+          $i++;
+        }
+        $result->free_Result();
         return $retour;
       }
 
       public function getContentCat($pgActuel,$nbPage,$idCat,$type)
       {
-        $categorie = $this->getCategorie($idCat);
         $categorie='%'.$categorie.'%';
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
@@ -123,10 +153,10 @@
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
-        
+
         $req="";
-        $query = "select * from ".$type." where idcontenu is not null ".$req." limit ".$limite.",".$nbPage; 
-        
+        $query = "select * from ".$type." where idcontenu is not null ".$req." limit ".$limite.",".$nbPage;
+
         if(!empty($titre))
         {
             $req=$req." and titre like "."'%".$titre."%'";
@@ -158,7 +188,7 @@
         $result->freeResult();
         return $retour;
       }
-      
+
       public function contentOrderByVisite($type)
       {
         $retour = array();
@@ -179,8 +209,8 @@
       {
         $etat = "done";
         $visite = 0;
-        $query = "insert into contenu values (null,current_date(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)";
-        $query = sprintf($query,$titre,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$date,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
+        $query = "insert into contenu values (null,current_date(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)";
+        $query = sprintf($query,$titre,$date,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
         $this->db->query($query);
       }
 
@@ -209,7 +239,7 @@
         $query = sprintf($query,$id);
         $this->db->query($query);
       }
-  
+
       public function deconnect()
       {
         $this->session->sess_destroy();
@@ -242,7 +272,7 @@
           $this->session->set_userdata('user',$row['iduser']);
           return "ok";
         }
-        $result->freeResult();
+        $result->free_result();
         return "ko";
       }
       public function getMarkers($idarticle){
