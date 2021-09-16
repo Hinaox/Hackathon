@@ -241,7 +241,7 @@
           $retour[$i]=$row;
           $i++;
         }
-        $result->freeResult();
+        $result->free_result();
         return $retour;
       }
 
@@ -256,7 +256,7 @@
           $retour[$i]=$row;
           $i++;
         }
-        $result->freeResult();
+        $result->free_result();
         return $retour;
       }
 
