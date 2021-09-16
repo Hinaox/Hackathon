@@ -18,6 +18,7 @@ class Controller extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
 	public function index()
 	{
 		$data['page']='accueil';
@@ -55,7 +56,7 @@ class Controller extends CI_Controller {
 		$data['page']='inscription';
 		$this->load->helper('Date');
 		$this->load->view('template',$data);
-		
+
 	}
 	public function ficheLivre(){
 		$vue = $this->input->get('id');
@@ -110,12 +111,12 @@ class Controller extends CI_Controller {
 			{
 				$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
 				$i++;
-			}		
+			}
 		}
 		else
 		{
 			$data['erreur'] = "Diso ny mailaka na ny teny miafina !!!";
-			$data['page']='login';	
+			$data['page']='login';
 		}
 		$this->load->view('template',$data);
 	}
@@ -131,7 +132,7 @@ class Controller extends CI_Controller {
 		$data['page']='insertion';
 		$this->load->view('template',$data);
 	}
-	
+
 
 	public function upload()
 	{
@@ -200,6 +201,7 @@ class Controller extends CI_Controller {
 	}
 	public function contenu(){
 		$data['page']='contenu';
+		$data['categ']=$this->Fonctions->getCategorie();
 		$this->load->view('template',$data);
 	}
 	public function contenu_accueil(){
@@ -249,5 +251,46 @@ class Controller extends CI_Controller {
 		$data['page']='insertion';
 		$data['page_insertion']='insertion_vocal';
 		$this->load->view('template',$data);
+	}
+	public function loadFPDF()
+	{
+		$retourlivre=array();
+		$retourarticle=array();
+		$categorie=$this->Fonctions->getCategorie();
+		$i=0;
+		$nb=1;
+		foreach($categorie as $cat)
+		{
+			$retourlivre[$i]=$nb."-".strtoupper($cat['nom']);
+			$livr=$this->Fonctions->getAllContentByCat($cat['nom'],'livre');
+			$i++;
+
+			foreach($livr as $li)
+			{
+				$retourlivre[$i]='    '.$li['titre'];
+				$i++;
+			}
+
+			$nb++;
+		}
+		$ar=0;
+		$nbar=1;
+		foreach($categorie as $cat)
+		{
+			$retourarticle[$ar]=$nbar."-".strtoupper($cat['nom']);
+			$articl=$this->Fonctions->getAllContentByCat($cat['nom'],'article');
+			$ar++;
+
+			foreach($articl as $li)
+			{
+				$retourarticle[$ar]='    '.$li['titre'];
+				$ar++;
+			}
+
+			$nbar++;
+		}
+		$data['livre']=$retourlivre;
+		$data['article']=$retourarticle;
+		$this->load->view('accueil_fpdf',$data);
 	}
 }
