@@ -33,7 +33,7 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query ="select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites,categories from livre where etat='%s' and categories like '%s' limit '%s','%s'";
+        $query ="select * from livre where etat='%s' and categories like '%s' limit '%s','%s'";
         $query = sprintf($query,$etat,$categorie,$limite,$nbPage);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
@@ -62,7 +62,7 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where etat='%s' limit '%s','%s'";
+        $query = "select * from article where etat='%s' limit '%s','%s'";
         $query = sprintf($query,$etat,$limite,$nbPage);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
@@ -81,7 +81,7 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where etat='%s' and categories like '%s' limit '%s','%s'";
+        $query = "select * from article where etat='%s' and categories like '%s' limit '%s','%s'";
         $query = sprintf($query,$etat,$categorie,$limite,$nbPage);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
@@ -104,12 +104,53 @@
       {
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
-        $retour = array();
         $argument='%'.$categ.'%';
-        $query = "select count(idlivre),idlivre,titre,description,auteur,daty,fichier,visites,categories from livre where nom like '%s' and etat = '%s' limit %s,%s";
+        $query = "select * from livre where titre like '%s' and etat = '%s' limit %s,%s";
         $query = sprintf($query,$argument,$etat,$limite,$nbPage);
         $result = $this->db->query($query);
-        $si = 0;
+        $i = 0;
+        $retour = array();
+        foreach($result->result_array() as $row)
+        {
+          $retour[$i]=$row;
+          $i++;
+        }
+        return $retour;
+      }
+
+      public function advancedSearchBook($titre,$categorie,$descri,$auteur,$nbdate,$nbPage)
+      {
+        $limite = 1;
+        if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
+        $retour = array();
+        
+        $bdd= bdd_connection();
+        $req="";
+        $query = "select * from livre where etat='done' ".$req." limit ".$limite.",".$nbPage; 
+        
+        if(!empty($titre))
+        {
+            $req=$req." and titre like "."'%".$titre."%'";
+        }
+        if(!empty($categorie))
+        {
+            $req=$req." and categorie like "."'%".$categorie."%'";
+        }
+        if(!empty($descri))
+        {
+            $req=$req." and description like "."'%".$descri."%'";
+        }
+        if(!empty($auteur))
+        {
+            $req=$req." and auteur=  "."'"."$auteur"."'";
+        }
+        if(!empty($nbdate))
+        {
+            $req=$req." and abs(datediff(daty,CURRENT_DATE()))<=".$nbdate; 
+        }
+
+        $result = $this->db->query($query);
+        $i = 0;
         $retour = array();
         foreach($result->result_array() as $row)
         {
@@ -123,10 +164,47 @@
       {
         $limite = 1;
         if($pgActuel != 1) $limite = $pgActuel * $nbPage;
-        $retour = array();
         $argument='%'.$nom.'%';
-        $query = "select count(idarticle),idarticle,titre,description,iduser,idadmin,daty,fichier,categories from article where nom like '%s' and etat = '%s' limit '%s','%s'";
+        $query = "select * from article where titre like '%s' and etat = '%s' limit '%s','%s'";
         $query = sprintf($query,$argument,$etat,$limite,$nbPage);
+        $result = $this->db->query($query);
+        $i = 0;
+        $retour = array();
+        foreach($result->result_array() as $row)
+        {
+          $retour[$i]=$row;
+          $i++;
+        }
+        return $retour;
+      }
+      
+      public function advancedSearchArticle($titre,$categorie,$descri,$nbdate,$nbPage)
+      {
+        $limite = 1;
+        if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
+        $retour = array();
+        
+        $bdd= bdd_connection();
+        $req="";
+        $query = "select * from article where etat='done' ".$req." limit ".$limite.",".$nbPage; 
+        
+        if(!empty($titre))
+        {
+            $req=$req." and titre like "."'%".$titre."%'";
+        }
+        if(!empty($categorie))
+        {
+            $req=$req." and categorie like "."'%".$categorie."%'";
+        }
+        if(!empty($descri))
+        {
+            $req=$req." and texte like "."'%".$descri."%'";
+        }
+        if(!empty($nbdate))
+        {
+            $req=$req." and abs(datediff(daty,CURRENT_DATE()))<=".$nbdate; 
+        }
+
         $result = $this->db->query($query);
         $i = 0;
         $retour = array();
@@ -262,7 +340,7 @@
         $res = $query->row_array();
         if($res['c']==1){
           $this->session->set_userdata('adminSup',$res['nom']);
-          return "ko";
+          return "ok";
         }
         else return "ko";
       }
