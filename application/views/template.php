@@ -95,7 +95,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="<?php echo site_url('controller/index'); ?>">Pejy Fandraisana</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/contenu'); ?>">Sokajin'Tahiry</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/contenu'); ?>">Karazan'Tahiry</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo site_url('controller/insertion'); ?>">Hampiditra Tahiry</a>
@@ -180,12 +180,12 @@ https://templatemo.com/tm-559-zay-shop
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Lahatsoratra</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Karazan'Tahiry</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
-                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
+                        <li><a class="text-decoration-none" href="#">Boky</a></li>
+                        <li><a class="text-decoration-none" href="#">Lahatsoratra</a></li>
+                        <li><a class="text-decoration-none" href="#">Horonam-Peo</a></li>
+                        <li><a class="text-decoration-none" href="#">Horonan-Tsary</a></li>
                         
                     </ul>
                 </div>
@@ -195,8 +195,6 @@ https://templatemo.com/tm-559-zay-shop
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="#">Accueil</a></li>
                         <li><a class="text-decoration-none" href="#">A Propos</a></li>
-                        <li><a class="text-decoration-none" href="#">Localisation</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
                     </ul>
                 </div>
 
@@ -225,8 +223,8 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-auto">
                     <label class="sr-only" for="subscribeEmail">Mailaka</label>
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribe</div>
+                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Mailaka">
+                        <div class="input-group-text btn-success text-light">Hanaraka</div>
                     </div>
                 </div>
             </div>
@@ -238,7 +236,7 @@ https://templatemo.com/tm-559-zay-shop
                     <div class="col-12">
                         <p class="text-left text-light">
                             Copyright &copy; 2021 WikiMadagasikara
-                            | Designed by <a rel="sponsored" href="#" target="_blank">WikiMadagasikara</a>
+                            | Namboarin'ny <a rel="sponsored" href="#" target="_blank">WikiMadagasikara</a>
                         </p>
                     </div>
                 </div>
