@@ -2,13 +2,6 @@ drop database hackathon;
 create database hackathon;
 use hackathon;
 
-create table adminsup(
- idadminsup  int not null auto_increment primary key,
- login varchar(100) not null,
- nom varchar(50),
- mdp varchar(100)
-);
-
 create table admin(
   idadmin int not null auto_increment primary key,
   nom varchar(50),
@@ -51,7 +44,7 @@ create table livre(
   description text,
   auteur varchar(100),
   daty date,
-  etat varchar(100), --ok and ko 
+  etat varchar(100), --ok and ko
   fichier varchar(100),
   visites int(10),
   categories varchar(200),
@@ -91,12 +84,12 @@ insert into categorie values(null,"Biby");
 insert into categorie values(null,"Tantara");
 insert into categorie values(null,"Arena an-kibon'ny tany");
 insert into categorie values(null,"Toerana");
-insert into categorie values(null,"Fihaviana");
+insert into categorie values(null,"Foko");
 insert into categorie values(null,"Isan-karazany");
 
 insert into livre values (null,"Madagasikara",
-"Nosy goavana i Madagasikara ary firenena miorina any amin'ny morontsiraka atsimo atsinanan'i Afrika. Misy karazana biby an'arivony toy ny lemurs, ala, torapasika sy harambato. 
-Eo akaikin'ny renivohitra mahomby, Antananarivo, dia i Ambohimanga, andiana lapam-panjakana sy fasana, ary koa ny Lalambe Migodanan'i Baobabs, lalana maloto mifamatotra amin'ny 
+"Nosy goavana i Madagasikara ary firenena miorina any amin'ny morontsiraka atsimo atsinanan'i Afrika. Misy karazana biby an'arivony toy ny lemurs, ala, torapasika sy harambato.
+Eo akaikin'ny renivohitra mahomby, Antananarivo, dia i Ambohimanga, andiana lapam-panjakana sy fasana, ary koa ny Lalambe Migodanan'i Baobabs, lalana maloto mifamatotra amin'ny
 hazo goavana efa an-jato taonany maro"
 ,null,current_date(),"done","madagascar.pdf",10,"toerana","madagascar");
 
@@ -153,7 +146,7 @@ ranomanitra' , mifanila amin'ny tanimboly ylang-ylang, kafe ary kakaô.
 Ao Nosy Be 'Big Island' dia ahitantsika kolontsaina maro kokoa amin'ny fary, kanelina, kafe, dipoavatra, ylang-ylang ... Nosy Be dia manan-karena amin'ny harena an-tany sy an-dranomasina,
 amin'ny kolontsaina sy ny asa-tanana. Ankoatry ny morontsirak'ireo paradisa, tsy dia be olona loatra na dia eo aza ny lazan'izy ireo, hetsika maro no azo atao: fisitrihana scuba, snorkeling,
 fahitana ny nosy amin'ny dhow na lakana nentim - paharazana , fijerena trozona amin'ny vanim-potoana, fitsangantsanganana an-tongotra amin'ny bisikileta na bisikileta… A sombin-paradisa kely
- ho an'ny fianakaviana manontolo.","nosybe",NULL,"done",CURRENT_DATE(),12,"faritra");
+ ho an'ny fianakaviana manontolo.","nosybe",NULL,"done",CURRENT_DATE(),12,"toerana");
 
 
 insert into article values(NULL,"Ny antsitrika sy ny sambo ao amin'ny Vondronosy Mitsio",NULL,NULL,
@@ -163,7 +156,7 @@ Ity fijanonana ity dia ahafahantsika manao antsitrika 14 amin'ny toerana miavaka
 Ankafizo ny milomano eo amin'ireo sokatra an-dranomasina sy trondro maro loko, mandeha milomano mangina eo ambonin'ireo haran-dranomasina mahafinaritra ianao, andramo ny Trondro vao
 tratra, mihaona amin'ireo olona Vezo izay mandrafitra ny ekipanay sy ny Sakalava monina ireto nosy kely ireto ary mamelona ireo ranomasina ireo amin'ny lakana sy ny doho nentin-drazana.
 Traikefa tokana sy mafana, amin'ny gadona onja, rivotra ary fisondrotana.",
-"mitsio",NULL,"done",CURRENT_DATE(),12,"faritra");
+"mitsio",NULL,"done",CURRENT_DATE(),12,"toerana");
 
 
 insert into article values(NULL,"Ao amin'ny sambo Nofy Be, fandehanana avy any Ifaty mankany Morondava",NULL,NULL,
@@ -174,7 +167,7 @@ Entin'ny rivotra, miaraka amin'ny ekipazy Vezo (mpanjono avy any atsimo) ary ira
 sy fivoriana izahay. Hitanay ny fomba fiainan'ny foko any atsimon'i Madagasikara , ary indrindra ireo mpifindra monina Vezo. Ny jono, ny snorkeling, ny mozika, ny sakafo matsiro, ny
 filentehan'ny masoandro, dia hiainanao ny dia mahagaga, tsy hay hadinoina ...
 Ny fotoam-pitetezana dia eo ho eo ary miankina amin'ny lalana sy ny herin'ny rivotra. Ny programa dia miankina amin'ny toetr'andro sy, mazava ho azy, araka ny fanirianao.
-","ifaty",NULL,"done",CURRENT_DATE(),12,"faritra");
+","ifaty",NULL,"done",CURRENT_DATE(),12,"toerana");
 
 insert into article values(NULL,"Fitsangantsanganana sy fitetezana an-tanety Sakalava",NULL,NULL,
 "Majunga, ny nosy Radama ary ny nosy ranomanitra, Nosy Be
@@ -186,7 +179,7 @@ Alao sary an-tsaina ny fitetezana moramora, eo ambanin'ny tadin'ny tady sy ny ta
 tratrarina, ranomasina misy turquoise, rano mena na volontany, morontsiraka fasika misy karazany.
 Eo anelanelan'ny tany sy ny ranomasina, ny fahafinaretan'ny jono sy ny voankazo amin'ity fahalala-tanana ity dia hiaina traikefa nahafinaritra sy tsy azo faritana isika. Ho fanampin'ny
 fahasamihafana tsy mampino an'ity faritra tsy dia fantatra ity dia hahatsapa ny halalin'ny olona iray isika; ho mpanararaotra sy be vola isika, hahita ny fiainana ..
-","sakalava1",NULL,"done",CURRENT_DATE(),12,"faritra");
+","sakalava1",NULL,"done",CURRENT_DATE(),12,"toerana");
 
 
 insert into article values(NULL,"Fahagagana amin'ny Avaratra: Diego Bays, Tsingy de l'Ankarana ary ny Nosy volkanika Nosy Komba",NULL,NULL,
@@ -200,7 +193,7 @@ Avy eo, mankanesa any an-tampon'ny Montagne des Français, izay, voahodidin'ny b
 manontolo sy ny mofo mamy misy azy, Nosy Lonjo .
 Zahao ny valan-javaboary Montagne d'Ambre , mitsangatsangana eo anelanelan'ny fananganana vatosokay mahaliana ao Tsingy de l'Ankarana ao anaty toerana toy ny nofinofy, alohan'ny
 handehanana mankany amin'ny nosy paradisa Nosy Komba hijanonana amoron-dranomasina. Eto indray, fiakarana, fahitana ny Miandry anao ny kolontsaina eo an-toerana sy ny
-fitsangantsanganana an-dranomasina, hahafahanao miaina fanitrihana ao amin'ny firenena Sakalava ","tsingy",NULL,"done",CURRENT_DATE(),12,"faritra");
+fitsangantsanganana an-dranomasina, hahafahanao miaina fanitrihana ao amin'ny firenena Sakalava ","tsingy",NULL,"done",CURRENT_DATE(),12,"toerana");
 
 
 insert into article values(NULL,"Fitsangatsanganana an-tanindrazana avy any Morondava mankany Majunga",NULL,NULL,
@@ -217,7 +210,7 @@ Ny fotoam-pitetezana dia eo ho eo ary miankina amin'ny lalana sy ny herin'ny riv
 Ity fitsangantsanganana an-tampon'ny Morondava sy Majunga ity dia mitaky sidina lava ary mety iharan'ny toetr'andro somary misavoritaka ihany koa . Mety kokoa amin'ny olona zatra
 miondrana an-tsambo noho izany fa tsy mora voan'ny ranomasina.
 Ity zotra fitetezana ity dia azo atao amin'ny lafiny hafa ihany koa, ao anatin'ny 12 andro fitetezana an'i Majunga mankany Morondava . Ny vanim-potoana mahasoa dia ny faran'ny
-volana novambra / fanombohan'ny desambra , mankanisa anay raha mila fanazavana fanampiny.","majunga",NULL,"done",CURRENT_DATE(),12,"faritra");
+volana novambra / fanombohan'ny desambra , mankanisa anay raha mila fanazavana fanampiny.","majunga",NULL,"done",CURRENT_DATE(),12,"toerana");
 
 
 insert into article values(NULL,"Radama II",NULL,NULL,
@@ -252,12 +245,12 @@ Ny fampiharana ny voambolana 'raozy' dia avy amin'ny teny Anglisy hoe raozy nano
 
 
 insert into article values(NULL,"Madagasikara",NULL,NULL,
-"Nosy goavana i Madagasikara ary firenena miorina any amin'ny morontsiraka atsimo atsinanan'i Afrika. Misy karazana biby an'arivony toy ny lemurs, ala, torapasika sy harambato. 
-Eo akaikin'ny renivohitra mahomby, Antananarivo, dia i Ambohimanga, andiana lapam-panjakana sy fasana, ary koa ny Lalambe Migodanan'i Baobabs, lalana maloto mifamatotra amin'ny hazo 
+"Nosy goavana i Madagasikara ary firenena miorina any amin'ny morontsiraka atsimo atsinanan'i Afrika. Misy karazana biby an'arivony toy ny lemurs, ala, torapasika sy harambato.
+Eo akaikin'ny renivohitra mahomby, Antananarivo, dia i Ambohimanga, andiana lapam-panjakana sy fasana, ary koa ny Lalambe Migodanan'i Baobabs, lalana maloto mifamatotra amin'ny hazo
 goavana efa an-jato taonany maro","madagascar"
 ,NULL,"done",CURRENT_DATE(),10,"toerana");
 
 
 
 insert into article values(NULL,"Titre",NULL,NULL,
-"","sary",NULL,"done",CURRENT_DATE(),12,"faritra");
+"","sary",NULL,"done",CURRENT_DATE(),12,"toerana");
