@@ -69,17 +69,47 @@ class Controller extends CI_Controller {
 		$mdp = $this->input->post('mdp');
 		$data['user'] = $this->Fonctions->tcheckLoginUser($login,$mdp);
 		$data['admin'] = $this->Fonctions->tcheckLoginAdmin($login,$mdp);
-		$data['adminsup'] = $this->Fonctions->tcheckLoginAdminSup($login,$mdp);
-		if($data['user'] == "ok" || $data['admin'] == "ok" || $data['adminsup'] == "ok")
+		if($data['user'] == "ok" || $data['admin'] == "ok")
 		{
 			$data['page']='accueil';
-			$this->load->view('template',$data);	
+			$data['book_visited']=$this->Fonctions->bookOrderByVisite();
+			$data['nom_image']=array();
+			$i=0;
+			foreach($data['book_visited'] as $book)
+			{
+				$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
+				$i++;
+			}
+	
+			$data['article_visited']=$this->Fonctions->articleOrderByVisite();
+			$data['article_image']=array();
+			$i=0;
+			foreach($data['article_visited'] as $article)
+			{
+				$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
+				$i++;
+			}		
 		}
-		
-		$data['erreur'] = "Diso ny mailaka na ny teny miafina !!!";
-		$data['page']='login';
+		else
+		{
+			$data['erreur'] = "Diso ny mailaka na ny teny miafina !!!";
+			$data['page']='login';	
+		}
 		$this->load->view('template',$data);
 	}
+	public function article(){
+		$data['page']='article';
+		$this->load->view('template',$data);
+	}
+	public function recherche(){
+		$data['page']='resultatRecherche';
+		$this->load->view('template',$data);
+	}
+	public function ecrire(){
+		$data['page']='ecrire';
+		$this->load->view('template',$data);
+	}
+	
 
 	public function upload()
 	{

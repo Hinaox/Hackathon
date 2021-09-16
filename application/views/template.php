@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="assets/css/custom.css"> -->
 
 
-    <link rel="apple-touch-icon" href="<?php echo site_url("assets/img/favicon.ico") ?>">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo site_url("assets/img/apple-icon.png") ?>">
+    <link rel="apple-touch-icon" href="<?php echo site_url("assets/img/iconlogo.png") ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo site_url("assets/img/iconlogo.png") ?>">
 
     <link href="<?php echo site_url("assets/css/bootstrap.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/style.css") ?>" rel="stylesheet">
@@ -75,7 +75,7 @@ https://templatemo.com/tm-559-zay-shop
         <div class="container d-flex justify-content-between align-items-center">
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-             WikiMad
+             <img src="<?php echo site_url("assets/img/logo.png") ?>" >
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,7 +95,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="<?php echo site_url('controller/article'); ?>">Lahatsoratra</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/livre'); ?>">Mombamonba</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/ecrire'); ?>">Hampiditra</a>
                         </li>
                     </ul>
                 </div>
