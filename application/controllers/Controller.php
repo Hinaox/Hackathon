@@ -21,7 +21,24 @@ class Controller extends CI_Controller {
 	public function index()
 	{
 		$data['page']='accueil';
-		$this->load->view('template',$data);	
+		$data['book_visited']=$this->Fonctions->bookOrderByVisite();
+		$data['nom_image']=array();
+		$i=0;
+		foreach($data['book_visited'] as $book)
+		{
+			$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
+			$i++;
+		}
+
+		$data['article_visited']=$this->Fonctions->articleOrderByVisite();
+		$data['article_image']=array();
+		$i=0;
+		foreach($data['article_visited'] as $article)
+		{
+			$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
+			$i++;
+		}
+		$this->load->view('template',$data);
 	}
 
 	public function livre(){
@@ -59,7 +76,7 @@ class Controller extends CI_Controller {
 			$this->load->view('template',$data);	
 		}
 		
-		$data['erreur'] = "Diso ny mail na ny teny miafina !!!";
+		$data['erreur'] = "Diso ny mailaka na ny teny miafina !!!";
 		$data['page']='login';
 		$this->load->view('template',$data);
 	}
@@ -90,5 +107,4 @@ class Controller extends CI_Controller {
 		  echo "upload vita";
 		}
 	}
-
 }
