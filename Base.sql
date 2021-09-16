@@ -49,10 +49,10 @@ create table geolocalisation(
   FOREIGN KEY (idcontenu) references contenu(idcontenu)
 );
 
-create view article as select * from contenu where typee='article' and etat='done';
-create view video as select * from contenu where typee='video' and etat='done';
-create view audio as select * from contenu where typee='audio' and etat='done';
-create view livre as select * from contenu where typee='livre' and etat='done';
+create view article as select idcontenu,daty,titre,categories,texte,photo,visites,prix,iduser,idadmin from contenu where typee='article' and etat='done';
+create view video as select idcontenu,daty,titre,categories,texte,photo,video,visites,prix,iduser,idadmin from contenu where typee='video' and etat='done';
+create view audio as select idcontenu,daty,titre,categories,texte,photo,visites,prix,iduser,idadmin from contenu where typee='audio' and etat='done';
+create view livre as select idcontenu,daty,titre,categories,texte,photo,visites,prix,pdf,iduser,idadmin from contenu where typee='livre' and etat='done';
 
 insert into admin values(null,'admin1','admin1',sha1('mdp'));
 
