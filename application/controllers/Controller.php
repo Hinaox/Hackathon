@@ -73,11 +73,29 @@ class Controller extends CI_Controller {
 		if($data['user'] == "ok" || $data['admin'] == "ok" || $data['adminsup'] == "ok")
 		{
 			$data['page']='accueil';
-			$this->load->view('template',$data);	
+			$data['book_visited']=$this->Fonctions->bookOrderByVisite();
+			$data['nom_image']=array();
+			$i=0;
+			foreach($data['book_visited'] as $book)
+			{
+				$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
+				$i++;
+			}
+	
+			$data['article_visited']=$this->Fonctions->articleOrderByVisite();
+			$data['article_image']=array();
+			$i=0;
+			foreach($data['article_visited'] as $article)
+			{
+				$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
+				$i++;
+			}		
 		}
-		
-		$data['erreur'] = "Diso ny mailaka na ny teny miafina !!!";
-		$data['page']='login';
+		else
+		{
+			$data['erreur'] = "Diso ny mailaka na ny teny miafina !!!";
+			$data['page']='login';	
+		}
 		$this->load->view('template',$data);
 	}
 	public function article(){
