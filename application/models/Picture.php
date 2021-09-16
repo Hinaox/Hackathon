@@ -16,12 +16,21 @@
     public function getAllPics($photo)
     {
         $retour=array();
-        $i=1;
-        while($this->file_get_contents_curl(site_url('assets/img/'.$photo.$i.'png')))
+        $i=0;
+        for($ii=1;$ii<=3;$ii++)
         {
-            $retour[$i-1]=$photo.$i."png";
-            $i++;
+            if($this->file_get_contents_curl(site_url('assets/img/'.$photo.$ii.'.png')))
+            {
+                $retour[$ii-1]=site_url('assets/img/'.$photo.$ii.'.png');
+                $i++;
+            }
+            else
+            {
+                $retour[$ii-1]=$this->getPrincipalPics($photo);
+                $i++;
+            }
         }
+        
         return $retour;
     }
 

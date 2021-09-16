@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-lg-3 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_10.jpg'); ?>" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="<?php echo $default_image; ?>" alt="Card image cap" id="product-detail">
                     </div>
                     <div class="row">
                         <!--Start Controls-->
@@ -46,21 +46,13 @@
                                 <!--First slide-->
                                 <div class="carousel-item active">
                                     <div class="row">
+                                        <?php for($i=0;$i<count($nom_image);$i++) {?>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_01.jpg'); ?>" alt="Product Image 1">
+                                                <img class="card-img img-fluid" src="<?php echo $nom_image[$i]; ?>" alt="Product Image".<?php echo $i; ?>>
                                             </a>
                                         </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_02.jpg'); ?>" alt="Product Image 2">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_03.jpg'); ?>" alt="Product Image 3">
-                                            </a>
-                                        </div>
+                                        <?php }?>
                                     </div>
                                 </div>
                                 <!--/.First slide-->
@@ -68,21 +60,13 @@
                                 <!--Second slide-->
                                 <div class="carousel-item">
                                     <div class="row">
+                                        <?php for($i=0;$i<count($nom_image);$i++) {?>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_04.jpg'); ?> " alt="Product Image 4">
+                                                <img class="card-img img-fluid" src="<?php echo $nom_image[$i]; ?>" alt="Product Image".<?php echo $i; ?>>
                                             </a>
                                         </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_05.jpg'); ?> " alt="Product Image 5">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_06.jpg'); ?> " alt="Product Image 6">
-                                            </a>
-                                        </div>
+                                        <?php }?>
                                     </div>
                                 </div>
                                 <!--/.Second slide-->
@@ -105,33 +89,24 @@
                 <div class="col-lg-9 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">Lahatsoratra Momban ny Vato</h1>
+                        <?php for($i=0;$i<count($article);$i++) {?>
+                            <h1 class="h2"><?php echo $article[$i]['titre']; ?></h1>
                             <p class="py-2">
-                                <span class="list-inline-item text-dark">Nojeren'olona 89  </span>
+                                <span class="list-inline-item text-dark">Nojeren'olona <?php echo $article[$i]['visites']; ?>  </span>
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Sokajy:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>Angano</strong></p>
+                                    <p class="text-muted"><strong><?php echo $article[$i]['categories']; ?></strong></p>
                                 </li>
                             </ul>
 
                             <h6>Mombamomba:</h6>
-                            <p> Généralement, on utilise un texte en faux latin (le texte ne veut rien dire, il a été modifié), le Lorem ipsum ou Lipsum. L'avantage du latin est que l'opérateur sait au premier coup d'œil que la page contenant ces lignes n'est pas valide et que l'attention du lecteur n'est pas dérangée par le contenu, lui permettant de demeurer concentré sur le seul aspect graphique.
-
-Il circule des centaines de versions différentes du lorem ipsum, mais ce texte aurait originellement été tiré de l'ouvrage écrit par Cicéron en 45 av. J.-C., De finibus bonorum et malorum (Liber Primus, 32), texte populaire à cette époque, dont l'une des premières phrases est : « Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit… » (« Il n'existe personne qui aime la souffrance pour elle-même, ni qui la recherche ni qui la veuille pour ce qu'elle est… »).
-
-                            </p>
-
-                            <h6>Specification:</h6>
-                            <ul class="list-unstyled pb-3">
-                                <li>Lorem ipsum dolor sit</li>
-                                <li>Amet, consectetur</li>
-                            </ul>
-
-
+                            <p><?php echo $article[$i]['texte']; ?></p>
+                            
+                        <?php }?>
                         </div>
                     </div>
                 </div>
