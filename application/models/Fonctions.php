@@ -233,7 +233,7 @@
         $result->freeResult();
         return "ko";
       }
-      public function($userContenu)
+      public function tcheckSession($userContenu)
       {
         if($this->session->userdata('admin')!=null || $this->session->userdata('user')==$userContenu){
           return 1;
