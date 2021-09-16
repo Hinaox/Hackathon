@@ -60,7 +60,7 @@
       $query->freeResult();
       return $retour;
     }
- 
+
     public function simpleSearchContent($titre,$type,$pgActuel,$nbPage)
     {
       $limite = 1;
@@ -123,10 +123,10 @@
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
-        
+
         $req="";
-        $query = "select * from ".$type." where idcontenu is not null ".$req." limit ".$limite.",".$nbPage; 
-        
+        $query = "select * from ".$type." where idcontenu is not null ".$req." limit ".$limite.",".$nbPage;
+
         if(!empty($titre))
         {
             $req=$req." and titre like "."'%".$titre."%'";
@@ -158,7 +158,7 @@
         $result->freeResult();
         return $retour;
       }
-      
+
       public function contentOrderByVisite($type)
       {
         $retour = array();
@@ -171,7 +171,7 @@
           $retour[$i]=$row;
           $i++;
         }
-        $result->freeResult();
+        $result->free_result();
         return $retour;
       }
 
@@ -179,8 +179,8 @@
       {
         $etat = "done";
         $visite = 0;
-        $query = "insert into contenu values (null,current_date(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)";
-        $query = sprintf($query,$titre,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$date,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
+        $query = "insert into contenu values (null,current_date(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)";
+        $query = sprintf($query,$titre,$date,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
         $this->db->query($query);
       }
 
@@ -209,7 +209,7 @@
         $query = sprintf($query,$id);
         $this->db->query($query);
       }
-  
+
       public function deconnect()
       {
         $this->session->sess_destroy();

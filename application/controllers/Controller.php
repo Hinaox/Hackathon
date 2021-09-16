@@ -3,6 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Controller extends CI_Controller {
 
+	protected $viewData = [];
+	$this->viewData['locale'] = $request->getLocale();
+	$this->viewData['supportedLocales'] = $request->config->supportedLocales;
 	/**
 	 * Index Page for this controller.
 	 *
@@ -18,6 +21,7 @@ class Controller extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
 	public function index()
 	{
 		$data['page']='accueil';
@@ -53,7 +57,7 @@ class Controller extends CI_Controller {
 		$data['page']='inscription';
 		$this->load->helper('Date');
 		$this->load->view('template',$data);
-		
+
 	}
 	public function ficheLivre(){
 		$data['page']='ficheLivre';
@@ -80,7 +84,7 @@ class Controller extends CI_Controller {
 				$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
 				$i++;
 			}
-	
+
 			$data['article_visited']=$this->Fonctions->articleOrderByVisite();
 			$data['article_image']=array();
 			$i=0;
@@ -88,12 +92,12 @@ class Controller extends CI_Controller {
 			{
 				$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
 				$i++;
-			}		
+			}
 		}
 		else
 		{
 			$data['erreur'] = "Diso ny mailaka na ny teny miafina !!!";
-			$data['page']='login';	
+			$data['page']='login';
 		}
 		$this->load->view('template',$data);
 	}
@@ -105,11 +109,11 @@ class Controller extends CI_Controller {
 		$data['page']='resultatRecherche';
 		$this->load->view('template',$data);
 	}
-	public function ecrire(){
-		$data['page']='ecrire';
+	public function insertion(){
+		$data['page']='insertion';
 		$this->load->view('template',$data);
 	}
-	
+
 
 	public function upload()
 	{
@@ -138,6 +142,40 @@ class Controller extends CI_Controller {
 		}
 	}
 
+	public function indexAdmin(){
+		$data['pageAdmin']='admin_accueil';
+		$this->load->view('template_admin',$data);
+	}
+	public function contenu(){
+		$data['page']='contenu';
+		$this->load->view('template',$data);
+	}
+	public function contenu_accueil(){
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_accueil';
+		$this->load->view('template',$data);
+	}
+	public function contenu_video(){
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_video';
+		$this->load->view('template',$data);
+	}
+	public function contenu_livre(){
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_livre';
+		$this->load->view('template',$data);
+	}
+	public function contenu_audio(){
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_audio';
+		$this->load->view('template',$data);
+	}
+	public function contenu_article(){
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_article';
+		$this->load->view('template',$data);
+	}
+	
 	public function loadFPDF()
 	{
 		$data['categorie']=$this->Fonctions->getCategorie();
