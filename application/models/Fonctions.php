@@ -285,8 +285,8 @@
       {
         $etat = "done";
         $visite = 0;
-        $query = "insert into contenu values (null,current_date(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)";
-        $query = sprintf($query,$titre,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$date,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
+        $query = "insert into contenu values (null,current_date(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)";
+        $query = sprintf($query,$titre,$date,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
         $this->db->query($query);
       }
 
