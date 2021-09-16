@@ -113,17 +113,24 @@
                                 </li>
                             </ul>
 
-                            <form action="#" method="GET">
+                            
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row pb-3">
-                                    <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="regarder">Hijery</button>
-                                    </div>
-                                    <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="download">Haka</button>
-                                    </div>
+
+                                    <form action="#" method="GET">
+                                        <div class="col d-grid">
+                                            <button type="submit" class="btn btn-success btn-lg" name="submit" value="regarder">Hijery</button>
+                                        </div>
+                                    </form>
+
+                                    <form action="<?php echo site_url('Controller/download') ?>" method="post">
+                                        <div class="col d-grid">
+                                            <button type="submit" class="btn btn-success btn-lg" name="download" value="<?php echo $boky[$i]['pdf']; ?>">Haka</button>
+                                        </div>
+                                    </form>
+
                                 </div>
-                            </form>
+                            
 
                         <?php }?>
                         </div>

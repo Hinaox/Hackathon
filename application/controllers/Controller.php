@@ -169,6 +169,29 @@ class Controller extends CI_Controller {
 		}
 		
 	}
+
+	public function download()
+	{
+		$file_name=$this->input->post('download');
+		echo "file : ".$file_name;
+		$url = site_url('assets/pdf/'.$file_name.''); 
+		echo "url : ".$url;
+
+		// $fichier_nom = basename($url);
+		$fichier_contenu = file_get_contents($url);
+		// $dossier_enregistrement = "telechargement/";
+
+		// if(file_put_contents($dossier_enregistrement . $fichier_nom, $fichier_contenu)) 
+		// { 
+		// 	echo "Fichier téléchargé avec succès"; 
+		// } 
+		// else 
+		// { 
+		// 	echo "Fichier non téléchargé"; 
+		// } 
+		force_download($file_name,$url);
+	}
+
 	public function indexAdmin(){
 		$data['pageAdmin']='admin_accueil';
 		$this->load->view('template_admin',$data);
