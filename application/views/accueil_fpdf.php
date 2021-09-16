@@ -1,6 +1,5 @@
 <?php
     require("fpdf.php");
-    var_dump($categorie);
     class PDF extends FPDF
 	{
 		//en-tete
@@ -17,13 +16,14 @@
 			$this->Text(72,40,"FIZAHAN-TAKELAKA");
         }
 
-        function Body()
+        function Footer()
         {
-            // $this->SetFont('Times','',17);
-			// foreach($categorie as $cat)
-            // {
-            //     $this->Text(30,40,"1-".$cat['nom']);
-            // }
+            // Positionnement à 1,5 cm du bas
+            $this->SetY(-15);
+            // Police Arial italique 8
+            $this->SetFont('Arial','I',8);
+            // Numéro de page
+            $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
         }
 
 		function ImprovedTable($header, $data)
@@ -42,9 +42,29 @@
 	}
 
     $pdf=new PDF();
+    $pdf->AliasNbPages();
     $pdf->AddPage();
-	$pdf->SetFont('Times','B',12);
-	$pdf->SetTextColor(0,0,0);
-    $pdf->Body();
+	$pdf->SetFont('Times','B',16);
+    $height=0;
+    $pdf->Text(15,55,"I/BOKY");
+    $number=1;
+    foreach($livre as $li)
+    {   
+        $pdf->SetFont('Arial','',11);
+        $pdf->Cell(0,10,$li);
+        $height+=8;
+        $number+=1;
+    }
+    // $pdf->SetFont('Times','B',16);
+    // $height+=10;
+    // $pdf->Text(30,$height,"II/LAHATSORATRA");
+    // $numberAr=1;
+    // foreach($article as $ar)
+    //  {
+    //     $pdf->SetFont('Arial','',11);
+    //     $height+=8;
+    //     $pdf->Text(30,$height,$ar);
+    //     $numberAr+=1;   
+    // }
     $pdf->Output();
 ?>

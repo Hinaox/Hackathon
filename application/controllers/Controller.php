@@ -3,9 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Controller extends CI_Controller {
 
-	protected $viewData = [];
-	$this->viewData['locale'] = $request->getLocale();
-	$this->viewData['supportedLocales'] = $request->config->supportedLocales;
 	/**
 	 * Index Page for this controller.
 	 *
@@ -178,7 +175,43 @@ class Controller extends CI_Controller {
 	
 	public function loadFPDF()
 	{
-		$data['categorie']=$this->Fonctions->getCategorie();
+		$retourlivre=array();
+		$retourarticle=array();
+		$categorie=$this->Fonctions->getCategorie();
+		$i=0;
+		$nb=1;
+		foreach($categorie as $cat)
+		{
+			$retourlivre[$i]=$nb."-".strtoupper($cat['nom']);
+			$livr=$this->Fonctions->getAllContentByCat($cat['nom'],'livre');
+			$i++;
+
+			foreach($livr as $li)
+			{
+				$retourlivre[$i]='    '.$li['titre'];
+				$i++;
+			}
+
+			$nb++;
+		}
+		$ar=0;
+		$nbar=1;
+		foreach($categorie as $cat)
+		{
+			$retourarticle[$ar]=$nbar."-".strtoupper($cat['nom']);
+			$articl=$this->Fonctions->getAllContentByCat($cat['nom'],'article');
+			$ar++;
+
+			foreach($articl as $li)
+			{
+				$retourarticle[$ar]='    '.$li['titre'];
+				$ar++;
+			}
+
+			$nbar++;
+		}
+		$data['livre']=$retourlivre;
+		$data['article']=$retourarticle;
 		$this->load->view('accueil_fpdf',$data);
 	}
 }

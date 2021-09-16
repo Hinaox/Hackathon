@@ -44,7 +44,6 @@
     public function getContentByCat($type,$idCat,$pageActuel,$nbPage)
     {
       $limite = 1;
-      $categorie = $this->getCategorie($idCat);
       $categorie='%'.$categorie.'%';
       if($pageActuel != 1)  $limite = $pageActuel * $nbPage;
       $retour = array();
@@ -97,10 +96,25 @@
         $query->freeResult();
         return $retour;
       }
+      public function getAllContentByCat($cat,$type)
+      {
+        $categorie='%'.$cat.'%';
+        $retour = array();
+        $i = 0;
+        $query = "select * from %s where categories like '%s'";
+        $query = sprintf($query,$type,$categorie);
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
+        {
+          $retour[$i]=$row;
+          $i++;
+        }
+        $result->free_Result();
+        return $retour;
+      }
 
       public function getContentCat($pgActuel,$nbPage,$idCat,$type)
       {
-        $categorie = $this->getCategorie($idCat);
         $categorie='%'.$categorie.'%';
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
