@@ -233,12 +233,26 @@
         $result->freeResult();
         return "ko";
       }
-      public function tcheckSession($userContenu)
+      public function tcheckOwner($userContenu)
       {
         if($this->session->userdata('admin')!=null || $this->session->userdata('user')==$userContenu){
-          return 1;
+          return true;
         }
-        return 0;
+        return false;
+      }
+      public function tcheckSessionUser()
+      {
+        if($this->session->userdata('user')!=null){
+          return true;
+        }
+        return false;
+      }
+      public function tcheckSessionAdmin()
+      {
+        if($this->session->userdata('admin')!=null){
+          return true;
+        }
+        return false;
       }
       public function tcheckLoginUser($login,$mdp)
       {
