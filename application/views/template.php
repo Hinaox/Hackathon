@@ -8,7 +8,7 @@
 <html lang="en">
 
 <head>
-    <title>WikiMadagascar</title>
+    <title>WikiMadagasikara</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,14 +26,20 @@
 
     <link href="<?php echo site_url("assets/css/bootstrap.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/style.css") ?>" rel="stylesheet">
+    <link href="<?php echo site_url("assets/css/styleAudio.scss") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/responsive.css") ?>" rel="stylesheet">
 
     <link href="<?php echo site_url("assets/css/bootstrap.min.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/templatemo.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/custom.css") ?>" rel="stylesheet">
 
+    <link href="<?php echo site_url("assets/css/slicknav.min.css") ?>" rel="stylesheet">
+    <link href="<?php echo site_url("assets/css/bootstrap.min.css") ?>" rel="stylesheet">
+    <link href="<?php echo site_url("assets/css/style2.css") ?>" rel="stylesheet">
+    <link href="<?php echo site_url("assets/css/font-awesome.min.css") ?>" rel="stylesheet">
 
     <!-- Load fonts style after rendering the layout styles -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <!-- <link rel="stylesheet" href="assets/css/fontawesome.min.css"> -->
 
@@ -89,13 +95,10 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="<?php echo site_url('controller/index'); ?>">Pejy Fandraisana</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/livre'); ?>">Boky</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/contenu'); ?>">Sokajin'Tahiry</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/article'); ?>">Lahatsoratra</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/ecrire'); ?>">Hampiditra</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/insertion'); ?>">Hampiditra Tahiry</a>
                         </li>
                     </ul>
                 </div>
@@ -171,7 +174,7 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">wikiMadagascar@gmail.com</a>
+                            <a class="text-decoration-none" href="mailto:info@company.com">WikiMadagasikara@gmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -229,13 +232,13 @@ https://templatemo.com/tm-559-zay-shop
             </div>
         </div>
 
-        <div class="w-100 bg-black py-3">
+        <div class="w-100 bg-black py-3"> 
             <div class="container">
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light">
-                            Copyright &copy; 2021 WikiMadagascar 
-                            | Designed by <a rel="sponsored" href="#" target="_blank">WikiMadagascar</a>
+                            Copyright &copy; 2021 WikiMadagasikara
+                            | Designed by <a rel="sponsored" href="#" target="_blank">WikiMadagasikara</a>
                         </p>
                     </div>
                 </div>
@@ -259,6 +262,14 @@ https://templatemo.com/tm-559-zay-shop
     <script src="<?php echo site_url("assets/js/bootstrap.bundle.min.js") ?>"></script>
     <script src="<?php echo site_url("assets/js/templatemo.js") ?>"></script>
     <script src="<?php echo site_url("assets/js/custom.js") ?>"></script>
+
+
+    
+    <script src="<?php echo site_url("assets/js/jquery.jplayer.min.js") ?>"></script>
+    <script src="<?php echo site_url("assets/js/wavesurfer.min.js") ?>"></script>
+    <script src="<?php echo site_url("assets/js/WaveSurferInit.js") ?>"></script>
+    <script src="<?php echo site_url("assets/js/jplayerInit.js") ?>"></script>
+
 
     <!-- End Script -->
 </body>

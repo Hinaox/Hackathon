@@ -109,8 +109,8 @@ class Controller extends CI_Controller {
 		$data['page']='resultatRecherche';
 		$this->load->view('template',$data);
 	}
-	public function ecrire(){
-		$data['page']='ecrire';
+	public function insertion(){
+		$data['page']='insertion';
 		$this->load->view('template',$data);
 	}
 
@@ -140,5 +140,38 @@ class Controller extends CI_Controller {
 		  move_uploaded_file($nomUpload, $nomdestination);
 		  echo "upload vita";
 		}
+	}
+	public function indexAdmin(){
+		$data['pageAdmin']='admin_accueil';
+		$this->load->view('template_admin',$data);
+	}
+	public function contenu(){
+		$data['page']='contenu';
+		$this->load->view('template',$data);
+	}
+	public function contenu_accueil(){
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_accueil';
+		$this->load->view('template',$data);
+	}
+	public function contenu_video(){
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_video';
+		$this->load->view('template',$data);
+	}
+	public function contenu_livre(){
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_livre';
+		$this->load->view('template',$data);
+	}
+	public function contenu_audio(){
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_audio';
+		$this->load->view('template',$data);
+	}
+	public function contenu_article(){
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_article';
+		$this->load->view('template',$data);
 	}
 }

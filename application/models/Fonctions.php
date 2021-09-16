@@ -174,7 +174,7 @@
           $retour[$i]=$row;
           $i++;
         }
-        $result->freeResult();
+        $result->free_result();
         return $retour;
       }
 

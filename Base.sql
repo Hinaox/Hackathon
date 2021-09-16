@@ -60,13 +60,13 @@ insert into admin values(null,'admin1','admin1',sha1('mdp'));
 
 insert into user values(null,'user1','Princia','Dysan',sha1('mdp'));
 
-insert into categorie values(null,"zava-maniry","<i class='fas fa-leaf'></i>");
-insert into categorie values(null,"biby","<i class='fas fa-monkey'></i>");
-insert into categorie values(null,"tantara","<i class='fas fa-landmark'></i>");
-insert into categorie values(null,"harena an-kibon'ny tany","<i class='fas fa-gem'></i>");
-insert into categorie values(null,"toerana sy faritra","<i class='fas fa-map-marked-alt'></i>");
-insert into categorie values(null,"fomba sy vakoka","<i class='fas fa-scroll-old'></i>");
-insert into categorie values(null,"isan-karazany","<i class='fas fa-ellipsis-h'></i>");
+insert into categorie values(null,"zava-maniry","fas fa-leaf");
+insert into categorie values(null,"biby","fas fa-monkey");
+insert into categorie values(null,"tantara","fas fa-landmark");
+insert into categorie values(null,"harena an-kibon'ny tany","fas fa-gem");
+insert into categorie values(null,"toerana sy faritra","fas fa-map-marked-alt");
+insert into categorie values(null,"fomba sy vakoka","fas fa-scroll-old");
+insert into categorie values(null,"isan-karazany","fas fa-ellipsis-h");
 
 --type livre--
 insert into contenu values(NULL,CURRENT_DATE(),"Madagasikara","toerana","livre",
