@@ -15,7 +15,9 @@
     <br>
     <hr>
     <div class="row py-5">
-        <form class="col-md-9 m-auto" method="post" role="form">
+        <form class="col-md-9 m-auto" action="<?php echo site_url("Controller/insertion") ?>" method="post" role="form">
+          <input type="hidden" name="latitude" id="latitude" value="###">
+          <input type="hidden" name="longitude" id="longitude" value="###">
             <h3 class="h3">Hampiditra sary : </h3>
                 <br>
                 <div class="row">
@@ -63,7 +65,7 @@
             </section>
             <div class="row">
                 <div class="col text-end mt-2">
-                    <button type="submit" class="btn btn-success btn-lg px-3">Mampiditra</button>
+                    <button type="submit" onclick="annuler()" value="lol" class="btn btn-success btn-lg px-3">Mampiditra</button>
                 </div>
             </div>
         </form>
@@ -92,8 +94,6 @@ function initialize() {
             infoWindow.open(carte);
 
             var listMarkers = new Array();
-    var parcours = new Array();
-    var i = 0;
     var taille = 0;
     google.maps.event.addListener(carte, 'click', function(event) {
       marks = new google.maps.Marker({
@@ -108,13 +108,20 @@ function initialize() {
     });
     listMarkers.push(marks);
     taille++;
-    parcours.push(event.latLng);
-    console.log(new google.maps.LatLng(-18.9171853,47.8112976));
   });
 
 }
       google.maps.event.addDomListener(window, 'load', initialize);
-
+  function inserer() {
+      listMarkers.pop();
+      for( let i = 0 ; i < listCoord.length ; i++)
+       {
+          document.getElementById('latitude').value = document.getElementById('latitude').value+listCoord[i]['lat']+"###";
+          document.getElementById('longitude').value =  document.getElementById('longitude').value+listCoord[i]['long']+"###";
+          alert(document.getElementById('latitude').value);
+          alert(document.getElementById('longitude').value);
+        }
+      }
  function getCoordinates(carte) {
           google.maps.event.addListener(carte,"click",function(event){
             var lat=event.latLng.lat();

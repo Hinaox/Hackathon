@@ -128,6 +128,10 @@ class Controller extends CI_Controller {
 	}
 	public function insertion(){
 		$data['page']='insertion';
+		$latitude = $this->input->post('latitude');
+		$longitude = $this->input->post('longitude');
+		$idcontenu = $this->Fonctions->getLastContenu();
+		$this->Fonctions->insertCoord($idcontenu,$latitude,$longitude)
 		$this->load->view('template',$data);
 	}
 

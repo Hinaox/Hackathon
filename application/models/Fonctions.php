@@ -307,6 +307,9 @@
         }
         return $retour;
       }
+      public function getLastContenu(){
+        return $this->db->query("select max(idcontenu) from contenu")->row_array();
+      }
       public function insertCoord($idcontenu,$latitude,$longitude){
         $latitudes = $this->traiterLatLong($latitude);
         $longitudes = $this->traiterLatLong($longitude);
