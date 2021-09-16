@@ -58,13 +58,13 @@
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
                         <li class="page-item">
-                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="<?php echo site_url('Controller/contenu_livre?pg=1') ?>" tabindex="-1">1</a>
+                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="<?php echo site_url('Controller/contenu_article?pg=1') ?>" tabindex="-1">1</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="<?php echo site_url('Controller/contenu_livre?pg=2') ?>">2</a>
+                            <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="<?php echo site_url('Controller/contenu_article?pg=2') ?>">2</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="<?php echo site_url('Controller/contenu_livre?pg=3') ?>">3</a>
+                            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="<?php echo site_url('Controller/contenu_article?pg=3') ?>">3</a>
                         </li>
                     </ul>
                 </div>
