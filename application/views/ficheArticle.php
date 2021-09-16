@@ -13,7 +13,7 @@
       height: 100%
     }
   </style>
-  
+
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet" />
   <link href="<?php echo site_url("assets/css/style.css") ?>" rel="stylesheet">
@@ -189,33 +189,15 @@ function initialize() {
     var carte = new google.maps.Map(document.getElementById("carteId"),
     mapOptions);
 
-     let infoWindow = new google.maps.InfoWindow({
-              content: "Tondroy ilay toerana tadiavina",
-              position: mapOptions.center,
-          });
-          infoWindow.open(carte);
-
-          var listeMaison = new Array();
-  var parcours = new Array();
-  var i = 0;
-  var taille = 0;
-  google.maps.event.addListener(carte, 'click', function(event) {
+  var liste = new Array();
+//atsofoka eto le data avy any am base
+  alert(liste.length);
+  for(let i = 0; i < liste.length; i++){
     marks = new google.maps.Marker({
-    position: event.latLng, //coordonnée de la position du clic sur la carte
-    map: carte, //la carte sur laquelle le marqueur doit être affiché
-  });
-  google.maps.event.addListener(marks, "click", function() {
-    infowindow = new google.maps.InfoWindow({
-      content: maison[taille]
+      position:liste[i], //coordonnée de la position du clic sur la carte
+      map: carte, //la carte sur laquelle le marqueur doit être affiché
     });
-    infowindow.open(carte, marks);
-  });
-  listeMaison.push(marks);
-  taille++;
-  parcours.push(event.latLng);
-  console.log(new google.maps.LatLng(-18.9171853,47.8112976));
-});
-
+  }
 }
       google.maps.event.addDomListener(window, 'load', initialize);
 

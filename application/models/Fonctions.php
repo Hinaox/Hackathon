@@ -372,5 +372,46 @@
         }
         return "ko";
       }
+      public function getMarkers($idarticle){
+        $retour = array();
+        $query = " select * from geolocalisation where idarticle='%s'";
+        $query = sprintf($query,$this->db->escape($idarticle));
+        $res = $db->query($query);
+        foreach($res->result_array() as $row){
+          array_push($retour,$row);
+        }
+        return $retour;
+      }
+
+      public function insertMarkers($idarticle,$listCoord)
+      {
+        for($i=0;$i<count($listCoord);$i++){
+          $query = "insert into geolocalisation values('%s','%s','%s')";
+          $query = sprintf($query,$this->db->escape($listCoord[$i][0]),$this->db->escape($listCoord[$i][1]));
+          $this->db->query($query);
+        }
+      }
+
+      public function visiteLivreCount($idLivre){
+        $query = "update livre set visites = (visites+1) where idlivre='%s'";
+        $query = sprintf($query,$idLivre);
+        $this->db->query($query);
+      }
+
+      public function visiteArticleCount($idArticle){
+        $query = "update article set visites = (visites+1) where idArticle='%s'";
+        $query = sprintf($query,$idArticle);
+        $this->db->query($query);
+      }
+      public function getAllCoord($strLat,$strLong){
+        $retour = array();
+        for($i=0;$i<$strLat.length;$i++){
+          $retour[$i]=array();
+          $retour[$i][0]=floatval($strLat[$i]);
+          $retour[$i][1]=floatval($strLong[$i]);
+        }
+        return $retour;
+      }
+
   }
  ?>
