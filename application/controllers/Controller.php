@@ -21,6 +21,7 @@ class Controller extends CI_Controller {
 	public function index()
 	{
 		$data['page']='accueil';
+		$data['book_visited']=$this->Fonctions->bookOrderByVisite();
 		$this->load->view('template',$data);	
 	}
 
@@ -59,7 +60,7 @@ class Controller extends CI_Controller {
 			$this->load->view('template',$data);	
 		}
 		
-		$data['erreur'] = "Diso ny mail na ny teny miafina !!!";
+		$data['erreur'] = "Diso ny mailaka na ny teny miafina !!!";
 		$data['page']='login';
 		$this->load->view('template',$data);
 	}
@@ -90,5 +91,4 @@ class Controller extends CI_Controller {
 		  echo "upload vita";
 		}
 	}
-
 }
