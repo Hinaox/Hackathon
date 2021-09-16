@@ -233,7 +233,13 @@
         $result->freeResult();
         return "ko";
       }
-
+      public function($userContenu)
+      {
+        if($this->session->userdata('admin')!=null || $this->session->userdata('user')==$userContenu){
+          return 1;
+        }
+        return 0;
+      }
       public function tcheckLoginUser($login,$mdp)
       {
         $query = "select count(iduser) as c,iduser from user where login= %s and mdp=sha1(%s)";
