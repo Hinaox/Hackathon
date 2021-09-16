@@ -300,6 +300,23 @@
         }
         return $retour;
       }
+      public function traiterLatLong($l){
+        $retour = array();
+        for($i=0;$i<explode("###",$l).length;$i++){
+          array_push($retour,explode("###",$l)[$i+1]);
+        }
+        return $retour;
+      }
+      public function insertCoord($idcontenu,$latitude,$longitude){
+        $latitudes = $this->traiterLatLong($latitude);
+        $longitudes = $this->traiterLatLong($longitude);
+        $query = "";
+        for($i=0;$i<count($latitudes);$i++){
+          $query="insert into geolocalisation values('%s','%s','%s')";
+          $query = sprintf($query,$latitudes[$i],$longitudes[$i]);
+          $this->db->query($query);
+        }
+      }
 
   }
  ?>
