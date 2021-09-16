@@ -2,19 +2,34 @@
   if(! defined('BASEPATH')) exit('No direct script access allowed');
   class Fonctions extends CI_Model
   {
-    public function getContentById($id,$pageActuel,$nbPage,$type)
+    // public function getContentById($id,$pageActuel,$nbPage,$type)
+    // {
+    //   $limit = 1;
+    //   if($pgActuel != 1) $limite = $pageActuel * $nbPage;
+    //   $query = "select * from %s where idcontenu=%s limit %s,%s";
+    //   $query = sprintf($query,$type,$id,$limite,$nbPage);
+    //   $result = $this->db->query($query);
+    //   $content = array();
+    //   foreach ($result->result_array() as $key) {
+    //     $content[] = $key;
+    //   }
+    //   $query->freeResult();
+    //   return $retour;
+    // }
+
+    public function getContentById($id,$type)
     {
-      $limit = 1;
-      if($pgActuel != 1) $limite = $pageActuel * $nbPage;
-      $query = "select * from %s where idcontenu=%s limit %s,%s";
-      $query = sprintf($query,$type,$id,$limite,$nbPage);
+      // $limit = 1;
+      // if($pgActuel != 1) $limite = $pageActuel * $nbPage;
+      $query = "select * from %s where idcontenu='%s'";
+      $query = sprintf($query,$type,$id);
       $result = $this->db->query($query);
       $content = array();
       foreach ($result->result_array() as $key) {
         $content[] = $key;
       }
+      return $content;
       $query->freeResult();
-      return $retour;
     }
 
     public function getCatById($id)
@@ -93,6 +108,7 @@
       $result->freeResult();
       return $retour;
     }
+  
 
       public function getAllContent($pgActuel,$nbPage,$type)
       {
@@ -108,7 +124,7 @@
           $retour[$i]=$row;
           $i++;
         }
-        $query->freeResult();
+        $result->free_result();
         return $retour;
       }
 
@@ -210,7 +226,7 @@
         $retour = array();
         $i = 0;
         $query = "select * from %s order by visites desc limit 3";
-        $result=sprintf($result,$type);
+        $query=sprintf($query,$type);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
         {
@@ -221,7 +237,7 @@
         return $retour;
       }
 
-      public function insertContent($titre,$desc,$auteur,$date,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin)
+      public function insertContent($titre,$desc,$auteur,$date,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin,$auteur)
       {
         $etat = "done";
         $visite = 0;
@@ -273,7 +289,7 @@
           $this->session->set_userdata('admin',$row['idadmin']);
           return "ok";
         }
-        $result->freeResult();
+        $result->free_result();
         return "ko";
       }
 
@@ -288,7 +304,7 @@
           $this->session->set_userdata('user',$row['iduser']);
           return "ok";
         }
-        $result->freeResult();
+        $result->free_result();
         return "ko";
       }
       public function getMarkers($idarticle){

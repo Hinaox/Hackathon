@@ -22,23 +22,25 @@ class Controller extends CI_Controller {
 	public function index()
 	{
 		$data['page']='accueil';
-		// $data['book_visited']=$this->Fonctions->bookOrderByVisite();
-		// $data['nom_image']=array();
-		// $i=0;
-		// foreach($data['book_visited'] as $book)
-		// {
-		// 	$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
-		// 	$i++;
-		// }
+		$livre = "livre";
+		$data['book_visited']=$this->Fonctions->contentOrderByVisite($livre);
+		$data['nom_image']=array();
+		$i=0;
+		foreach($data['book_visited'] as $book)
+		{
+			$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
+			$i++;
+		}
 
-		// $data['article_visited']=$this->Fonctions->articleOrderByVisite();
-		// $data['article_image']=array();
-		// $i=0;
-		// foreach($data['article_visited'] as $article)
-		// {
-		// 	$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
-		// 	$i++;
-		// }
+		$article = "article";
+		$data['article_visited']=$this->Fonctions->contentOrderByVisite($article);
+		$data['article_image']=array();
+		$i=0;
+		foreach($data['article_visited'] as $article)
+		{
+			$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
+			$i++;
+		}
 		$this->load->view('template',$data);
 	}
 
@@ -57,10 +59,28 @@ class Controller extends CI_Controller {
 
 	}
 	public function ficheLivre(){
+		$vue = $this->input->get('id');
+		$type = $this->input->get('type');
+		$i=0;
+		$data['boky'] = $this->Fonctions->getContentById($vue,$type);
+		foreach($data['boky'] as $book)
+		{
+			$data['nom_image']=$this->Picture->getAllPics($book['photo']);
+			$data['default_image']=$this->Picture->getPrincipalPics($book['photo']);
+			$i++;
+		}
 		$data['page']='ficheLivre';
 		$this->load->view('template',$data);
 	}
 	public function ficheArticle(){
+		$vue = $this->input->get('id');
+		$type = $this->input->get('type');
+		$data['article'] = $this->Fonctions->getContentById($vue,$type);
+		foreach($data['article'] as $article)
+		{
+			$data['nom_image']=$this->Picture->getAllPics($article['photo']);
+			$data['default_image']=$this->Picture->getPrincipalPics($article['photo']);
+		}
 		$data['page']='ficheArticle';
 		$this->load->view('template',$data);
 	}
@@ -68,12 +88,14 @@ class Controller extends CI_Controller {
 	{
 		$login = $this->input->post('email');
 		$mdp = $this->input->post('mdp');
+		$livre = "livre";
+		$article = "article";
 		$data['user'] = $this->Fonctions->tcheckLoginUser($login,$mdp);
 		$data['admin'] = $this->Fonctions->tcheckLoginAdmin($login,$mdp);
 		if($data['user'] == "ok" || $data['admin'] == "ok")
 		{
 			$data['page']='accueil';
-			$data['book_visited']=$this->Fonctions->bookOrderByVisite();
+			$data['book_visited']=$this->Fonctions->contentOrderByVisite($livre);
 			$data['nom_image']=array();
 			$i=0;
 			foreach($data['book_visited'] as $book)
@@ -81,8 +103,8 @@ class Controller extends CI_Controller {
 				$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
 				$i++;
 			}
-
-			$data['article_visited']=$this->Fonctions->articleOrderByVisite();
+	
+			$data['article_visited']=$this->Fonctions->contentOrderByVisite($article);
 			$data['article_image']=array();
 			$i=0;
 			foreach($data['article_visited'] as $article)
@@ -114,65 +136,128 @@ class Controller extends CI_Controller {
 
 	public function upload()
 	{
-		if ($_FILES['nomfichier']['error']) {
-		  switch ($_FILES['nomfichier']['error']){
-		    case 1: // UPLOAD_ERR_INI_SIZE
-		      echo "Le fichier dépasse la limite autorisée par le serveur (fichier php.ini) !";
-		      break;
-		    case 2: // UPLOAD_ERR_FORM_SIZE
-		      echo "Le fichier dépasse la limite autorisée dans le formulaire HTML !";
-		      break;
-		    case 3: // UPLOAD_ERR_PARTIAL
-		      echo "L'envoi du fichier a été interrompu pendant le transfert !";
-		      break;
-		    case 4: // UPLOAD_ERR_NO_FILE
-		      echo "Le fichier que vous avez envoyé a une taille nulle !";
-		      break;
-		  	}
-		}else{
-	   		$nom = $_FILES['nomfichier']['name'];
-	   		$nomUpload = $_FILES['nomfichier']['tmp_name'];
-	   		// var_dump($nom);
-		  $nomdestination = "F:/Info Mendrika/ITU LECONS/Rojo/PHP/05-php-S1/UwAmp/www/hack/Hackathon/application/upload/".$nom."";
-		  move_uploaded_file($nomUpload, $nomdestination);
-		  echo "upload vita";
+		if ($$_FILES["nomfichier"]["size"] < 20000) 
+		{
+			if ($_FILES["nomfichier"]["error"] > 0)
+			{
+				switch ($_FILES['nomfichier']['error'])
+				{
+					case 1: // UPLOAD_ERR_PARTIAL
+					  echo "Tsy tontonsa hatramin'ny farany ny fangatahanao !";
+					  break;
+					case 2: // UPLOAD_ERR_NO_FILE
+					  echo "Tsy misy lanjany ny  fampitanao !";
+					  break;
+				}
+			}
+		  else
+			{
+				$nom = $_FILES['nomfichier']['name'];
+				$nomUpload = $_FILES['nomfichier']['tmp_name'];
+				// var_dump($nom);
+				$nomdestination = site_url('assets/pdf/'.nom.'');
+				move_uploaded_file($nomUpload, $nomdestination);
+				echo "tontonsa ny fampitanao";
+			
+				if (file_exists("upload/" . $_FILES["file"]["name"]))
+				{
+					echo "efa misy anarana mitovy amin'ny ".$_FILES["file"]["name"]." ao";
+				}
+			}
+			
 		}
+		else
+		{
+			echo "tsy mety ny lahatsoratra ampitanao";
+		}
+		
 	}
 
-	public function indexAdmin(){
-		$data['pageAdmin']='admin_accueil';
-		$this->load->view('template_admin',$data);
+	public function download()
+	{
+		$file_name=$this->input->post('download');
+		echo "file : ".$file_name;
+		$url = site_url('assets/pdf/'.$file_name.''); 
+		echo "url : ".$url;
+
+		// $fichier_nom = basename($url);
+		$fichier_contenu = file_get_contents($url);
+		// $dossier_enregistrement = "telechargement/";
+
+		// if(file_put_contents($dossier_enregistrement . $fichier_nom, $fichier_contenu)) 
+		// { 
+		// 	echo "Fichier téléchargé avec succès"; 
+		// } 
+		// else 
+		// { 
+		// 	echo "Fichier non téléchargé"; 
+		// } 
+		force_download($file_name,$url);
 	}
+
+	
 	public function contenu(){
+		$article="article";
+		$data['categ']=$this->Fonctions->getCategorie();
+		$data['article']=$this->Fonctions->getAllContent(0,3,$article);
+		$livre="livre";
+		$data['livre']=$this->Fonctions->getAllContent(0,3,$livre);
 		$data['page']='contenu';
 		$this->load->view('template',$data);
 	}
 	public function contenu_accueil(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_accueil';
 		$this->load->view('template',$data);
 	}
 	public function contenu_video(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_video';
 		$this->load->view('template',$data);
 	}
 	public function contenu_livre(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_livre';
 		$this->load->view('template',$data);
 	}
 	public function contenu_audio(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_audio';
 		$this->load->view('template',$data);
 	}
 	public function contenu_article(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_article';
 		$this->load->view('template',$data);
 	}
-	
+
+	//controller vers les pages d'insertion
+
+	public  function insertion_livre(){
+		$data['page']='insertion';
+		$data['page_insertion']='insertion_livre';
+		$this->load->view('template',$data);
+	}
+	public  function insertion_article(){
+		$data['page']='insertion';
+		$data['page_insertion']='insertion_article';
+		$this->load->view('template',$data);
+	}
+	public  function insertion_video(){
+		$data['page']='insertion';
+		$data['page_insertion']='insertion_video';
+		$this->load->view('template',$data);
+	}
+	public  function insertion_vocal(){
+		$data['page']='insertion';
+		$data['page_insertion']='insertion_vocal';
+		$this->load->view('template',$data);
+	}
 	public function loadFPDF()
 	{
 		$retourlivre=array();
