@@ -8,8 +8,9 @@
                         <img src="<?php echo site_url("assets/img/feature_prod_01.jpg") ?>" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
-                        <a href="<?php echo site_url("controller/ficheArticle?id=".$article[$i]['idcontenu']."&type=article");?>" class="h2 text-decoration-none text-dark"><?php echo $article[$i]['titre']; ?></a>
-                        <p class="card-text">
+                        <a href="<?php echo site_url("controller/ficheArticle?id=".$article[$i]['idcontenu']."&type=article");?>" class="h3 text-decoration-none text-dark"><?php echo $article[$i]['titre']; ?></a>
+                        <hr>
+                        <p class="afficherDesc">
                         <?php echo $article[$i]['texte']; ?>
                         </p>
                         <p class="text-muted">Isan ny nijery(<?php echo $article[$i]['visites']; ?>)</p>

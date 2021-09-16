@@ -13,19 +13,13 @@
 
                     <?php for($i=0;$i<count($categ);$i++) {?>
                         <li class="pb-3">
-                            <a class=" h3 text-decoration-none" href="#">
+                            <a class=" h4 text-decoration-none" href="#">
                             <i class="<?php echo $categ[$i]['icone']; ?>"></i>
                             <?php echo $categ[$i]['nom']; ?>
                             </a>
+                            <hr>
                         </li>
                     <?php }?>
-
-                        <li class="pb-3">
-                            <a class=" h3 text-decoration-none" href="#">
-                            <i class="far fa-monkey"></i>
-                            BAAAA
-                            </a>
-                        </li>
                 </ul>
             </div>
 
