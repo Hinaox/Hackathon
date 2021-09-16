@@ -16,13 +16,16 @@
           $retour[$i]=$row;
           $i++;
         }
+        $query->freeResult();
         return $retour;
       }
+
       public function getCatById($id)
       {
         $query = "select nom from categorie where idcategorie = %s limit 1";
         $query = sprintf($query,$id);
         $result = $this->db->query($query)->row_array();
+        $query->freeResult();
         return $result;
       }
       public function getBookCat($pgActuel,$nbPage,$idCat,$etat)
@@ -41,40 +44,43 @@
           $retour[$i]=$row;
           $i++;
         }
+        $query->freeResult();
         return $retour;
       }
       public function getBookById($id,$pgActuel,$nbPage,$etat)
       {
         $limite = 1;
         if($pgActuel != 1) $limite = $pgActuel * $nbPage;
-        $query = "select * from livre where idlivre='%s' and etat='done' limit '%s','%s'";
+        $query = "select * from livre where idlivre=%s and etat='done' limit %s,%s";
         $query = sprintf($query,$id,$limite,$nbPage);
         $result = $this->db->query($query);
         $book = array();
         foreach ($result->result_array() as $key) {
           $book[] = $key;
         }
+        $query->freeResult();
         return $retour;
       }
 
-      public function getAllArticle($pgActuel,$nbPage,$etat)
+      public function getAllContent($pgActuel,$nbPage,$type)
       {
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query = "select * from article where etat=%s limit %s,%s";
-        $query = sprintf($query,$etat,$limite,$nbPage);
+        $query = "select * from %s limit %s,%s";
+        $query = sprintf($query,$type,$limite,$nbPage);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
         {
           $retour[$i]=$row;
           $i++;
         }
+        $query->freeResult();
         return $retour;
       }
 
-      public function getArticleCat($pgActuel,$nbPage,$idCat,$etat)
+      public function getContentCat($pgActuel,$nbPage,$idCat,$type)
       {
         $categorie = $this->getCategorie($idCat);
         $categorie='%'.$categorie.'%';
@@ -82,22 +88,24 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query = "select * from article where etat=%s and categories like %s limit %s,%s";
-        $query = sprintf($query,$etat,$categorie,$limite,$nbPage);
+        $query = "select * from %s where categories like %s limit %s,%s";
+        $query = sprintf($query,$type,$categorie,$limite,$nbPage);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
         {
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
 
-      public function getArticleById($id,$etat)
+      public function getContentById($id,$type)
       {
-        $query = "select * from article where idarticle=%s and etat =%s limit 1";
-        $query = sprintf($query,$id,$etat);
+        $query = "select * from %s where idcontenu=%s limit 1";
+        $query = sprintf($query,$id,$type);
         $result = $this->db->query($query)->result_array();
+        $result->freeResult();
         return $result;
       }
 
@@ -116,6 +124,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
 
@@ -124,11 +133,11 @@
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
-        
+
         $bdd= bdd_connection();
         $req="";
-        $query = "select * from livre where etat='done' ".$req." limit ".$limite.",".$nbPage; 
-        
+        $query = "select * from livre where etat='done' ".$req." limit ".$limite.",".$nbPage;
+
         if(!empty($titre))
         {
             $req=$req." and titre like "."'%".$titre."%'";
@@ -147,7 +156,7 @@
         }
         if(!empty($nbdate))
         {
-            $req=$req." and abs(datediff(daty,CURRENT_DATE()))<=".$nbdate; 
+            $req=$req." and abs(datediff(daty,CURRENT_DATE()))<=".$nbdate;
         }
 
         $result = $this->db->query($query);
@@ -158,6 +167,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
 
@@ -176,19 +186,20 @@
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
-      
+
       public function advancedSearchArticle($titre,$categorie,$descri,$nbdate,$nbPage)
       {
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
-        
+
         $bdd= bdd_connection();
         $req="";
-        $query = "select * from article where etat='done' ".$req." limit ".$limite.",".$nbPage; 
-        
+        $query = "select * from article where etat='done' ".$req." limit ".$limite.",".$nbPage;
+
         if(!empty($titre))
         {
             $req=$req." and titre like "."'%".$titre."%'";
@@ -203,7 +214,7 @@
         }
         if(!empty($nbdate))
         {
-            $req=$req." and abs(datediff(daty,CURRENT_DATE()))<=".$nbdate; 
+            $req=$req." and abs(datediff(daty,CURRENT_DATE()))<=".$nbdate;
         }
 
         $result = $this->db->query($query);
@@ -214,6 +225,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
 
@@ -223,12 +235,13 @@
         $i = 0;
         $query = "select * from livre where etat = 'done' order by visites desc limit 3";
         $result = $this->db->query($query);
-        
+
         foreach($result->result_array() as $row)
         {
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
 
@@ -243,6 +256,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
 
@@ -267,82 +281,51 @@
         $this->db->query($query);
       }
 
-      public function insertBook($titre,$desc,$auteur,$date,$fichier,$categories)
-      {
-        $etat = "no";
-        $visite = 0;
-        $query = "insert into livre values (null,%s,%s,%s,%s,%s,%s,%s,%s)";
-        $query = sprintf($query,$titre,$desc,$auteur,$date,$etat,$fichier,$visite,$categories);
-        $this->db->query($query);
-      }
-
-      public function updateBookEtat($id)
+      public function insertContent($titre,$desc,$auteur,$date,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin,$auteur)
       {
         $etat = "done";
-        $query = "update livre set etat = %s where idlivre = %s";
-        $query = sprintf($query,$etat,$id);
-        $this->db->query($query);
-      }
-
-      public function updateBookText($id,$titre,$desc,$auteur,$date,$fichier,$cat)
-      {
-        $etat = "no";
         $visite = 0;
-        $query = "update livre set titre = %s, description = %s, auteur = %s, daty = %s, etat = %s, fichier = %s, visites = %s, categories = %s where idlivre = %s";
-        $query = sprintf($query,$titre,$desc,$auteur,$date,$etat,$fichier,$visite,$cat,$id);
+        $query = "insert into contenu values (null,current_date(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)";
+        $query = sprintf($query,$titre,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$date,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
         $this->db->query($query);
       }
 
-      public function updateArticleEtat($id)
+      public function updateContentEtat($id,$type,$etat)
+      {
+        $query = "update %s set etat = %s where idcontenu = %s";
+        $query = sprintf($query,$type,$etat,$id);
+        $this->db->query($query);
+      }
+
+
+      public function updateContentText($id,$titre,$text,$photo,$video,$cat)
       {
         $etat = "done";
-        $query = "update article set etat = %s where idarticle = %s";
-        $query = sprintf($query,$etat,$id);
-        $this->db->query($query);
-      }
-
-      public function updateArticleText($id,$titre,$iduser,$idadmin,$text,$photo,$video,$date,$cat)
-      {
-        $etat = "no";
-        $visite = 0;
         if($iduser == null) $iduser = null;
         else if($idadmin == null) $idadmin = null;
         else if($idadmin != null) $etat = "done";
-        $query = "update article set titre = %s, iduser = %s, idadmin = %s, texte = %s, photo = %s, video = %s, etat = %s, daty = %s, visites = %s, categories = %s";
-        $query = sprintf($query,$titre,$iduser,$idadmin,$text,$photo,$video,$etat,$date,$visite,$cat);
+        $query = "update contenu set titre = %s, iduser = %s, idadmin = %s, texte = %s, photo = %s, video = %s, etat = %s, categories = %s";
+        $query = sprintf($query,$titre,$text,$photo,$video,$etat,$cat);
         $this->db->query($query);
       }
 
-      public function deleteArticle($id)
+      public function deleteContent($id)
       {
-        $query = "delete from article where idarticle = %s";
+        $query = "delete from content where idcontenu = %s";
         $query = sprintf($query,$id);
         $this->db->query($query);
       }
-
-      public function deleteBook($id)
-      {
-        $query = "delete from livre where idlivre = %s";
-        $query = sprintf($query,$id);
-        $this->db->query($query);
-      }
+      ////////////
+      // -getAllContent
+      // -insertContent
+      // -updateEtatContent
+      // -updateTextContent
+      // -deleteContentById
+      ///////////////////////////////////////////////
       public function deconnect()
       {
         $this->session->sess_destroy();
         redirect(site_url());
-      }
-      public function tcheckLoginAdminSup($login,$mdp)
-      {
-        $query = "select count(idadminsup) as c,idadminsup,nom from adminsup where login=%s and mdp=sha1(%s)";
-        $query = sprintf($query,$this->db->escape($login),$this->db->escape($mdp));
-        $result = $this->db->query($query);
-        $row = $result->row_array();  
-        if($row['c']!=0)
-        {
-          $this->session->set_userdata('adminsup',$row['idadminsup']);
-          return "ok";
-        }
-        return "ko";
       }
 
       public function tcheckLoginAdmin($login,$mdp)
@@ -350,12 +333,13 @@
         $query = "select count(idadmin) as c,idadmin from admin where login=%s and mdp=sha1(%s)";
         $query = sprintf($query,$this->db->escape($login),$this->db->escape($mdp));
         $result = $this->db->query($query);
-        $row = $result->row_array();  
+        $row = $result->row_array();
         if($row['c']!=0)
         {
           $this->session->set_userdata('admin',$row['idadmin']);
           return "ok";
         }
+        $result->freeResult();
         return "ko";
       }
 
@@ -364,17 +348,18 @@
         $query = "select count(iduser) as c,iduser from user where login= %s and mdp=sha1(%s)";
         $query = sprintf($query,$this->db->escape($login),$this->db->escape($mdp));
         $result = $this->db->query($query);
-        $row = $result->row_array();  
+        $row = $result->row_array();
         if($row['c']!=0)
         {
           $this->session->set_userdata('user',$row['iduser']);
           return "ok";
         }
+        $result->freeResult();
         return "ko";
       }
       public function getMarkers($idarticle){
         $retour = array();
-        $query = " select * from geolocalisation where idarticle='%s'";
+        $query = " select * from geolocalisation where idarticle=%s";
         $query = sprintf($query,$this->db->escape($idarticle));
         $res = $db->query($query);
         foreach($res->result_array() as $row){
@@ -386,20 +371,20 @@
       public function insertMarkers($idarticle,$listCoord)
       {
         for($i=0;$i<count($listCoord);$i++){
-          $query = "insert into geolocalisation values('%s','%s','%s')";
+          $query = "insert into geolocalisation values(%s,%s,%s)";
           $query = sprintf($query,$this->db->escape($listCoord[$i][0]),$this->db->escape($listCoord[$i][1]));
           $this->db->query($query);
         }
       }
 
       public function visiteLivreCount($idLivre){
-        $query = "update livre set visites = (visites+1) where idlivre='%s'";
+        $query = "update livre set visites = (visites+1) where idlivre=%s";
         $query = sprintf($query,$idLivre);
         $this->db->query($query);
       }
 
       public function visiteArticleCount($idArticle){
-        $query = "update article set visites = (visites+1) where idArticle='%s'";
+        $query = "update article set visites = (visites+1) where idArticle=%s";
         $query = sprintf($query,$idArticle);
         $this->db->query($query);
       }

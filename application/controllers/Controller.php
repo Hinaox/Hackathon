@@ -69,8 +69,7 @@ class Controller extends CI_Controller {
 		$mdp = $this->input->post('mdp');
 		$data['user'] = $this->Fonctions->tcheckLoginUser($login,$mdp);
 		$data['admin'] = $this->Fonctions->tcheckLoginAdmin($login,$mdp);
-		$data['adminsup'] = $this->Fonctions->tcheckLoginAdminSup($login,$mdp);
-		if($data['user'] == "ok" || $data['admin'] == "ok" || $data['adminsup'] == "ok")
+		if($data['user'] == "ok" || $data['admin'] == "ok")
 		{
 			$data['page']='accueil';
 			$data['book_visited']=$this->Fonctions->bookOrderByVisite();
