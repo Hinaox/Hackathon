@@ -83,8 +83,8 @@ insert into categorie values(null,"Zava-maniry");
 insert into categorie values(null,"Biby");
 insert into categorie values(null,"Tantara");
 insert into categorie values(null,"Arena an-kibon'ny tany");
-insert into categorie values(null,"Toerana");
-insert into categorie values(null,"Foko");
+insert into categorie values(null,"Toerana sy Faritra");
+insert into categorie values(null,"Fomba");
 insert into categorie values(null,"Isan-karazany");
 
 insert into livre values (null,"Madagasikara",
@@ -249,6 +249,12 @@ insert into article values(NULL,"Madagasikara",NULL,NULL,
 Eo akaikin'ny renivohitra mahomby, Antananarivo, dia i Ambohimanga, andiana lapam-panjakana sy fasana, ary koa ny Lalambe Migodanan'i Baobabs, lalana maloto mifamatotra amin'ny hazo
 goavana efa an-jato taonany maro","madagascar"
 ,NULL,"done",CURRENT_DATE(),10,"toerana");
+
+
+
+insert into article values(NULL,"Ny Famadihana",NULL,NULL,"Araka ny filozofia Malagasy, tsy miditra tanteraka ao amin'ny tontolon'ny razambe ireo lehilahin'ireo maty raha tsy aorian'ny kolikoly fenon'ny vatana, aorian'ny fotoana maharitra izay mety haharitra an-taonany maro, ary aorian'ny fampisehoana ny fombafomba mifanaraka amin'izany. Ny fombafomban'ny razambe, aorian'ny fahafatesana, dia ahitana ny fikarohana ny taolan'ireo razambe, amin'ny fombafombam-pandihizana azy ireo amin'ny lamba vaovao(lamba)ary mandehandeha manodidina ny fasana alohan'ny handevenana azy ireo indray. Eto Madagasikara anefa, miafara amin'ny vanim-potoana ity famerenana mandevina (ara-bakiteny)ity, matetika isaky ny fito taona, ao anatin'ny fety lehibe mampivondrona ny mpikambana rehetra ao amin'ny vondrona. Tamin'io fotoana io, nohavaozina ireo lasoà mandrakotra ireo sisa tavela tamin'ny tranom-paty efa rava.2.
+
+Azo atao aorian'ny zava-mitranga maromaro ny lanonana: vanim-potoana (fito taona) amin'ny farany, nanonofy ny iray tamin'ireo fianakaviana fa nangataka lanonana ny razambe iray, fandevenana olona vaovao iray.","famadihana",NULL,"done",CURRENT_DATE(),100,"Fomba");
 
 
 
