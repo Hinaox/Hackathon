@@ -8,7 +8,7 @@
 <html lang="en">
 
 <head>
-    <title>WikiMadagascar</title>
+    <title>WikiMadagasikara</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -89,13 +89,10 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="<?php echo site_url('controller/index'); ?>">Pejy Fandraisana</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/livre'); ?>">Boky</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/contenu'); ?>">Sokajin'Tahiry</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/article'); ?>">Lahatsoratra</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/ecrire'); ?>">Hampiditra</a>
+                            <a class="nav-link" href="<?php echo site_url('controller/ecrire'); ?>">Hampiditra Tahiry</a>
                         </li>
                     </ul>
                 </div>
@@ -171,7 +168,7 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">wikiMadagascar@gmail.com</a>
+                            <a class="text-decoration-none" href="mailto:info@company.com">WikiMadagasikara@gmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -234,8 +231,8 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light">
-                            Copyright &copy; 2021 WikiMadagascar 
-                            | Designed by <a rel="sponsored" href="#" target="_blank">WikiMadagascar</a>
+                            Copyright &copy; 2021 WikiMadagasikara
+                            | Designed by <a rel="sponsored" href="#" target="_blank">WikiMadagasikara</a>
                         </p>
                     </div>
                 </div>

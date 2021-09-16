@@ -156,5 +156,12 @@ class Controller extends CI_Controller {
 		}
 		
 	}
-	
+	public function indexAdmin(){
+		$data['pageAdmin']='admin_accueil';
+		$this->load->view('template_admin',$data);
+	}
+	public function contenu(){
+		$data['page']='contenu';
+		$this->load->view('template',$data);
+	}
 }
