@@ -3,9 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Controller extends CI_Controller {
 
-	protected $viewData = [];
-	$this->viewData['locale'] = $request->getLocale();
-	$this->viewData['supportedLocales'] = $request->config->supportedLocales;
 	/**
 	 * Index Page for this controller.
 	 *
@@ -137,7 +134,7 @@ class Controller extends CI_Controller {
 
 	public function upload()
 	{
-		if ($$_FILES["nomfichier"]["size"] < 20000) 
+		if ($$_FILES["nomfichier"]["size"] < 20000)
 		{
 			if ($_FILES["nomfichier"]["error"] > 0)
 			{
@@ -159,19 +156,19 @@ class Controller extends CI_Controller {
 				$nomdestination = "F:/Info Mendrika/ITU LECONS/Rojo/PHP/05-php-S1/UwAmp/www/hack/Hackathon/application/upload/".$nom."";
 				move_uploaded_file($nomUpload, $nomdestination);
 				echo "tontonsa ny fampitanao";
-			
+
 				if (file_exists("upload/" . $_FILES["file"]["name"]))
 				{
 					echo "efa misy anarana mitovy amin'ny ".$_FILES["file"]["name"]." ao";
 				}
 			}
-			
+
 		}
 		else
 		{
 			echo "tsy mety ny lahatsoratra ampitanao";
 		}
-		
+
 	}
 	public function indexAdmin(){
 		$data['pageAdmin']='admin_accueil';
