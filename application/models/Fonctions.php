@@ -42,18 +42,14 @@
         }
         return $retour;
       }
-      public function getBookById($id,$pgActuel,$nbPage,$etat)
+      public function getBookById($id)
       {
-        $limite = 1;
-        if($pgActuel != 1) $limite = $pgActuel * $nbPage;
-        $query = "select * from livre where idlivre=%s and etat=%s limit %s,%s";
-        $query = sprintf($query,$id,$etat,$limite,$nbPage);
+        $query = "select * from livre where idlivre=%s";
+        $query = sprintf($query,$id);
         $result = $this->db->query($query);
-        $book = array();
-        foreach ($result->result_array() as $key) {
-          $book[] = $key;
-        }
-        return $retour;
+        $book = $result->row_array();
+
+        return $book;
       }
 
       public function getAllArticle($pgActuel,$nbPage,$etat)
@@ -220,7 +216,7 @@
       {
         $retour = array();
         $i = 0;
-        $query = "select * from livre where etat = 'done' order by visites desc limit 3";
+        $query = "select idlivre,titre,substring(description,1,100) as descri,visites,photo from livre where etat = 'done' order by visites desc limit 3";
         $result = $this->db->query($query);
         
         foreach($result->result_array() as $row)

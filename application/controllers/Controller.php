@@ -57,6 +57,13 @@ class Controller extends CI_Controller {
 	}
 	public function ficheLivre(){
 		$data['page']='ficheLivre';
+		$vue = $this->input->get('id');
+		$data['boky'] = $this->Fonctions->getBookById($vue);
+		// foreach($data['boky'] as $book)
+		// {
+		// 	$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
+		// 	$i++;
+		// }
 		$this->load->view('template',$data);
 	}
 	public function ficheArticle(){

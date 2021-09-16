@@ -118,14 +118,14 @@
             <?php for($i=0;$i<count($book_visited);$i++) { ?>
                <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="<?php echo site_url('controller/ficheLivre'); ?>">
+                        <a href="<?php echo site_url("controller/ficheLivre?id=".$book_visited[$i]['idlivre'].""); ?>">
                             <img src="<?php echo $nom_image[$i] ?>" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                            
                             <a href="<?php echo site_url('controller/ficheLivre'); ?>" class="h2 text-decoration-none text-dark"><?php echo $book_visited[$i]['titre']; ?></a>
                             <p class="card-text">
-                                Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
+                                <?php echo $book_visited[$i]['descri']; ?>   
                             </p>
                             <p class="text-muted">Isan ny nijery (<?php echo $book_visited[$i]['visites']; ?>)</p>
                         </div>

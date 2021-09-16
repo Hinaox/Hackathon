@@ -102,27 +102,31 @@
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">Boky Lavakombarika</h1>
+                            
+                            <h1 class="h2"><?php echo $boky['titre']; ?></h1>
                             <p class="py-2">
-                                <span class="list-inline-item text-dark"> 89 olona nijery </span>
+                                <span class="list-inline-item text-dark"> <?php echo $boky['visites']; ?> olona nijery </span>
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Sokajy:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>Angano</strong></p>
+                                    <p class="text-muted"><strong><?php echo $boky['categories']; ?></strong></p>
+                                </li>
+                            </ul>
+
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Mpanoratra:</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <p class="text-muted"><strong><?php echo $boky['auteur']; ?></strong></p>
                                 </li>
                             </ul>
 
                             <h6>Mombamomba:</h6>
-                            <p> description here</p>
-
-                            <h6>Specification:</h6>
-                            <ul class="list-unstyled pb-3">
-                                <li>Lorem ipsum dolor sit</li>
-                                <li>Amet, consectetur</li>
-                            </ul>
+                            <p><?php echo $boky['description']; ?></p>
 
                             <form action="" method="GET">
                                 <input type="hidden" name="product-title" value="Activewear">
