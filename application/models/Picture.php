@@ -2,22 +2,27 @@
   if(! defined('BASEPATH')) exit('No direct script access allowed');
   class Picture extends CI_Model
   {
-    public function getNumbersPics($photo)
+      
+    public function file_get_contents_curl($url) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+        curl_setopt($ch, CURLOPT_URL, $url);
+        $data = curl_exec($ch);
+        curl_close($ch);
+        return $data;
+    }
+
+    public function getAllPics($photo)
     {
-        $nbphotos = 0;
-        if(file_exists(site_url('assets/img/'.$photo.'1.png')))
+        $retour=array();
+        $i=1;
+        while($this->file_get_contents_curl(site_url('assets/img/'.$photo.$i.'png')))
         {
-            $nbphotos = 1;
-            if(file_exists(site_url('assets/img/'.$photo.'2.png')))
-            {
-                $nbphotos = 2;
-                if(file_exists(site_url('assets/img/'.$photo.'3.png')))
-                {
-                    $nbphotos = 3;
-                }
-            }
+            $retour[$i-1]=$photo.$i."png";
+            $i++;
         }
-        return $nbphotos;
+        return $retour;
     }
 
     public function file_get_contents_curl($url) {

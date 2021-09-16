@@ -5,11 +5,21 @@
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active" style="background-image: url('<?php echo site_url("assets/img/back.png") ?>');">
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="<?php echo site_url("assets/img/banner_img_01.jpg") ?>" alt="">
+                            <h1>.</h1>
+                            <h1>.</h1>
+                            <h1>.</h1>
+                            <h1>.</h1>
+                            <h1>.</h1>
+                            <h1>.</h1>
+                            <h1>.</h1>
+                            <h1>.</h1>
+                            <h1>.</h1>
+                            <h1>.</h1>
+                            <h1>.</h1>     
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
@@ -80,7 +90,7 @@
     <section class="container py-5">
         <div class="row text-center pt-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Articles les plus visités</h1>
+                <h1 class="h1">Lahatsoratra be mpijery indrindra</h1>
                 <p>
                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
                     deserunt mollit anim id est laborum.

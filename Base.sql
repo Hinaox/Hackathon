@@ -37,7 +37,7 @@ create table article(
   texte longtext,
   photo varchar(100),
   video varchar(100),
-  etat varchar(100),
+  etat varchar(100), --ok and ko
   daty date,
   visites int(10),
   categories varchar(200),
@@ -51,7 +51,7 @@ create table livre(
   description text,
   auteur varchar(100),
   daty date,
-  etat varchar(100),
+  etat varchar(100), --ok and ko 
   fichier varchar(100),
   visites int(10),
   categories varchar(200),
@@ -72,16 +72,12 @@ create table livre(
 --   FOREIGN KEY (idlivre) references livre(idlivre)
 -- );
 
-create table geojoinarticle(
-  idgeololisation int not null auto_increment primary key,
-  idarticle int,
-  FOREIGN KEY (idarticle) references article(idarticle)
-);
+
 create table geolocalisation(
-  idgeololisation int,
+  idarticle int,
   latitude float,
-  logitude float,
-  FOREIGN KEY (idgeololisation) references geojoinarticle(idgeololisation)
+  longitude float,
+  FOREIGN KEY (idarticle) references article(idarticle),
 );
 
 insert into adminsup values(null,'adminsup1','adminsup1',sha1('mdp'));
