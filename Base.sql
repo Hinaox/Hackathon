@@ -38,6 +38,7 @@ create table contenu(
   prix float,
   iduser int,
   idadmin int,
+  auteur varchar(100),
   FOREIGN KEY (iduser) references user(iduser),
   FOREIGN KEY (idadmin) references admin(idadmin)
 );
@@ -246,6 +247,15 @@ insert into contenu values(NULL,CURRENT_DATE(),"Ny famadihana","fomba sy vakoka"
   "Fomba amam-panaohita any amin'ny faritra sasany eto Madagasikara ny famadihana,na ny fiovan'ny maty, anisan'izany ny faritra Avon'i Highlands. Na dia toa tara loatra aza izany tao amin'ilay nosy (angamba taorian'ny taonjato fahafito ambin'ny folo), farafaharatsiny amin'ny endriny ankehitriny, ny gadihana1 dia fanitarana ny fomba amam-panao talohan'ny fandevenana 'fandevenana indroa' niely talohan'ny andro maoderina tany Azia Atsimo Atsinanana, ary koa tany Ejipta fahiny,hatramin'ny tany Akaikin'i Atsinanana fahiny (tanyIsraely fahiny, babylona na teo anivon'ireo zoroastiana tany Persia) sy Gresy fahiny."
   ,"famadihana",NULL,NULL,null,"done",21,0,NULL,NULL);
 
+insert into contenu values(NULL,CURRENT_DATE(),"Jasmin de Madagascar","zava-maniry","article","
+Jasmin de Madagascar dia zavamaniry teratany eto Madagasikara. Izy io dia
+matetika amidy ho fihaingona zaridaina satria izy dia anisan'ny zava-maniry
+manankarena indrindra sy mora hambolena ary mora kolokoloina.","jasmin",NULL,NULL,NULL,"done",12,0,NULL,NULL,NULL);
+
+insert into contenu values(NULL,CURRENT_DATE(),"Vanille de Madagascar","zava-maniry","article",
+"Vanille de Madagascar dia zava-manitra teratany eto Madagasikara, hita bebe kokoa any faritra SAVA sy manerana ny Diego;
+ampiasaina mba hanalefaka ny kakao hanesorana ilay tsiro mangidy. Misy karazany 3 ny vanille : vanille Tahitensis, vanille planifolia, vanille pompona; ary ahitana ihany koa vanille diha izay atao hoe vanille du cerado.",
+"vanille","vanille.mp4",NULL,NULL,"done",15,8000,NULL,NULL,NULL);
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Mitaraina ny tany","toerana","livre",
