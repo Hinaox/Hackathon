@@ -68,8 +68,8 @@ insert into categorie values(null,"isan-karazany");
 
 --type livre--
 insert into contenu values(NULL,CURRENT_DATE(),"Madagasikara","toerana","livre",
-"Nosy goavana i Madagasikara ary firenena miorina any amin'ny morontsiraka atsimo atsinanan'i Afrika. Misy karazana biby an'arivony toy ny lemurs, ala, torapasika sy harambato. 
-Eo akaikin'ny renivohitra mahomby, Antananarivo, dia i Ambohimanga, andiana lapam-panjakana sy fasana, ary koa ny Lalambe Migodanan'i Baobabs, lalana maloto mifamatotra amin'ny 
+"Nosy goavana i Madagasikara ary firenena miorina any amin'ny morontsiraka atsimo atsinanan'i Afrika. Misy karazana biby an'arivony toy ny lemurs, ala, torapasika sy harambato.
+Eo akaikin'ny renivohitra mahomby, Antananarivo, dia i Ambohimanga, andiana lapam-panjakana sy fasana, ary koa ny Lalambe Migodanan'i Baobabs, lalana maloto mifamatotra amin'ny
 hazo goavana efa an-jato taonany maro"
 ,"madagascar",NULL,NULL,"madagascar.pdf","done",21,7000,NULL,NULL);
 
@@ -89,7 +89,7 @@ insert into contenu values(NULL,CURRENT_DATE(),"Lavakombarika","toerana","livre"
 
 insert into contenu values(NULL,CURRENT_DATE(),"Ho avy ny maraina","toerana","livre",
 "texte texte texte texte"
-,NULL,NULL,NULL,"madagascar.pdf","done",21,7000,NULL,NULL);
+,NULL,NULL,NULL,"madagascar.pdf","done",21,0,NULL,NULL);
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Ifaramalemy sy Ikotobekibo, ny tantara tsy mety maty malagasy","tantara","article",
@@ -113,7 +113,7 @@ ny zandriny lahy nalemy tongotra. Rehefa afaka telo andro ny dia an-tongotra dia
 ka nanapa-kevitra ny hanangana trano bongo kely any izy ireo avy amin'ny ravina, sampana an'ny tany. Rehefa naorina ny trano bongo, dia samy nipetraka tao izy ireo. Ikoto taty aoriana dia
 nanjary tompon'ny fihazana ary isaky ny miverina izy dia manafatra ny rahavaviny hoe 'Ifara, apetaho ny lehibe!' Ary nesoriny ihany rehefa vitany ny nihinana izay nenjehiny. Tena
 nampalahelo an'i Ifara izany.",
-"ifaramalemy",NULL,NULL,NULL,"done",21,7000,NULL,NULL);
+"ifaramalemy",NULL,NULL,NULL,"done",21,0,NULL,NULL);
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Avy any Diego Suarez ka hatrany Nosy Be","toerana sy faritra","article",
@@ -129,7 +129,7 @@ Ao Nosy Be 'Big Island' dia ahitantsika kolontsaina maro kokoa amin'ny fary, kan
 amin'ny kolontsaina sy ny asa-tanana. Ankoatry ny morontsirak'ireo paradisa, tsy dia be olona loatra na dia eo aza ny lazan'izy ireo, hetsika maro no azo atao: fisitrihana scuba, snorkeling,
 fahitana ny nosy amin'ny dhow na lakana nentim - paharazana , fijerena trozona amin'ny vanim-potoana, fitsangantsanganana an-tongotra amin'ny bisikileta na bisikileta… A sombin-paradisa kely
  ho an'ny fianakaviana manontolo."
-,"nosybe",NULL,NULL,NULL,"done",21,7000,NULL,NULL);
+,"nosybe",NULL,NULL,NULL,"done",21,0,NULL,NULL);
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Ny antsitrika sy ny sambo ao amin'ny Vondronosy Mitsio","toerana sy faritra","article",
@@ -139,7 +139,7 @@ Ity fijanonana ity dia ahafahantsika manao antsitrika 14 amin'ny toerana miavaka
 Ankafizo ny milomano eo amin'ireo sokatra an-dranomasina sy trondro maro loko, mandeha milomano mangina eo ambonin'ireo haran-dranomasina mahafinaritra ianao, andramo ny Trondro vao
 tratra, mihaona amin'ireo olona Vezo izay mandrafitra ny ekipanay sy ny Sakalava monina ireto nosy kely ireto ary mamelona ireo ranomasina ireo amin'ny lakana sy ny doho nentin-drazana.
 Traikefa tokana sy mafana, amin'ny gadona onja, rivotra ary fisondrotana.",
-"mitsio",NULL,NULL,NULL,"done",12,7000,NULL,NULL);
+"mitsio",NULL,NULL,NULL,"done",12,0,NULL,NULL);
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Ao amin'ny sambo Nofy Be, fandehanana avy any Ifaty mankany Morondava","toerana sy faritra","article",
@@ -150,7 +150,7 @@ Entin'ny rivotra, miaraka amin'ny ekipazy Vezo (mpanjono avy any atsimo) ary ira
 sy fivoriana izahay. Hitanay ny fomba fiainan'ny foko any atsimon'i Madagasikara , ary indrindra ireo mpifindra monina Vezo. Ny jono, ny snorkeling, ny mozika, ny sakafo matsiro, ny
 filentehan'ny masoandro, dia hiainanao ny dia mahagaga, tsy hay hadinoina ...
 Ny fotoam-pitetezana dia eo ho eo ary miankina amin'ny lalana sy ny herin'ny rivotra. Ny programa dia miankina amin'ny toetr'andro sy, mazava ho azy, araka ny fanirianao.
-","ifaty",NULL,NULL,NULL,"done",12,7000,NULL,NULL);
+","ifaty",NULL,NULL,NULL,"done",12,0,NULL,NULL);
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Fitsangantsanganana sy fitetezana an-tanety Sakalava","toerana sy faritra","article",
@@ -163,7 +163,7 @@ Alao sary an-tsaina ny fitetezana moramora, eo ambanin'ny tadin'ny tady sy ny ta
 tratrarina, ranomasina misy turquoise, rano mena na volontany, morontsiraka fasika misy karazany.
 Eo anelanelan'ny tany sy ny ranomasina, ny fahafinaretan'ny jono sy ny voankazo amin'ity fahalala-tanana ity dia hiaina traikefa nahafinaritra sy tsy azo faritana isika. Ho fanampin'ny
 fahasamihafana tsy mampino an'ity faritra tsy dia fantatra ity dia hahatsapa ny halalin'ny olona iray isika; ho mpanararaotra sy be vola isika, hahita ny fiainana ..
-","sakalava",NULL,NULL,NULL,"done",12,7000,NULL,NULL);
+","sakalava",NULL,NULL,NULL,"done",12,0,NULL,NULL);
 
 insert into contenu values(NULL,CURRENT_DATE(),"Fahagagana amin'ny Avaratra: Diego Bays, Tsingy de l'Ankarana ary ny Nosy volkanika Nosy Komba","toerana sy faritra","article",
 "Ity dia ity dia hitarika anao hahita ny avaratry Madagascar , ny faritra Antsiranana (fantatra amin'ny hoe Diego Suarez) ary ny archipelagos manodidina ny nosy Nosy Be.
@@ -177,7 +177,7 @@ manontolo sy ny mofo mamy misy azy, Nosy Lonjo .
 Zahao ny valan-javaboary Montagne d'Ambre , mitsangatsangana eo anelanelan'ny fananganana vatosokay mahaliana ao Tsingy de l'Ankarana ao anaty toerana toy ny nofinofy, alohan'ny
 handehanana mankany amin'ny nosy paradisa Nosy Komba hijanonana amoron-dranomasina. Eto indray, fiakarana, fahitana ny Miandry anao ny kolontsaina eo an-toerana sy ny
 fitsangantsanganana an-dranomasina, hahafahanao miaina fanitrihana ao amin'ny firenena Sakalava",
-"tsingy",NULL,NULL,NULL,"done",12,7000,NULL,NULL);
+"tsingy",NULL,NULL,NULL,"done",12,0,NULL,NULL);
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Fitsangatsanganana an-tanindrazana avy any Morondava mankany Majunga","toerana sy faritra","article",
@@ -195,14 +195,14 @@ Ity fitsangantsanganana an-tampon'ny Morondava sy Majunga ity dia mitaky sidina 
 miondrana an-tsambo noho izany fa tsy mora voan'ny ranomasina.
 Ity zotra fitetezana ity dia azo atao amin'ny lafiny hafa ihany koa, ao anatin'ny 12 andro fitetezana an'i Majunga mankany Morondava . Ny vanim-potoana mahasoa dia ny faran'ny
 volana novambra / fanombohan'ny desambra , mankanisa anay raha mila fanazavana fanampiny.",
-"majunga",NULL,NULL,NULL,"done",12,7000,NULL,NULL);
+"majunga",NULL,NULL,NULL,"done",12,0,NULL,NULL);
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Radama II","tantara","article",
 "Radama II , teraka tamin'ny 23 septambra 1829 ary maty teo 11 mai 1863, dia mpanjaka malagasy . Nanjaka tamin'ny fanjakan'i Madagascar izy tamin'ny 1861 ka hatramin'ny 1863.
 Ity vanim-potoana ity dia nanamarika ny fihodinan'ny diplaomatika eropeana ny eropeana. Mpanjaka francophile , nefa izy dia voampanga ho 'mivarotra tanindrazana' ary maty
 novonoin'ny mpanohana politika mahaleo tena kokoa.",
-"radamaII",NULL,NULL,NULL,"done",12,7000,NULL,NULL);
+"radamaII",NULL,NULL,NULL,"done",12,0,NULL,NULL);
 
 insert into contenu values(NULL,CURRENT_DATE(),"Ranavalona I","tantara","article",
 "Ranavalona I re , teraka tamin'ny taona 1788 ary maty tamin'ny16 aogositra 1861, dia mpanjakavavy madagasikara iray avy any amin'ny faritra avon'ny nosy (any Imerina ).
@@ -211,14 +211,14 @@ Ny anaran'i Mavo (na Ramavo) no nanondroana azy voalohany ary avy eo Rabodonandr
 dadatoany, Andrianampoinimerina dadatoany . Tonga mpanjakavavin'i Madagascar izy taorian'ny fahafatesan'ny vadiny sy ny zanak'olo-mpiray tam-po aminy Radama I st . Izy io koa dia
 tendren'ny lohatenin'ny Ranavalo-Manjaka I re('Fanjakan'i Ranavalona'). Ity vanim-potoana ity dia nanamarika ny fisarahana lavitra ny Eoropeana. Raha heverina ho mpanjaka tsy
 refesi-mandidy izy, dia mbola mijanona ho mpanam-pahefana omena sehatra iray, izay mbola loharanom-baovao ao amin'ny eritreritra nasionalista mahaleo tena.",
-"ranavalonaI",NULL,NULL,NULL,"done",12,7000,NULL,NULL);
+"ranavalonaI",NULL,NULL,NULL,"done",12,0,NULL,NULL);
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Andrianampoinimerina","tantara","article",
 "Andrianampoinimerina , teraka Imboasalama tamin'ny taona 1745 ary maty tamin'ny 1810 , no mpitondra voalohany tao amin'ny fanjakan'ny Emyrna natambatra , afovoan'i Madagasikara,
 ary avy eo dia neken'ny ankamaroan'ny fanjakana malagasy ho toy ny suzerain . Nanjaka tamin'ny 1787 ka hatramin'ny 1810 izy . Ny zanany lahy, Prince Ilaidama dia nalahatra ho
 Radama I er , nandimby azy ary nahavita ny asany ary lasa mpanjaka voalohany teto Madagascar.",
-"andrianampoinimerina",NULL,NULL,NULL,"done",12,7000,NULL,NULL);
+"andrianampoinimerina",NULL,NULL,NULL,"done",12,0,NULL,NULL);
 
 insert into contenu values(NULL,CURRENT_DATE(),"Bois de rose","tantara","article",
 "Ny anarana hoe raozy dia entina ilazana ireo hazo fofona isan-karazany ampiasaina amin'ny ranomasimbe,hatramin'ny hazo mavokely na mavokely ampiasaina amin'ny kabinetra.
@@ -227,14 +227,25 @@ Ao amin'ny kabinetra,ny anarana hoe 'raozy' dia mifanaraka amin'ny anarana hoe '
 Dalbergia maritima,antsoina ihany koa hoe raozy na 'raozy sandoka' an'i Madagasikara
 Dalbergia sissoo,ilay 'raozy' aoatsinanan'i India.
 Ny fampiharana ny voambolana 'raozy' dia avy amin'ny teny Anglisy hoe raozy nanondro ny fianakaviana raozy izay ahitana karazana Dalbergia maro, izay tsy mitovy amin'ny raozy ny endriny amin'ny ankapobeny, nefa koa noho ny fahasarotana amin'ny famantarana mazava tsara ireo karazam-biby nampiasaina tamin'ny taonjato fahavalo ambin'ny folo.",
-"bdr",NULL,NULL,NULL,"done",12,7000,NULL,NULL);
+"bdr",NULL,NULL,NULL,"done",12,0,NULL,NULL);
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Madagasikara","tantara","article",
-"Nosy goavana i Madagasikara ary firenena miorina any amin'ny morontsiraka atsimo atsinanan'i Afrika. Misy karazana biby an'arivony toy ny lemurs, ala, torapasika sy harambato. 
-Eo akaikin'ny renivohitra mahomby, Antananarivo, dia i Ambohimanga, andiana lapam-panjakana sy fasana, ary koa ny Lalambe Migodanan'i Baobabs, lalana maloto mifamatotra amin'ny hazo 
+"Nosy goavana i Madagasikara ary firenena miorina any amin'ny morontsiraka atsimo atsinanan'i Afrika. Misy karazana biby an'arivony toy ny lemurs, ala, torapasika sy harambato.
+Eo akaikin'ny renivohitra mahomby, Antananarivo, dia i Ambohimanga, andiana lapam-panjakana sy fasana, ary koa ny Lalambe Migodanan'i Baobabs, lalana maloto mifamatotra amin'ny hazo
 goavana efa an-jato taonany maro",
-"madagascar",NULL,NULL,NULL,"done",12,7000,NULL,NULL);
+"madagascar",NULL,NULL,NULL,"done",12,0,NULL,NULL);
+
+
+insert into contenu values(NULL,CURRENT_DATE(),"Ny famorana","fomba sy vakoka","article",
+"Fomba fanao nentim-paharazana ao Madagasikara ny famorana ary mandray endrika samihafa miankina amin'ny faritra. Ao amin'ny Haut-Plateaux,ao Imerina, dia ampiharina amin'ny ririnina izany, izany hoe eo anelanelan'ny volana Mey sy Aogositra, tsirairay avy. Antsoina hoe famorana na didimpoitra izy io.1. Any atsimon'ny nosy, atao iraisana izany ary antsoina hoe tambahoaka ao Atsimo-Atsinanana sy savatse eo anivon'ny Ambolavaha ao Atsimo-Andrefana. Ny kelikely,izay atao isaky ny fito taona, dia mampiakatra ny fety izay mety haharitra iray volana."
+,"famorana",NULL,NULL,null,"done",11,0,NULL,NULL);
+
+
+insert into contenu values(NULL,CURRENT_DATE(),"Ny famadihana","fomba sy vakoka","article",
+  "Fomba amam-panaohita any amin'ny faritra sasany eto Madagasikara ny famadihana,na ny fiovan'ny maty, anisan'izany ny faritra Avon'i Highlands. Na dia toa tara loatra aza izany tao amin'ilay nosy (angamba taorian'ny taonjato fahafito ambin'ny folo), farafaharatsiny amin'ny endriny ankehitriny, ny gadihana1 dia fanitarana ny fomba amam-panao talohan'ny fandevenana "fandevenana indroa" niely talohan'ny andro maoderina tany Azia Atsimo Atsinanana, ary koa tany Ejipta fahiny,hatramin'ny tany Akaikin'i Atsinanana fahiny (tanyIsraely fahiny, babylona na teo anivon'ireo zoroastiana tany Persia) sy Gresy fahiny."
+  ,"famadihana",NULL,NULL,null,"done",21,0,NULL,NULL);
+
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Mitaraina ny tany","toerana","livre",
@@ -245,4 +256,3 @@ insert into contenu values(NULL,CURRENT_DATE(),"Mitaraina ny tany","toerana","li
 insert into contenu values(NULL,CURRENT_DATE(),"Titre","Categorie","type",
 "descri descri descri "
 ,"photo","video","audio","pdf","done/no",12,7000,NULL,NULL);
-
