@@ -8,12 +8,16 @@ create table adminsup(
  mdp varchar(100)
 );
 
+insert into adminsup values('adminsup1','adminsup1',sha1('mdp'));
+
 create table admin(
   idadmin int not null auto_increment primary key,
   nom varchar(50),
   login varchar(100) not null,
   mdp varchar(100)
 );
+
+insert into admin values(null,'admin1','admin1',sha1('mdp'));
 
 create table user(
   iduser int not null auto_increment primary key,
@@ -22,6 +26,8 @@ create table user(
   prenom varchar(100),
   mdp varchar(100)
 );
+
+insert into user values(null,'user1','Princia','Dysan',sha1('mdp'));
 
 create table categorie(
   idcategorie int not null auto_increment primary key,

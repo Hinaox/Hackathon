@@ -46,7 +46,24 @@ class Controller extends CI_Controller {
 		$data['page']='ficheArticle';
 		$this->load->view('template',$data);
 	}
-	
+	public function authentification()
+	{
+		$login = $this->input->post('email');
+		$mdp = $this->input->post('mdp');
+		$data['user'] = $this->Fonctions->tcheckLoginUser($login,$mdp);
+		$data['admin'] = $this->Fonctions->tcheckLoginAdmin($login,$mdp);
+		$data['adminsup'] = $this->Fonctions->tcheckLoginAdminSup($login,$mdp);
+		if($data['user'] == "ok" || $data['admin'] == "ok" || $data['adminsup'] == "ok")
+		{
+			$data['page']='accueil';
+			$this->load->view('template',$data);	
+		}
+		
+		$data['erreur'] = "Diso ny mail na ny teny miafina !!!";
+		$data['page']='login';
+		$this->load->view('template',$data);
+	}
+
 	public function upload()
 	{
 		if ($_FILES['nomfichier']['error']) {
