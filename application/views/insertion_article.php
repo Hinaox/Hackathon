@@ -6,7 +6,7 @@
     }
   </style>
 
-  
+
 <div class="container py-5">
     <h2 style="text-align:center" class="h2" >Fampidirina Lahatsoratra</h2>
     <br>
@@ -79,41 +79,41 @@
 <script type="text/javascript" src="<?php echo site_url("assets/js/owl.carousel.min.js") ?>"></script>
 <script type="text/javascript" src="<?php echo site_url("assets/js/custom.js") ?>"></script>
 <script type="text/javascript">
-function initialize() {
-  var mapOptions =
-      {
-            center: new google.maps.LatLng(-18.9651023,46.3496537),
-            zoom: 6,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
-        };
-      var carte = new google.maps.Map(document.getElementById("carteId"),
-      mapOptions);
-
-       let infoWindow = new google.maps.InfoWindow({
-                content: "Tondroy ilay toerana tadiavina",
-                position: mapOptions.center,
-            });
-            infoWindow.open(carte);
-
-            var listMarkers = new Array();
-    var taille = 0;
-    google.maps.event.addListener(carte, 'click', function(event) {
-      marks = new google.maps.Marker({
-      position: event.latLng, //coordonnée de la position du clic sur la carte
-      map: carte, //la carte sur laquelle le marqueur doit être affiché
-    });
-    google.maps.event.addListener(marks, "click", function() {
-      infowindow = new google.maps.InfoWindow({
-        content: maison[taille]
-      });
-      infowindow.open(carte, marks);
-    });
-    listMarkers.push(marks);
-    taille++;
-  });
-
-}
-      google.maps.event.addDomListener(window, 'load', initialize);
+// function initialize() {
+//   var mapOptions =
+//       {
+//             center: new google.maps.LatLng(-18.9651023,46.3496537),
+//             zoom: 6,
+//             mapTypeId:google.maps.MapTypeId.ROADMAP
+//         };
+//       var carte = new google.maps.Map(document.getElementById("carteId"),
+//       mapOptions);
+//
+//        let infoWindow = new google.maps.InfoWindow({
+//                 content: "Tondroy ilay toerana tadiavina",
+//                 position: mapOptions.center,
+//             });
+//             infoWindow.open(carte);
+//
+//             var listMarkers = new Array();
+//     var taille = 0;
+//     google.maps.event.addListener(carte, 'click', function(event) {
+//       marks = new google.maps.Marker({
+//       position: event.latLng, //coordonnée de la position du clic sur la carte
+//       map: carte, //la carte sur laquelle le marqueur doit être affiché
+//     });
+//     google.maps.event.addListener(marks, "click", function() {
+//       infowindow = new google.maps.InfoWindow({
+//         content: maison[taille]
+//       });
+//       infowindow.open(carte, marks);
+//     });
+//     listMarkers.push(marks);
+//     taille++;
+//   });
+//
+// }
+//       google.maps.event.addDomListener(window, 'load', initialize);
   function inserer() {
       listMarkers.pop();
       for( let i = 0 ; i < listCoord.length ; i++)

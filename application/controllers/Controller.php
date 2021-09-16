@@ -103,7 +103,7 @@ class Controller extends CI_Controller {
 				$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
 				$i++;
 			}
-	
+
 			$data['article_visited']=$this->Fonctions->contentOrderByVisite($article);
 			$data['article_image']=array();
 			$i=0;
@@ -133,7 +133,7 @@ class Controller extends CI_Controller {
 		$latitude = $this->input->post('latitude');
 		$longitude = $this->input->post('longitude');
 		$idcontenu = $this->Fonctions->getLastContenu();
-		$this->Fonctions->insertCoord($idcontenu,$latitude,$longitude)
+		$this->Fonctions->insertCoord($idcontenu,$latitude,$longitude);
 		$this->load->view('template',$data);
 	}
 
@@ -181,25 +181,25 @@ class Controller extends CI_Controller {
 	{
 		$file_name=$this->input->post('download');
 		echo "file : ".$file_name;
-		$url = site_url('assets/pdf/'.$file_name.''); 
+		$url = site_url('assets/pdf/'.$file_name.'');
 		echo "url : ".$url;
 
 		// $fichier_nom = basename($url);
 		$fichier_contenu = file_get_contents($url);
 		// $dossier_enregistrement = "telechargement/";
 
-		// if(file_put_contents($dossier_enregistrement . $fichier_nom, $fichier_contenu)) 
-		// { 
-		// 	echo "Fichier téléchargé avec succès"; 
-		// } 
-		// else 
-		// { 
-		// 	echo "Fichier non téléchargé"; 
-		// } 
+		// if(file_put_contents($dossier_enregistrement . $fichier_nom, $fichier_contenu))
+		// {
+		// 	echo "Fichier téléchargé avec succès";
+		// }
+		// else
+		// {
+		// 	echo "Fichier non téléchargé";
+		// }
 		force_download($file_name,$url);
 	}
 
-	
+
 	public function contenu(){
 		$article="article";
 		$i=0;
