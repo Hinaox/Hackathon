@@ -43,7 +43,7 @@
         }
         else 
         {
-            $allpath = site_url('assets/img/default.png');
+            $allpath = site_url('assets/img/default1.png');
         }
         return $allpath;
     }
