@@ -53,7 +53,7 @@
 <br>
 <br>
 <div class="row">
-    
+    <?php ?>
     <div class="col-md-4">  
         <div class="card mb-4 product-wap rounded-0">
             <div class="card rounded-0"> 
