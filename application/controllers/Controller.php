@@ -195,10 +195,7 @@ class Controller extends CI_Controller {
 		force_download($file_name,$url);
 	}
 
-	public function indexAdmin(){
-		$data['pageAdmin']='admin_accueil';
-		$this->load->view('template_admin',$data);
-	}
+	
 	public function contenu(){
 		$article="article";
 		$data['categ']=$this->Fonctions->getCategorie();

@@ -63,7 +63,7 @@ p {
 	font-weight: 500;
 }
 .afficherDesc {
-	font-size: 11px;
+	font-size: 16px !important;
 	color: #6a7080;
 	line-height: 1.8;
 	font-weight: 500;

@@ -14,7 +14,7 @@
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
                                 <h1 class="h1 text-success"><b>Wiki</b> Madagascar</h1>
-                                <h3 class="h2">Tiny and Perfect eCommerce Template</h3>
+                                <h3 class="h2">Ny Fokonolona</h3>
                                 <p>
                                     Zay Shop is an eCommerce HTML5 CSS template with latest version of Bootstrap 5 (beta 1). 
                                     This template is 100% free provided by <a rel="sponsored" class="text-success" href="https://templatemo.com" target="_blank">TemplateMo</a> website. 
@@ -108,8 +108,7 @@
                 <div class="col-lg-6 m-auto">
                     <h1 class="h1">Boky be Mpijery indrindra</h1>
                     <p>
-                        Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident.
+                        Ireto  ny Boky anisan ny be Mpijery ndrindra sy ireo be mpanaraka tam ity herinandro ity 
                     </p>
                 </div>
             </div>

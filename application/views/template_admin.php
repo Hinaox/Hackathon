@@ -94,12 +94,7 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo site_url('controller/index'); ?>">Pejy Fandraisana</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/contenu'); ?>">Karazan'Tahiry</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/insertion'); ?>">Hampiditra Tahiry</a>
-                        </li>
+                        
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
@@ -118,7 +113,7 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon position-relative text-decoration-none" href="<?php echo base_url('Controller/login'); ?>">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span> -->
-                    Hiditra
+                    Mpandraharaha
                     </a>
                     
 

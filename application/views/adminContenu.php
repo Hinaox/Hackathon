@@ -1,6 +1,6 @@
 <?php
   if (!isset($page_contenu) || $page_contenu == null ) {
-      $page_contenu = 'contenu_accueil';
+      $page_contenu = 'admin_accueil';
   }
 ?>
 
@@ -11,11 +11,10 @@
                 <h1 class="h2 pb-4">Sokajin'Tahiry</h1>
                 <ul class="list-unstyled templatemo-accordion">
 
-                    <?php for($i=0;$i<count($categ);$i++) {?>
                         <li class="pb-3">
                             <a class=" h4 text-decoration-none" href="#">
-                            <i class="<?php echo $categ[$i]['icone']; ?>"></i>
-                            <?php echo $categ[$i]['nom']; ?>
+                            <i class="fa fas-plus"></i>
+                            Categorie
                             </a>
                             <hr>
                         </li>
