@@ -198,10 +198,39 @@ class Controller extends CI_Controller {
 	
 	public function contenu(){
 		$article="article";
+		$i=0;
 		$data['categ']=$this->Fonctions->getCategorie();
 		$data['article']=$this->Fonctions->getAllContent(0,3,$article);
+		foreach($data['article'] as $article)
+		{
+			$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
+			$i++;
+		}
 		$livre="livre";
 		$data['livre']=$this->Fonctions->getAllContent(0,3,$livre);
+		$data['livre_image']=array();
+		$j=0;
+		foreach($data['livre'] as $livre)
+		{
+			$data['livre_image'][$j]=$this->Picture->getPrincipalPics($livre['photo']);
+			$j++;
+		}
+		$data['video']=$this->Fonctions->getVideo();
+
+		// $pg=$this->input->get('pg');
+		// $nbParPage = 3;
+		// $pageActuel = 1;
+		// if($pg != null)
+		// {
+		// 	$pageActuel = $pg;
+		// }
+
+		// $livre="livre";
+
+		// $data['livre']=$this->Fonctions->getAllContent($pageActuel,$nbParPage,$livre);
+
+
+
 		$data['page']='contenu';
 		$this->load->view('template',$data);
 	}
@@ -218,7 +247,23 @@ class Controller extends CI_Controller {
 		$this->load->view('template',$data);
 	}
 	public function contenu_livre(){
+
+		$livre="livre";
+		$pg=$this->input->get('pg');
+		$nbParPage = 3;
+		$pageActuel = 0;
+		if($pg != null)
+		{
+			$pageActuel = $pg;
+		}
 		$data['categ']=$this->Fonctions->getCategorie();
+		$data['livre']=$this->Fonctions->getAllContent($pageActuel,$nbParPage,$livre);
+		$j=0;
+		foreach($data['livre'] as $livre)
+		{
+			$data['livreimage'][$j]=$this->Picture->getPrincipalPics($livre['photo']);
+			$j++;
+		}
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_livre';
 		$this->load->view('template',$data);
@@ -231,6 +276,24 @@ class Controller extends CI_Controller {
 	}
 	public function contenu_article(){
 		$data['categ']=$this->Fonctions->getCategorie();
+
+		$article="article";
+		$pg=$this->input->get('pg');
+		$nbParPage = 3;
+		$pageActuel = 0;
+		if($pg != null)
+		{
+			$pageActuel = $pg;
+		}
+		$data['categ']=$this->Fonctions->getCategorie();
+		$data['article']=$this->Fonctions->getAllContent($pageActuel,$nbParPage,$article);
+		$j=0;
+		foreach($data['article'] as $livre)
+		{
+			$data['articleimage'][$j]=$this->Picture->getPrincipalPics($article['photo']);
+			$j++;
+		}
+
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_article';
 		$this->load->view('template',$data);

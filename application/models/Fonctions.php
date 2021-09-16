@@ -141,6 +141,18 @@
           $i++;
         }
         $result->free_Result();
+      public function getVideo()
+      {
+        $retour = array();
+        $i=0;
+        $query = "select titre,video from contenu where video != 'null'";
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
+        {
+            $retour[$i]=$row;
+            $i++;
+        }
+        $result->free_result();
         return $retour;
       }
 

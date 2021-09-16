@@ -261,7 +261,10 @@ ampiasaina mba hanalefaka ny kakao hanesorana ilay tsiro mangidy. Misy karazany 
 insert into contenu values(NULL,CURRENT_DATE(),"Afindrafindrao Malagasy","fomba sy vakoka","article",
 "18 ny foko misy eto Madagasikara ary samy manana ny fomba ara-mozikany avy izy ireo. Fa ny dihy afindrafindrao dia malaza tokoa manerana an'i Madagasikara satria manome fahafinaretana tokoa ity gadona mozika ity.
 Anisan'ny kolon-tsaina Malagasy tokoa ny afindrafindrao, izany hoe mozika nentim-paharazana izy io. Ny gadona afindrafindrao dia azo avy amin'ny 
-fampivondronan'ny mozika Basesa sy mozika eoropeana ary ampiasaina hanomboana sy hanafana lanonana");
+fampivondronan'ny mozika Basesa sy mozika eoropeana ary ampiasaina hanomboana sy hanafana lanonana. Ny afindrafindrao dia 
+fandihan'olon-droa, ny vehivavy eo aloha de lahy ao aorina, mifanao aloha sy aoriana lavalava ary mifampitantana ny olon-droa ary ny sandry sy tongotra mande avia sy havanana. Izany dihy izany dia maneho firaisan-kina
+sy fiaraha-mientana ny vahoaka tsirairay ao amin'ny foko samihafa eto Madagasikara","afindrafindrao","afindrafindrao.mp4",NULL,
+NULL,"done",20,0,NULL,NULL,NULL);
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Mitaraina ny tany","toerana","livre",
