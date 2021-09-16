@@ -77,21 +77,21 @@ hazo goavana efa an-jato taonany maro"
 
 insert into contenu values(NULL,CURRENT_DATE(),"Maki","toerana","livre",
 "texte texte texte texte"
-,NULL,NULL,NULL,"madagascar.pdf","done",21,7000,NULL,NULL,"Toky Mpanoratra");
+,"default",NULL,NULL,"madagascar.pdf","done",21,7000,NULL,NULL,"Toky Mpanoratra");
 
 insert into contenu values(NULL,CURRENT_DATE(),"Lovako","toerana","livre",
 "texte texte texte texte"
-,NULL,NULL,NULL,"madagascar.pdf","done",21,7000,NULL,NULL,"Mr Lova");
+,"default",NULL,NULL,"madagascar.pdf","done",21,7000,NULL,NULL,"Mr Lova");
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Lavakombarika","toerana","livre",
 "texte texte texte texte"
-,NULL,NULL,NULL,"madagascar.pdf","done",21,7000,NULL,NULL,"Clarisse RATSIFANDRIAMANANA");
+,"default",NULL,NULL,"madagascar.pdf","done",21,7000,NULL,NULL,"Clarisse RATSIFANDRIAMANANA");
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Ho avy ny maraina","toerana","livre",
 "texte texte texte texte"
-,NULL,NULL,NULL,"madagascar.pdf","done",21,0,NULL,NULL,"Esther RANDRIAMAMONJY");
+,"default",NULL,NULL,"madagascar.pdf","done",21,0,NULL,NULL,"Esther RANDRIAMAMONJY");
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Ifaramalemy sy Ikotobekibo, ny tantara tsy mety maty malagasy","tantara","article",

@@ -41,6 +41,21 @@
       return $retour;
     }
 
+    public function getCategorieFpdf()
+    {
+      $query = "select * from categorie order by nom asc";
+      $result = $this->db->query($query);
+      $i=0;
+      $retour = array();
+      foreach($result->result_array() as $row)
+      {
+        $retour[$i]=$row;
+        $i++;
+      }
+      $result->free_Result();
+      return $retour;
+    }
+
     public function getContentByCat($type,$idCat,$pageActuel,$nbPage)
     {
       $limite = 1;
@@ -96,12 +111,29 @@
         $query->freeResult();
         return $retour;
       }
+
+      public function getAllContentFpdf($type)
+      {
+        $retour = array();
+        $i = 0;
+        $query = "select * from %s order by categories asc";
+        $query = sprintf($query,$type);
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
+        {
+          $retour[$i]=$row;
+          $i++;
+        }
+        $result->free_Result();
+        return $retour;
+      }
+
       public function getAllContentByCat($cat,$type)
       {
         $categorie='%'.$cat.'%';
         $retour = array();
         $i = 0;
-        $query = "select * from %s where categories like '%s'";
+        $query = "select * from %s where categories like '%s' and prix=0 order by categories asc";
         $query = sprintf($query,$type,$categorie);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
