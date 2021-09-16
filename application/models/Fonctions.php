@@ -26,6 +26,21 @@
       return $result;
     }
 
+    public function getCategorie()
+    {
+      $query = "select * from categorie";
+      $result = $this->db->query($query);
+      $i=0;
+      $retour = array();
+      foreach($result->result_array() as $row)
+      {
+        $retour[$i]=$row;
+        $i++;
+      }
+      $result->free_Result();
+      return $retour;
+    }
+
     public function getContentByCat($type,$idCat,$pageActuel,$nbPage)
     {
       $limite = 1;
@@ -65,15 +80,6 @@
       return $retour;
     }
 
-      public function getCatById($id)
-      {
-        $query = "select nom from categorie where idcategorie = %s limit 1";
-        $query = sprintf($query,$id);
-        $result = $this->db->query($query)->row_array();
-        $query->freeResult();
-        return $result;
-      }
-  
       public function getAllContent($pgActuel,$nbPage,$type)
       {
         $limite = 1;
@@ -110,15 +116,6 @@
         }
         $result->freeResult();
         return $retour;
-      }
-
-      public function getContentById($id,$type)
-      {
-        $query = "select * from %s where idcontenu=%s limit 1";
-        $query = sprintf($query,$id,$type);
-        $result = $this->db->query($query)->result_array();
-        $result->freeResult();
-        return $result;
       }
 
       public function advancedSearchContent($titre,$categorie,$descri,$auteur,$nbdate,$nbPage,$type)      
@@ -178,7 +175,7 @@
         return $retour;
       }
 
-      public function insertContent($titre,$desc,$auteur,$date,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin,$auteur)
+      public function insertContent($titre,$desc,$auteur,$date,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin)
       {
         $etat = "done";
         $visite = 0;

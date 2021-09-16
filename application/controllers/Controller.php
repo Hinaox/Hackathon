@@ -21,23 +21,23 @@ class Controller extends CI_Controller {
 	public function index()
 	{
 		$data['page']='accueil';
-		$data['book_visited']=$this->Fonctions->bookOrderByVisite();
-		$data['nom_image']=array();
-		$i=0;
-		foreach($data['book_visited'] as $book)
-		{
-			$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
-			$i++;
-		}
+		// $data['book_visited']=$this->Fonctions->bookOrderByVisite();
+		// $data['nom_image']=array();
+		// $i=0;
+		// foreach($data['book_visited'] as $book)
+		// {
+		// 	$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
+		// 	$i++;
+		// }
 
-		$data['article_visited']=$this->Fonctions->articleOrderByVisite();
-		$data['article_image']=array();
-		$i=0;
-		foreach($data['article_visited'] as $article)
-		{
-			$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
-			$i++;
-		}
+		// $data['article_visited']=$this->Fonctions->articleOrderByVisite();
+		// $data['article_image']=array();
+		// $i=0;
+		// foreach($data['article_visited'] as $article)
+		// {
+		// 	$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
+		// 	$i++;
+		// }
 		$this->load->view('template',$data);
 	}
 
@@ -136,5 +136,11 @@ class Controller extends CI_Controller {
 		  move_uploaded_file($nomUpload, $nomdestination);
 		  echo "upload vita";
 		}
+	}
+
+	public function loadFPDF()
+	{
+		$data['categorie']=$this->Fonctions->getCategorie();
+		$this->load->view('accueil_fpdf',$data);
 	}
 }
