@@ -227,7 +227,7 @@
           $this->session->set_userdata('admin',$row['idadmin']);
           return "ok";
         }
-        $result->freeResult();
+        $result->free_result();
         return "ko";
       }
 
@@ -242,7 +242,7 @@
           $this->session->set_userdata('user',$row['iduser']);
           return "ok";
         }
-        $result->freeResult();
+        $result->free_result();
         return "ko";
       }
       public function getMarkers($idarticle){

@@ -87,12 +87,14 @@ class Controller extends CI_Controller {
 	{
 		$login = $this->input->post('email');
 		$mdp = $this->input->post('mdp');
+		$livre = "livre";
+		$article = "article";
 		$data['user'] = $this->Fonctions->tcheckLoginUser($login,$mdp);
 		$data['admin'] = $this->Fonctions->tcheckLoginAdmin($login,$mdp);
 		if($data['user'] == "ok" || $data['admin'] == "ok")
 		{
 			$data['page']='accueil';
-			$data['book_visited']=$this->Fonctions->bookOrderByVisite();
+			$data['book_visited']=$this->Fonctions->contentOrderByVisite($livre);
 			$data['nom_image']=array();
 			$i=0;
 			foreach($data['book_visited'] as $book)
@@ -101,7 +103,7 @@ class Controller extends CI_Controller {
 				$i++;
 			}
 	
-			$data['article_visited']=$this->Fonctions->articleOrderByVisite();
+			$data['article_visited']=$this->Fonctions->contentOrderByVisite($article);
 			$data['article_image']=array();
 			$i=0;
 			foreach($data['article_visited'] as $article)
