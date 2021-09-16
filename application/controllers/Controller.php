@@ -220,9 +220,9 @@ class Controller extends CI_Controller {
 		$data['page_insertion']='insertion_video';
 		$this->load->view('template',$data);
 	}
-	public  function insertion_audio(){
+	public  function insertion_vocal(){
 		$data['page']='insertion';
-		$data['page_insertion']='insertion_audio';
+		$data['page_insertion']='insertion_vocal';
 		$this->load->view('template',$data);
 	}
 }
