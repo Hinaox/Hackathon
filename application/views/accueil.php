@@ -88,21 +88,15 @@
             </div>
         </div>
         <div class="row">
+        <?php for($i=0;$i<count($article_visited);$i++) { ?>
+              
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="<?php echo site_url("assets/img/category_img_01.jpg") ?>" class="rounded-circle img-fluid border"></a>
-                <h5 class="text-center mt-3 mb-3">Maki</h5>
+                <a href="#"><img src="<?php echo $article_image[$i] ?>" class="rounded-circle img-fluid border"></a>
+                <h5 class="text-center mt-3 mb-3"><?php echo $article_visited[$i]['titre']; ?></h5>
                 <p class="text-center"><a class="btn btn-success">Hijery</a></p>
             </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="<?php echo site_url("assets/img/category_img_02.jpg") ?>" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">Ravinala</h2>
-                <p class="text-center"><a class="btn btn-success">Hijery</a></p>
-            </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="<?php echo site_url("assets/img/category_img_03.jpg") ?>" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">Baobab</h2>
-                <p class="text-center"><a class="btn btn-success">Hijery</a></p>
-            </div>
+         <?php } ?>  
+           
         </div>
     </section>
     <!-- End Categories of The Month -->
@@ -121,60 +115,23 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-4 mb-4">
+            <?php for($i=0;$i<count($book_visited);$i++) { ?>
+               <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="<?php echo base_url('controller/ficheLivre'); ?>">
-                            <img src="<?php echo site_url("assets/img/feature_prod_01.jpg") ?>" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$240.00</li>
-                            </ul>
-                            <a href="<?php echo base_url('controller/ficheLivre'); ?>" class="h2 text-decoration-none text-dark">Gym Weight</a>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
-                            </p>
-                            <p class="text-muted">Isan ny nijery(24)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="<?php echo base_url('controller/ficheLivre'); ?>">
-                            <img src="<?php echo site_url("assets/img/feature_prod_02.jpg") ?>" class="card-img-top" alt="...">
+                        <a href="<?php echo site_url('controller/ficheLivre'); ?>">
+                            <img src="<?php echo $nom_image[$i] ?>" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                            
-                            <a href="<?php echo base_url('controller/ficheLivre'); ?>" class="h2 text-decoration-none text-dark">Lavakombarika</a>
+                            <a href="<?php echo site_url('controller/ficheLivre'); ?>" class="h2 text-decoration-none text-dark"><?php echo $book_visited[$i]['titre']; ?></a>
                             <p class="card-text">
                                 Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
                             </p>
-                            <p class="text-muted">Isan ny nijery (48)</p>
+                            <p class="text-muted">Isan ny nijery (<?php echo $book_visited[$i]['visites']; ?>)</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="<?php echo base_url('controller/ficheLivre'); ?>">
-                            <img src=" <?php echo site_url("assets/img/feature_prod_03.jpg") ?>" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            
-                            <a href="<?php echo base_url('controller/ficheLivre'); ?>" class="h2 text-decoration-none text-dark">Ho avy ny Maraina</a>
-                            <p class="card-text">
-                                Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
-                            </p>
-                            <p class="text-muted">Isan ny nijery (74)</p>
-                        </div>
-                    </div>
-                </div>
+            <?php } ?>
             </div>
         </div>
     </section>
