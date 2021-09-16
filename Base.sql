@@ -243,7 +243,7 @@ insert into contenu values(NULL,CURRENT_DATE(),"Ny famorana","fomba sy vakoka","
 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Ny famadihana","fomba sy vakoka","article",
-  "Fomba amam-panaohita any amin'ny faritra sasany eto Madagasikara ny famadihana,na ny fiovan'ny maty, anisan'izany ny faritra Avon'i Highlands. Na dia toa tara loatra aza izany tao amin'ilay nosy (angamba taorian'ny taonjato fahafito ambin'ny folo), farafaharatsiny amin'ny endriny ankehitriny, ny gadihana1 dia fanitarana ny fomba amam-panao talohan'ny fandevenana "fandevenana indroa" niely talohan'ny andro maoderina tany Azia Atsimo Atsinanana, ary koa tany Ejipta fahiny,hatramin'ny tany Akaikin'i Atsinanana fahiny (tanyIsraely fahiny, babylona na teo anivon'ireo zoroastiana tany Persia) sy Gresy fahiny."
+  "Fomba amam-panaohita any amin'ny faritra sasany eto Madagasikara ny famadihana,na ny fiovan'ny maty, anisan'izany ny faritra Avon'i Highlands. Na dia toa tara loatra aza izany tao amin'ilay nosy (angamba taorian'ny taonjato fahafito ambin'ny folo), farafaharatsiny amin'ny endriny ankehitriny, ny gadihana1 dia fanitarana ny fomba amam-panao talohan'ny fandevenana 'fandevenana indroa' niely talohan'ny andro maoderina tany Azia Atsimo Atsinanana, ary koa tany Ejipta fahiny,hatramin'ny tany Akaikin'i Atsinanana fahiny (tanyIsraely fahiny, babylona na teo anivon'ireo zoroastiana tany Persia) sy Gresy fahiny."
   ,"famadihana",NULL,NULL,null,"done",21,0,NULL,NULL);
 
 
