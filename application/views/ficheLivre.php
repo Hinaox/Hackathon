@@ -104,7 +104,16 @@
                             <h6>Mombamomba:</h6>
                             <p><?php echo $boky[$i]['texte']; ?></p>
 
-                            <form action="" method="GET">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Boky pdf:</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <p class="text-muted"><strong><?php echo $boky[$i]['pdf']; ?></strong></p>
+                                </li>
+                            </ul>
+
+                            <form action="#" method="GET">
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row pb-3">
                                     <div class="col d-grid">
@@ -115,6 +124,7 @@
                                     </div>
                                 </div>
                             </form>
+
                         <?php }?>
                         </div>
                     </div>

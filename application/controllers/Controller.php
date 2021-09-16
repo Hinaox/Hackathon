@@ -152,7 +152,7 @@ class Controller extends CI_Controller {
 				$nom = $_FILES['nomfichier']['name'];
 				$nomUpload = $_FILES['nomfichier']['tmp_name'];
 				// var_dump($nom);
-				$nomdestination = "F:/Info Mendrika/ITU LECONS/Rojo/PHP/05-php-S1/UwAmp/www/hack/Hackathon/application/upload/".$nom."";
+				$nomdestination = site_url('assets/pdf/'.nom.'');
 				move_uploaded_file($nomUpload, $nomdestination);
 				echo "tontonsa ny fampitanao";
 			
