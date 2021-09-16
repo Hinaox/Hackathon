@@ -101,9 +101,9 @@
         <?php for($i=0;$i<count($article_visited);$i++) { ?>
               
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="<?php echo $article_image[$i] ?>" class="rounded-circle img-fluid border"></a>
+                <a href="<?php echo site_url("controller/ficheArticle?id=".$article_visited[$i]['idcontenu']."&type=article"); ?>"><img src="<?php echo $article_image[$i] ?>" class="rounded-circle img-fluid border"></a>
                 <h5 class="text-center mt-3 mb-3"><?php echo $article_visited[$i]['titre']; ?></h5>
-                <p class="text-center"><a class="btn btn-success">Hijery</a></p>
+                <p class="text-center"><a class="btn btn-success" href="<?php echo site_url("controller/ficheArticle?id=".$article_visited[$i]['idcontenu']."&type=article"); ?>">Hijery</a></p>
             </div>
          <?php } ?>  
            
@@ -128,14 +128,14 @@
             <?php for($i=0;$i<count($book_visited);$i++) { ?>
                <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="<?php echo site_url('controller/ficheLivre'); ?>">
+                        <a href="<?php echo site_url("controller/ficheLivre?id=".$book_visited[$i]['idcontenu']."&type=livre"); ?>">
                             <img src="<?php echo $nom_image[$i] ?>" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                            
-                            <a href="<?php echo site_url('controller/ficheLivre'); ?>" class="h2 text-decoration-none text-dark"><?php echo $book_visited[$i]['titre']; ?></a>
+                            <a href="<?php echo site_url("controller/ficheLivre?id=".$book_visited[$i]['idcontenu']."&type=livre"); ?>" class="h2 text-decoration-none text-dark"><?php echo $book_visited[$i]['titre']; ?></a>
                             <p class="card-text">
-                                Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
+                                <?php echo $book_visited[$i]['texte']; ?>   
                             </p>
                             <p class="text-muted">Isan ny nijery (<?php echo $book_visited[$i]['visites']; ?>)</p>
                         </div>
