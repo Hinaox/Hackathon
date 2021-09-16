@@ -16,13 +16,16 @@
           $retour[$i]=$row;
           $i++;
         }
+        $query->freeResult();
         return $retour;
       }
+
       public function getCatById($id)
       {
         $query = "select nom from categorie where idcategorie = %s limit 1";
         $query = sprintf($query,$id);
         $result = $this->db->query($query)->row_array();
+        $query->freeResult();
         return $result;
       }
       public function getBookCat($pgActuel,$nbPage,$idCat,$etat)
@@ -41,6 +44,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $query->freeResult();
         return $retour;
       }
       public function getBookById($id)
@@ -48,9 +52,12 @@
         $query = "select * from livre where idlivre=%s";
         $query = sprintf($query,$id);
         $result = $this->db->query($query);
-        $book = $result->row_array();
-
-        return $book;
+        $book = array();
+        foreach ($result->result_array() as $key) {
+          $book[] = $key;
+        }
+        $query->freeResult();
+        return $retour;
       }
 
       public function getAllArticle($pgActuel,$nbPage,$etat)
@@ -67,6 +74,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $query->freeResult();
         return $retour;
       }
 
@@ -86,6 +94,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
 
@@ -94,6 +103,7 @@
         $query = "select * from article where idarticle=%s and etat =%s limit 1";
         $query = sprintf($query,$id,$etat);
         $result = $this->db->query($query)->result_array();
+        $result->freeResult();
         return $result;
       }
 
@@ -112,6 +122,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();        
         return $retour;
       }
 
@@ -154,6 +165,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
 
@@ -172,6 +184,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
       
@@ -210,6 +223,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
 
@@ -225,6 +239,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
 
@@ -239,6 +254,7 @@
           $retour[$i]=$row;
           $i++;
         }
+        $result->freeResult();
         return $retour;
       }
 
@@ -322,6 +338,14 @@
         $query = sprintf($query,$id);
         $this->db->query($query);
       }
+
+      ////////////
+      // -getAllContent
+      // -insertContent
+      // -updateEtatContent
+      // -updateTextContent
+      // -deleteContentById
+      ///////////////////////////////////////////////
       public function deconnect()
       {
         $this->session->sess_destroy();
@@ -339,6 +363,7 @@
           $this->session->set_userdata('admin',$row['idadmin']);
           return "ok";
         }
+        $result->freeResult();
         return "ko";
       }
 
@@ -353,6 +378,7 @@
           $this->session->set_userdata('user',$row['iduser']);
           return "ok";
         }
+        $result->freeResult();
         return "ko";
       }
       public function getMarkers($idarticle){
