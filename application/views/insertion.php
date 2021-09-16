@@ -38,7 +38,7 @@
 
         <div class="col-md-6 col-lg-3 pb-5">
             <div class="h-100 py-5 services-icon-wap shadow">
-            <a style="text-decoration:none;color:#000;font-size:36px;font-weigth:bold;" href="<?php echo site_url('controller/insertion_audio'); ?>">
+            <a style="text-decoration:none;color:#000;font-size:36px;font-weigth:bold;" href="<?php echo site_url('controller/insertion_vocal'); ?>">
                 <div class="h1 text-success text-center"><i class="fas fa-file-audio"></i></div>
                 <h2 class="h5 mt-4 text-center">Horonam-peo</h2>
             </a>
