@@ -14,11 +14,12 @@
                         <!-- <li class="pb-3"> -->
                         <?php for($i=0;$i<count($categ);$i++) {?>
 
-                            <a href="<?php echo site_url("controller/contentCat?categ=".$categ[$i]['nom']); ?>">
+                            <i class="<?php echo $categ[$i]['icone']; ?>"></i>
+
+                            <a style="text-decoration:none" href="<?php echo site_url("controller/contentCat?categ=".$categ[$i]['nom']); ?>">
                             <?php echo $categ[$i]['nom']; ?>
                             </a>
 
-                            <!-- <i class=""></i> -->
                         
                             <hr>
                         <?php }?>
