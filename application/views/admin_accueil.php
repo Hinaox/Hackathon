@@ -78,6 +78,7 @@
                         <p style="text-align:center" ><a href="<?php echo site_url("controller/ficheLivre?id=".$livre[$i]['idcontenu']."&type=livre"); ?>" class="h3 text-decoration-none"><?php echo $livre[$i]['titre']; ?></a></p>
                         <br>
                         <p style="text-align:center"><a class="btn btn-success" href="<?php echo site_url("controller/ficheLivre?id=".$livre[$i]['idcontenu']."&type=livre"); ?>">Hijery</a></p>
+                        
                     </div>
                 </div>
             </div>

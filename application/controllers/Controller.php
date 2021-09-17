@@ -424,7 +424,9 @@ class Controller extends CI_Controller {
 		{
 			$bookPdf[$b]=$myBookPdf;
 			$picBook[$b]=$this->Picture->getPrincipalPics($myBookPdf['photo']);
-			$picBook[$b]=explode(".",$picBook[$b])[0];
+			$string=explode(".",$picBook[$b]);
+			$picBook[$b]=$string[0];
+
 			$b++;
 		}
 		$articlePdf=array();
@@ -506,6 +508,10 @@ class Controller extends CI_Controller {
 		$data["confirm"]="tafiditra!";
 		$data['page']='insertion';
 		$data['page_insertion']='insertion_article';
+		$this->load->view('template',$data);
+	}
+	public function loginAdmin(){
+		$data['page']='login_admin';
 		$this->load->view('template',$data);
 	}
 }
