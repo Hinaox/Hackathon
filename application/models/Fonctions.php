@@ -82,7 +82,8 @@
       // if($pageActuel != 1)  $limite = $pageActuel * $nbPage;
       $retour = array();
       $i = 0;
-      $query ="select * from %s where categories like '%s'";
+      $query ="select idcontenu,titre,categories,substring(texte,1,200) as texte,photo,
+      visites,prix from %s where categories like '%s'";
       $query = sprintf($query,$type,$categorie);
       $result = $this->db->query($query);
       foreach($result->result_array() as $row)
@@ -120,7 +121,8 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query = "select * from %s limit %s,%s";
+        $query = "select idcontenu,titre,categories,substring(texte,1,200) as texte,photo,
+        visites,prix from %s limit %s,%s";
         $query = sprintf($query,$type,$limite,$nbPage);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
@@ -169,7 +171,8 @@
         $categorie='%'.$cat.'%';
         $retour = array();
         $i = 0;
-        $query = "select * from %s where categories like '%s'";
+        $query = "select idcontenu,titre,categories,substring(texte,1,200) as texte,photo,
+        visites,prix from %s where categories like '%s'";
         $query = sprintf($query,$type,$categorie);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
@@ -188,7 +191,8 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query = "select * from %s where categories like %s limit %s,%s";
+        $query = "select idcontenu,titre,categories,substring(texte,1,200) as texte,photo,
+        visites,prix from %s where categories like %s limit %s,%s";
         $query = sprintf($query,$type,$categorie,$limite,$nbPage);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
@@ -245,7 +249,8 @@
       {
         $retour = array();
         $i = 0;
-        $query = "select * from %s order by visites desc limit 3";
+        $query = "select idcontenu,titre,categories,substring(texte,1,200) as texte,photo,
+        visites,prix from %s order by visites desc limit 3";
         $query=sprintf($query,$type);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
