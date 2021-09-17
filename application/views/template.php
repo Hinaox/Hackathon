@@ -26,7 +26,7 @@
 
     <link href="<?php echo site_url("assets/css/bootstrap.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/style.css") ?>" rel="stylesheet">
-    <link href="<?php echo site_url("assets/css/styleAudio.scss") ?>" rel="stylesheet">
+    
     <link href="<?php echo site_url("assets/css/responsive.css") ?>" rel="stylesheet">
 
     <link href="<?php echo site_url("assets/css/bootstrap.min.css") ?>" rel="stylesheet">
@@ -120,7 +120,7 @@ https://templatemo.com/tm-559-zay-shop
                         <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span> -->
                     Hiditra
                     </a>
-                    
+
 
                 </div>
             </div>
@@ -165,7 +165,7 @@ https://templatemo.com/tm-559-zay-shop
                     <h2 class="h2 text-success border-bottom pb-3 border-light logo"></h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
-                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            <i class="fas fa-map-marker-alt fa-fw"></i>   0
                             Madagasikara
                         </li>
                         <li>
@@ -207,7 +207,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-auto me-auto">
                     <ul class="list-inline text-left footer-icons">
                         <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                            <a rel="nofollow" class="text-light text-decoration-none" target="_blank" href="http://fb.com/templatemo"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
                         </li>
                         <li class="list-inline-item border border-light rounded-circle text-center">
                             <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
@@ -221,13 +221,14 @@ https://templatemo.com/tm-559-zay-shop
                     </ul>
                 </div>
                 <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Mailaka</label>
+                    <label class="sr-only" for="subscribeEmail">Email address</label>
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Mailaka">
-                        <div class="input-group-text btn-success text-light">Hanaraka</div>
+                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
+                        <div class="input-group-text btn-success text-light">Subscribe</div>
                     </div>
                 </div>
             </div>
+            
         </div>
 
         <div class="w-100 bg-black py-3"> 
@@ -236,7 +237,7 @@ https://templatemo.com/tm-559-zay-shop
                     <div class="col-12">
                         <p class="text-left text-light">
                             Copyright &copy; 2021 WikiMadagasikara
-                            | Namboarin'ny <a rel="sponsored" href="#" target="_blank">WikiMadagasikara</a>
+                            | Namboarin'ny <a rel="sponsored" href="#" target="_blank">WeFly</a>
                         </p>
                     </div>
                 </div>
