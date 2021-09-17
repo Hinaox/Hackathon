@@ -153,12 +153,10 @@
         </div>
         <div class="container container-bg">
         <div class="row">
-            <div class="col-lg-8 col-md-7 px-0" style="height:500px" >
+            <div class="col-lg-12 col-md-7 px-0" style="height:500px" >
             <div id="carteId">LA CARTE</div>
             </div>
-            <div class="col-md-5 col-lg-4 px-0">
-                <p>Marquage des articles sur la carte</p>
-            </div>
+            
         </div>
         </div>
     </section>
@@ -172,7 +170,7 @@ function initialize() {
     var mapOptions =
       {
           center: new google.maps.LatLng(-18.9651023,46.3496537),
-          zoom: 6,
+          zoom: 5,
           mapTypeId:google.maps.MapTypeId.ROADMAP
       };
     var carte = new google.maps.Map(document.getElementById("carteId"),
@@ -186,6 +184,27 @@ function initialize() {
       map: carte, //la carte sur laquelle le marqueur doit être affiché
     });
   }
+
+  var locations=[
+      ['Makiplast',-13.021516, 49.562189],
+      
+]
+
+// var marker = new google.maps.Marker({
+// 		position: location,
+// 		draggable: true,
+// 		map: carte
+// 	});
+var marker, i;
+for (i = 0; i < locations.length; i++) {
+marker = new google.maps.Marker({
+position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+map: carte,
+cursor:locations[i][0],
+title: locations[i][0]
+});
+}
+
 }
       google.maps.event.addDomListener(window, 'load', initialize);
 
