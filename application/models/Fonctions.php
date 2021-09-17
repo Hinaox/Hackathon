@@ -113,7 +113,7 @@
       $limite = 1;
       $title = '%'.$titre.'%';
       if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
-      $query = "select * from %s where titre like %s limit %s,%s";
+      $query = "select * from %s where titre like '%s' limit %s,%s";
       $query = sprintf($query,$type,$title,$limite,$nbPage);
       $result = $this->db->query($query);
       $i = 0;
@@ -123,7 +123,7 @@
         $retour[$i]=$row;
         $i++;
       }
-      $result->freeResult();
+      $result->free_Result();
       return $retour;
     }
   
@@ -232,7 +232,7 @@
         return $retour;
       }
 
-      public function advancedSearchContent($titre,$categorie,$descri,$auteur,$nbdate,$nbPage,$type)      
+      public function advancedSearchContent($titre,$categorie,$descri,$auteur,$nbdate,$pgActuel,$nbPage,$type)      
       {
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
@@ -269,7 +269,7 @@
           $retour[$i]=$row;
           $i++;
         }
-        $result->freeResult();
+        $result->free_Result();
         return $retour;
       }
 

@@ -41,43 +41,30 @@
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-md-10 pb-4">
-                        <h2 class="h2">Résultat(s) de Recherche pour : Maki"</h2>
-                        
+                        <h2 class="h2">Valin'ny fikarohana ho an'ny :<?php echo $titre; ?></h2>
                     </div>
                     
                 </div>
                 <div class="row">
-                    <h4 class="h4">Lahatsoratra</h4>
+                    <h4 class="h4">Boky mikasika izany</h4>
+                    <?php foreach($resultLivre as $livre) { ?>
                     <div class="col-12 col-md-4 mb-4">
                         <div class="card h-100">
-                            <a href="<?php echo base_url('controller/ficheLivre'); ?>">
-                                <img src="<?php echo site_url("assets/img/feature_prod_02.jpg") ?>" class="card-img-top" alt="...">
+                            <a href="<?php echo site_url("controller/ficheLivre?id=".$livre['idcontenu']."&type=livre");  ?>">
+                                <img src="<?php echo site_url("assets/img/").'/'.$livre["photo"].'1.png' ?>" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <a href="<?php echo base_url('controller/ficheLivre'); ?>" class="h2 text-decoration-none text-dark">Lahatsoratra</a>
+                                <a href="<?php echo site_url("controller/ficheLivre?id=".$livre['idcontenu']."&type=livre");  ?>" class="h2 text-decoration-none text-dark"><?php echo $livre["titre"]; ?></a>
                                 <p class="card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
+                                    <?php echo $livre["texte"]; ?>
                                 </p>
-                                <p class="text-muted">Isan ny nijery(24)</p>
+                                <p class="text-muted">Isan ny nijery(<?php echo $livre["visites"]; ?>)</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 mb-4">
-                        <div class="card h-100">
-                            <a href="<?php echo base_url('controller/ficheLivre'); ?>">
-                                <img src="<?php echo site_url("assets/img/feature_prod_01.jpg") ?>" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <a href="<?php echo base_url('controller/ficheLivre'); ?>" class="h2 text-decoration-none text-dark">Gym Weight</a>
-                                <p class="card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
-                                </p>
-                                <p class="text-muted">Isan ny nijery(24)</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
                     
-                </div>
+            </div>
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
                         <li class="page-item disabled">
@@ -92,11 +79,12 @@
                     </ul>
                 </div>
                 <div class="row">
-                    <h4 class="h4">Boky mikasika izany </h4>
+                    <h4 class="h4">Lahatsoratra</h4>
+                    <?php foreach($resultArticle as $article) { ?>
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
                             <div class="card rounded-0">
-                            <a href="<a href="<?php echo base_url('controller/ficheLivre'); ?>"><img class="card-img rounded-0 img-fluid" src="<?php echo site_url('assets/img/shop_01.jpg'); ?>"></a>
+                            <a href="<a href="<?php echo site_url("controller/ficheLivre?id=".$article['idcontenu']."&type=article");  ?>"><img class="card-img rounded-0 img-fluid" src="<?php echo site_url("assets/img/").'/'.$article["photo"].'1.png' ?>"></a>
                             <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
@@ -104,47 +92,14 @@
                             </div>    
                             </div>
                             <div class="card-body">
-                                <p style="text-align:center" ><a href="<?php echo base_url('controller/ficheLivre'); ?>" class="h3 text-decoration-none">Lavakombarika</a></p>
+                                <p style="text-align:center" ><a href="<?php echo site_url("controller/ficheLivre?id=".$article['idcontenu']."&type=article"); ?>" class="h3 text-decoration-none"><?php echo $article["titre"] ?></a></p>
                                 <br>
-                                <p style="text-align:center"><a class="btn btn-success" href="<?php echo base_url('controller/ficheLivre'); ?>">Hijery</a></p>
+                                <p style="text-align:center"><a class="btn btn-success" href="<?php echo site_url("controller/ficheLivre?id=".$article['idcontenu']."&type=article"); ?>">Hijery</a></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                            <a href="<a href="<?php echo base_url('controller/ficheLivre'); ?>"><img class="card-img rounded-0 img-fluid" src="<?php echo site_url('assets/img/shop_02.jpg'); ?>"></a>
-                            <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                    </ul>
-                            </div>
-                            </div>
-                            <div class="card-body">
-                                <p style="text-align:center" ><a href="<?php echo base_url('controller/ficheLivre'); ?>" class="h3 text-decoration-none">Lavakombarika</a></p>
-                                <br>
-                                <p style="text-align:center"><a class="btn btn-success" href="<?php echo base_url('controller/ficheLivre'); ?>">Hijery</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <a href="<a href="<?php echo base_url('controller/ficheLivre'); ?>"><img class="card-img rounded-0 img-fluid" src="<?php echo site_url('assets/img/shop_03.jpg'); ?>"></a>
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                    </ul>
-                            </div>    
-                            </div>
-                            <div class="card-body">
-                                <p style="text-align:center" ><a href="<?php echo base_url('controller/ficheLivre'); ?>" class="h3 text-decoration-none">Lavakombarika</a></p>
-                                <br>
-                                <p style="text-align:center"><a class="btn btn-success" href="<?php echo base_url('controller/ficheLivre'); ?>">Hijery</a></p>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
+                    <?php } ?>
+                   
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
                         <li class="page-item disabled">

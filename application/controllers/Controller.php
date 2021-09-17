@@ -124,10 +124,7 @@ class Controller extends CI_Controller {
 		$data['page']='article';
 		$this->load->view('template',$data);
 	}
-	public function recherche(){
-		$data['page']='resultatRecherche';
-		$this->load->view('template',$data);
-	}
+
 	public function insertion(){
 		$data['page']='insertion';
 		$this->load->view('template',$data);
@@ -497,8 +494,33 @@ class Controller extends CI_Controller {
 
 	public function rechercheAvance(){
 		$data['page']='rechercheAvancer';
+		$data['cat']=$this->Fonctions->getCategorie();	
 		$this->load->view('template',$data);
-		//this is test
+	}
+	public function result()
+	{
+		$data['page']='resultatRecherche';
+		$titre = $this->input->post('titre');
+		$categ = $this->input->post('cat');
+		$auteur = $this->input->post('auteur');
+		$daty= $this->input->post('daty');
+		$texte = $this->input->post('texte');
+		$data['cat']=$this->Fonctions->getCategorie();
+		$data['resultLivre']=$this->Fonctions->advancedSearchContent($titre,$categ,$texte,$auteur,$daty,0,3,'livre');
+		$data['resultArticle']=$this->Fonctions->advancedSearchContent($titre,$categ,$texte,$auteur,$daty,0,3,'article');
+		$data["titre"]=$titre;
+		$this->load->view('template',$data);
+	}
+	public function recherche()
+	{
+		$titre = $this->input->post('titre')!=null ? $this->input->post('titre') : "null";
+		$resultLivre=$this->Fonctions->simpleSearchContent($titre,"livre",0,3);
+		$resultArticle=$this->Fonctions->simpleSearchContent($titre,"article",0,3);
+		$data['page']='resultatRecherche';
+		$data['titre']=$titre;
+		$data['resultLivre']=$resultLivre;
+		$data['resultArticle']=$resultArticle;
+		$this->load->view('template',$data);
 	}
 
 	public function insererArticle()
