@@ -134,9 +134,48 @@ class Controller extends CI_Controller {
 	}
 
 
-	public function upload()
+	public function uploadPDF()
 	{
-		if ($$_FILES["nomfichier"]["size"] < 20000) 
+		if ($$_FILES["fichier"]["size"] < 20000) 
+		{
+			if ($_FILES["fichier"]["error"] > 0)
+			{
+				switch ($_FILES['fichier']['error'])
+				{
+					case 1: // UPLOAD_ERR_PARTIAL
+					  echo "Tsy tontonsa hatramin'ny farany ny fangatahanao !";
+					  break;
+					case 2: // UPLOAD_ERR_NO_FILE
+					  echo "Tsy misy lanjany ny  fampitanao !";
+					  break;
+				}
+			}
+		  else
+			{
+				$nom = $_FILES['fichier']['name'];
+				$nomUpload = $_FILES['fichier']['tmp_name'];
+				// var_dump($nom);
+				$nomdestination = site_url('assets/pdf/'.nom.'');
+				move_uploaded_file($nomUpload, $nomdestination);
+				echo "tontonsa ny fampitanao";
+			
+				if (file_exists("upload/" . $_FILES["fichier"]["name"]))
+				{
+					echo "efa misy anarana mitovy amin'ny ".$_FILES["fichier"]["name"]." ao";
+				}
+			}
+			
+		}
+		else
+		{
+			echo "tsy mety ny lahatsoratra ampitanao";
+		}
+		
+	}
+
+	public function uploadPics()
+	{
+		if ($_FILES["nomfichier"]["size"] < 20000) 
 		{
 			if ($_FILES["nomfichier"]["error"] > 0)
 			{
@@ -155,13 +194,13 @@ class Controller extends CI_Controller {
 				$nom = $_FILES['nomfichier']['name'];
 				$nomUpload = $_FILES['nomfichier']['tmp_name'];
 				// var_dump($nom);
-				$nomdestination = site_url('assets/pdf/'.nom.'');
+				$nomdestination = 'F:/Info Mendrika/ITU LECONS/Rojo/PHP/05-php-S1/UwAmp/www/Hackathon/assets/img/'.$nom.'';
 				move_uploaded_file($nomUpload, $nomdestination);
 				echo "tontonsa ny fampitanao";
 			
-				if (file_exists("upload/" . $_FILES["file"]["name"]))
+				if (file_exists("upload/" . $_FILES["nomfichier"]["name"]))
 				{
-					echo "efa misy anarana mitovy amin'ny ".$_FILES["file"]["name"]." ao";
+					echo "efa misy anarana mitovy amin'ny ".$_FILES["nomfichier"]["name"]." ao";
 				}
 			}
 			
@@ -216,18 +255,6 @@ class Controller extends CI_Controller {
 			$j++;
 		}
 		$data['video']=$this->Fonctions->getVideo();
-
-		// $pg=$this->input->get('pg');
-		// $nbParPage = 3;
-		// $pageActuel = 1;
-		// if($pg != null)
-		// {
-		// 	$pageActuel = $pg;
-		// }
-
-		// $livre="livre";
-
-		// $data['livre']=$this->Fonctions->getAllContent($pageActuel,$nbParPage,$livre);
 
 
 
@@ -331,6 +358,7 @@ class Controller extends CI_Controller {
 	//controller vers les pages d'insertion
 
 	public  function insertion_livre(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='insertion';
 		$data['page_insertion']='insertion_livre';
 		$this->load->view('template',$data);
@@ -391,9 +419,68 @@ class Controller extends CI_Controller {
 		$data['article']=$retourarticle;
 		$this->load->view('accueil_fpdf',$data);
 	}
+
+	public function insertBook()
+	{
+		$livre = "livre";
+		$photo = $_FILES['nomfichier']['name'];
+		$pdf = $_FILES['fichier']['name'];
+		// echo "fichier ".$fichier;
+		$titre = $this->input->post('titre');
+		$categ = $this->input->post('categorie');
+		$auteur = $this->input->post('auteur');
+		$texte = $this->input->post('texte');
+		$prix = 0;
+		$idadmin = null;
+		$iduser = null;
+		$video = null;
+		$audio = null;
+		if($auteur == null)
+		{
+			$auteur = null;
+		}
+		$this->Fonctions->insertContent($titre,$texte,$auteur,$categ,$livre,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin);
+		$this->uploadPics();
+		$this->uploadPDF();
+
+		$article="article";
+		$i=0;
+		$data['categ']=$this->Fonctions->getCategorie();
+		$data['article']=$this->Fonctions->getAllContent(0,3,$article);
+		foreach($data['article'] as $article)
+		{
+			$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
+			$i++;
+		}
+		$livre="livre";
+		$data['livre']=$this->Fonctions->getAllContent(0,3,$livre);
+		$data['livre_image']=array();
+		$j=0;
+		foreach($data['livre'] as $livre)
+		{
+			$data['livre_image'][$j]=$this->Picture->getPrincipalPics($livre['photo']);
+			$j++;
+		}
+		$data['video']=$this->Fonctions->getVideo();
+
+
+
+		$data['page']='contenu';
+		$this->load->view('template',$data);
+
+	}
+
 	public function rechercheAvance(){
 		$data['page']='rechercheAvancer';
 		$this->load->view('template',$data);
 		//this is test
+	}
+
+	public function insererArticle()
+	{
+		$data["confirm"]="tafiditra!";
+		$data['page']='insertion';
+		$data['page_insertion']='insertion_article';
+		$this->load->view('template',$data);
 	}
 }
