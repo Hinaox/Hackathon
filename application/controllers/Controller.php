@@ -325,7 +325,7 @@ class Controller extends CI_Controller {
 	{
 		$retourlivre=array();
 		$retourarticle=array();
-		$categorie=$this->Fonctions->getCategorieFpdf();
+		$categorie=$this->Fonctions->getCategorie();
 		$i=0;
 		$nb=1;
 		foreach($categorie as $cat)
@@ -346,7 +346,7 @@ class Controller extends CI_Controller {
 		$nbar=1;
 		foreach($categorie as $cat)
 		{
-			$retourarticle[$ar]=$nbar."-".strtoupper($cat['nom']);
+			$retourarticle[$ar]=$nbar."-".strtoupper($cat['nom']);	
 			$articl=$this->Fonctions->getAllContentByCat($cat['nom'],'article');
 			$ar++;
 
@@ -358,38 +358,13 @@ class Controller extends CI_Controller {
 
 			$nbar++;
 		}
-
-		$bookPdf=array();
-		$picBook=array();	
-		$myBook=$this->Fonctions->getAllContentFpdf("livre");
-		$b=0;
-		foreach($myBook as $myBookPdf)
-		{
-			$bookPdf[$b]=$myBookPdf;
-			$picBook[$b]=$this->Picture->getPrincipalPics($myBookPdf['photo']);
-			$picBook[$b]=explode(".",$picBook[$b])[0];
-			$b++;
-		}
-		$articlePdf=array();
-		$picArticle=array();
-		$myArticle=$this->Fonctions->getAllContentFpdf("article");
-		$a=0;
-		foreach($myArticle as $myArPdf)
-		{
-			$articlePdf[$a]=$myArPdf;
-			$picArticle[$a]=$this->Picture->getPrincipalPics($myArPdf['photo']);
-			$a++;
-		}
-		$data['articlePdf']=$articlePdf;
-		$data['bookPdf']=$bookPdf;
 		$data['livre']=$retourlivre;
 		$data['article']=$retourarticle;
-		$data['picBook']=$picBook;
-		$data['picArticle']=$picArticle;
 		$this->load->view('accueil_fpdf',$data);
 	}
 	public function rechercheAvance(){
 		$data['page']='rechercheAvancer';
 		$this->load->view('template',$data);
+		//this is test
 	}
 }
