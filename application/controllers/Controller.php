@@ -424,7 +424,9 @@ class Controller extends CI_Controller {
 		{
 			$bookPdf[$b]=$myBookPdf;
 			$picBook[$b]=$this->Picture->getPrincipalPics($myBookPdf['photo']);
-			$picBook[$b]=explode(".",$picBook[$b])[0];
+			$string=explode(".",$picBook[$b]);
+			$picBook[$b]=$string[0];
+
 			$b++;
 		}
 		$articlePdf=array();
@@ -508,6 +510,7 @@ class Controller extends CI_Controller {
 		$data['page_insertion']='insertion_article';
 		$this->load->view('template',$data);
 	}
+
 	public function deconnect()
 	{
 		$this->Fonctions->deconnect();
@@ -531,6 +534,5 @@ class Controller extends CI_Controller {
 			$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
 			$i++;
 		}
-		$this->load->view('template',$data);
-	}
+
 }
