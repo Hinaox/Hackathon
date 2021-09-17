@@ -26,23 +26,23 @@
                         <div style="">
                             <form action="<?php echo base_url('Controller/authentification'); ?>" method="post">
                                 <div>
-                                    <input id="champ_email_client" name="email" type="text" placeholder="Mailaka" />
+                                    <input id="champ_email_client" name="email" type="text" placeholder="Mailaka" value="Rakoto@gmail.com"/>
                                 </div>
                                 <div>
-                                    <input id="champ_mdp_client" name="mdp" type="password" placeholder="Teny Miafina" />
+                                    <input id="champ_mdp_client" name="mdp" type="password" placeholder="Teny Miafina" value="mdp" />
                                 </div>
-                                <?php if (isset($erreur)) 
+                                <?php if (isset($erreur))
                                 {
                                     echo $erreur;
-                                }    
+                                }
                                 ?>
                                 <div class="d-flex ">
                                     <button id="bt_connect_client">
                                         Miditra
                                     </button>
-                                    
+
                                 </div>
-                                
+
                             </form>
                             <center><a href="<?php echo site_url('controller/inscription')?>">Tsy Mbola manana kaonty ? Hamorina</a></center>
                             <br>
@@ -50,11 +50,11 @@
                     </div>
                 </div>
             </div>
-            
-            
+
+
           </form>
         </div>
         <p></p>
-        
+
     </div>
 </section>

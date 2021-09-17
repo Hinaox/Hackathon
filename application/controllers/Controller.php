@@ -103,7 +103,7 @@ class Controller extends CI_Controller {
 				$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
 				$i++;
 			}
-	
+
 			$data['article_visited']=$this->Fonctions->contentOrderByVisite($article);
 			$data['article_image']=array();
 			$i=0;
@@ -136,7 +136,7 @@ class Controller extends CI_Controller {
 
 	public function uploadPDF()
 	{
-		if ($$_FILES["fichier"]["size"] < 20000) 
+		if ($$_FILES["fichier"]["size"] < 20000)
 		{
 			if ($_FILES["fichier"]["error"] > 0)
 			{
@@ -158,24 +158,24 @@ class Controller extends CI_Controller {
 				$nomdestination = site_url('assets/pdf/'.nom.'');
 				move_uploaded_file($nomUpload, $nomdestination);
 				echo "tontonsa ny fampitanao";
-			
+
 				if (file_exists("upload/" . $_FILES["fichier"]["name"]))
 				{
 					echo "efa misy anarana mitovy amin'ny ".$_FILES["fichier"]["name"]." ao";
 				}
 			}
-			
+
 		}
 		else
 		{
 			echo "tsy mety ny lahatsoratra ampitanao";
 		}
-		
+
 	}
 
 	public function uploadPics()
 	{
-		if ($_FILES["nomfichier"]["size"] < 20000) 
+		if ($_FILES["nomfichier"]["size"] < 20000)
 		{
 			if ($_FILES["nomfichier"]["error"] > 0)
 			{
@@ -197,44 +197,44 @@ class Controller extends CI_Controller {
 				$nomdestination = 'F:/Info Mendrika/ITU LECONS/Rojo/PHP/05-php-S1/UwAmp/www/Hackathon/assets/img/'.$nom.'';
 				move_uploaded_file($nomUpload, $nomdestination);
 				echo "tontonsa ny fampitanao";
-			
+
 				if (file_exists("upload/" . $_FILES["nomfichier"]["name"]))
 				{
 					echo "efa misy anarana mitovy amin'ny ".$_FILES["nomfichier"]["name"]." ao";
 				}
 			}
-			
+
 		}
 		else
 		{
 			echo "tsy mety ny lahatsoratra ampitanao";
 		}
-		
+
 	}
 
 	public function download()
 	{
 		$file_name=$this->input->post('download');
 		echo "file : ".$file_name;
-		$url = site_url('assets/pdf/'.$file_name.''); 
+		$url = site_url('assets/pdf/'.$file_name.'');
 		echo "url : ".$url;
 
 		// $fichier_nom = basename($url);
 		$fichier_contenu = file_get_contents($url);
 		// $dossier_enregistrement = "telechargement/";
 
-		// if(file_put_contents($dossier_enregistrement . $fichier_nom, $fichier_contenu)) 
-		// { 
-		// 	echo "Fichier téléchargé avec succès"; 
-		// } 
-		// else 
-		// { 
-		// 	echo "Fichier non téléchargé"; 
-		// } 
+		// if(file_put_contents($dossier_enregistrement . $fichier_nom, $fichier_contenu))
+		// {
+		// 	echo "Fichier téléchargé avec succès";
+		// }
+		// else
+		// {
+		// 	echo "Fichier non téléchargé";
+		// }
 		force_download($file_name,$url);
 	}
 
-	
+
 	public function contenu(){
 		$article="article";
 		$i=0;
@@ -382,7 +382,7 @@ class Controller extends CI_Controller {
 	{
 		$retourlivre=array();
 		$retourarticle=array();
-		$categorie=$this->Fonctions->getCategorie();
+		$categorie=$this->Fonctions->getCategorieFpdf();
 		$i=0;
 		$nb=1;
 		foreach($categorie as $cat)
@@ -403,7 +403,7 @@ class Controller extends CI_Controller {
 		$nbar=1;
 		foreach($categorie as $cat)
 		{
-			$retourarticle[$ar]=$nbar."-".strtoupper($cat['nom']);	
+			$retourarticle[$ar]=$nbar."-".strtoupper($cat['nom']);
 			$articl=$this->Fonctions->getAllContentByCat($cat['nom'],'article');
 			$ar++;
 
@@ -415,11 +415,38 @@ class Controller extends CI_Controller {
 
 			$nbar++;
 		}
+
+		$bookPdf=array();
+		$picBook=array();
+		$myBook=$this->Fonctions->getAllContentFpdf("livre");
+		$b=0;
+		foreach($myBook as $myBookPdf)
+		{
+			$bookPdf[$b]=$myBookPdf;
+			$picBook[$b]=$this->Picture->getPrincipalPics($myBookPdf['photo']);
+			$string=explode(".",$picBook[$b]);
+			$picBook[$b]=$string[0];
+
+			$b++;
+		}
+		$articlePdf=array();
+		$picArticle=array();
+		$myArticle=$this->Fonctions->getAllContentFpdf("article");
+		$a=0;
+		foreach($myArticle as $myArPdf)
+		{
+			$articlePdf[$a]=$myArPdf;
+			$picArticle[$a]=$this->Picture->getPrincipalPics($myArPdf['photo']);
+			$a++;
+		}
+		$data['articlePdf']=$articlePdf;
+		$data['bookPdf']=$bookPdf;
 		$data['livre']=$retourlivre;
 		$data['article']=$retourarticle;
+		$data['picBook']=$picBook;
+		$data['picArticle']=$picArticle;
 		$this->load->view('accueil_fpdf',$data);
 	}
-
 	public function insertBook()
 	{
 		$livre = "livre";
@@ -477,5 +504,76 @@ class Controller extends CI_Controller {
 		$data['page']='rechercheAvancer';
 		$this->load->view('template',$data);
 		//this is test
+	}
+
+	public function insererArticle()
+	{
+		$data["confirm"]="tafiditra!";
+		$data['page']='insertion';
+		$data['page_insertion']='insertion_article';
+		$this->load->view('template',$data);
+	}
+	public function loginAdmin(){
+		$data['page']='login_admin';
+		$this->load->view('template',$data);
+	}
+	public function connectAdmin(){
+		$login = $this->input->post('email');
+		$mdp = $this->input->post('mdp');
+		$livre = "livre";
+		$article = "article";
+		$data['admin'] = $this->Fonctions->tcheckLoginAdmin($login,$mdp);
+		if( $data['admin'] == "ok")
+		{
+			$data['page']='accueil';
+			$data['book_visited']=$this->Fonctions->contentOrderByVisite($livre);
+			$data['nom_image']=array();
+			$i=0;
+			foreach($data['book_visited'] as $book)
+			{
+				$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
+				$i++;
+			}
+
+			$data['article_visited']=$this->Fonctions->contentOrderByVisite($article);
+			$data['article_image']=array();
+			$i=0;
+			foreach($data['article_visited'] as $article)
+			{
+				$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
+				$i++;
+			}
+		}
+		else
+		{
+			$data['erreur'] = "Diso ny mailaka na ny teny miafina !!!";
+			$data['page']='loginAdmin';
+		}
+		$this->load->view('template',$data);
+	}
+	public function deconnect()
+	{
+		$this->Fonctions->deconnect();
+		$data['page']='accueil';
+		$livre = "livre";
+		$data['book_visited']=$this->Fonctions->contentOrderByVisite($livre);
+		$data['nom_image']=array();
+		$i=0;
+		foreach($data['book_visited'] as $book)
+		{
+			$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
+			$i++;
+		}
+
+		$article = "article";
+		$data['article_visited']=$this->Fonctions->contentOrderByVisite($article);
+		$data['article_image']=array();
+		$i=0;
+		foreach($data['article_visited'] as $article)
+		{
+			$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
+			$i++;
+		}
+		$this->load->view('template',$data);
 	}
 }

@@ -6,13 +6,16 @@
     }
   </style>
 
-  
+
+
 <div class="container py-5">
     <h2 style="text-align:center" class="h2" >Fampidirina Lahatsoratra</h2>
     <br>
     <hr>
     <div class="row py-5">
-        <form action="#" class="col-md-9 m-auto" method="post" role="form" enctype="multipart/form-data">
+        <form class="col-md-9 m-auto" method="post" action="insererArticle" >
+            <input type="hidden" name="latitude" id="latitude" value="">
+            <input type="hidden" name="longitude" id="longitude" value="">
             <h3 class="h3">Hampiditra sary : </h3>
                 <br>
                 <div class="row">   
@@ -47,23 +50,14 @@
             <h3 class="row">Hampiditra ny misy azy amin'ny sari-tany : </h3>
             <section class="contact_section layout_padding-bottom layout_padding2-top">
                 <div class="container container-bg">
-                <div class="row">
-                    <div class="col-lg-8 col-md-7 px-0" style="height:500px" >
-                    <div id="carteId">LA CARTE</div>
-                    </div>
-                    <div class="col-md-5 col-lg-4 px-0">
-                        <p>Marquage des articles sur la carte</p>
-                        <button class="btn btn-success btn-lg px-3" >Annuler</button>
-                        
+                    <div class="row">
+                        <div class="col-lg-8 col-md-7 px-0" style="height:500px" >
+                            <div id="carteId">LA CARTE</div>
+                        </div>
                     </div>
                 </div>
-                </div>
+                <button class="btn btn-success btn-lg px-3">Mampiditra</button>
             </section>
-            <div class="row">
-                <div class="col text-end mt-2">
-                    <button type="submit" class="btn btn-success btn-lg px-3">Mampiditra</button>
-                </div>
-            </div>
         </form>
     </div>
 </div>
@@ -77,37 +71,38 @@
 <script type="text/javascript" src="<?php echo site_url("assets/js/bootstrap.js") ?>"></script>
 <script type="text/javascript" src="<?php echo site_url("assets/js/owl.carousel.min.js") ?>"></script>
 <script type="text/javascript" src="<?php echo site_url("assets/js/custom.js") ?>"></script>
+
 <script type="text/javascript">
-function initialize() {
-    var mapOptions =
-      {
-          center: new google.maps.LatLng(-18.9651023,46.3496537),
+    function initialize() {
+
+      var mapOptions = {
+        center: new google.maps.LatLng(-18.9651023,46.3496537),
           zoom: 6,
-          mapTypeId:google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.HYBRID
       };
-    var carte = new google.maps.Map(document.getElementById("carteId"),
-    mapOptions);
-
-  var liste = new Array();
-//atsofoka eto le data avy any am base
-  //alert(liste.length);
-  for(let i = 0; i < liste.length; i++){
-    marks = new google.maps.Marker({
-      position:liste[i], //coordonnée de la position du clic sur la carte
-      map: carte, //la carte sur laquelle le marqueur doit être affiché
-    });
-  }
-}
-      google.maps.event.addDomListener(window, 'load', initialize);
-
- function getCoordinates(carte) {
-          google.maps.event.addListener(carte,"click",function(event){
-            var lat=event.latLng.lat();
-            var lng=event.latLng.lng();
-            console.log(lng);
-            alert( lat +" , " +lng);
-            var location = new google.maps.LatLng(lat,lng);
-            return location;
+      var carte = new google.maps.Map(document.getElementById("carteId"), mapOptions);
+      var lat = [];
+      var lng = [];
+      google.maps.event.addListener(carte, 'click', function(event) {
+        if (lat.length < 5) {
+          let marker = new google.maps.Marker({
+            position: event.latLng,
+            map: carte,
+            draggable: true
           });
+          google.maps.event.addListener(marker, 'drag', function(event) {
+            label = {
+              color: "white",
+              text: event.latLng.toString(),
+              fontWeight: "bold"
+            }
+            marker.setLabel(label);
+          })
+          lat.push(marker.getPosition().lat());
+          lng.push(marker.getPosition().lng());
         }
-</script>
+      });
+
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>

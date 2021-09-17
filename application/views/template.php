@@ -2,6 +2,7 @@
   if (!isset($page) || $page == null ) {
       $page = 'accueil';
   }
+  // var_dump($_SESSION['admin']);
   // echo $page;
 ?>
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
+
     <!-- <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
@@ -26,7 +27,6 @@
 
     <link href="<?php echo site_url("assets/css/bootstrap.css") ?>" rel="stylesheet">
     <link href="<?php echo site_url("assets/css/style.css") ?>" rel="stylesheet">
-    
     <link href="<?php echo site_url("assets/css/responsive.css") ?>" rel="stylesheet">
 
     <link href="<?php echo site_url("assets/css/bootstrap.min.css") ?>" rel="stylesheet">
@@ -45,7 +45,7 @@
 
     <link href="<?php echo site_url("assets/css/fontawesome.min.css") ?>" rel="stylesheet">
 <!--
-    
+
 TemplateMo 559 Zay Shop
 
 https://templatemo.com/tm-559-zay-shop
@@ -64,16 +64,16 @@ https://templatemo.com/tm-559-zay-shop
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">+261 34 34 334 34</a>
                 </div>
-                
+
                 <div>
                     <a class="text-light" href="https://fb.com/" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
                     <a class="text-light mr-5" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
-                    
+
                     <a class="btn  bg-success text-light" href="<?php echo site_url('controller/loadFPDF'); ?>">Mamadika ho Boky</a>
                   </div>
-                
+
             </div>
         </div>
     </nav>
@@ -84,7 +84,7 @@ https://templatemo.com/tm-559-zay-shop
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="#">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="<?php echo site_url('controller/index'); ?>">
              <img src="<?php echo site_url("assets/img/logo.png") ?>" >
             </a>
 
@@ -118,14 +118,13 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    
+                    <?php if( (!isset($_SESSION['admin'])) && (!isset($_SESSION['user']))) { ?>
                     <a class="nav-icon position-relative text-decoration-none" href="<?php echo base_url('Controller/login'); ?>">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span> -->
-                    Hiditra |
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">Hivoaka</a>
-
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>Miditra</a>
+                    <?php } ?>
+                    <?php if(isset($_SESSION['admin']) || isset($_SESSION['user'])){ ?>
+                      <a class="nav-icon position-relative text-decoration-none" href="<?php echo site_url('controller/deconnect') ?>">Mivoaka</a>
+                    <?php } ?>
 
                 </div>
             </div>
@@ -143,14 +142,14 @@ https://templatemo.com/tm-559-zay-shop
             <form action="" method="get" class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
                     <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Hikaroka ...">
-                    
+
                     <button type="submit" class="input-group-text bg-success text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>
                     <a class="btn btn-dark btn-lg px-3" href="<?php echo site_url('controller/rechercheAvance'); ?>">Hikaroka an-tsipirihiny</a>
                 </div>
             </form>
-            
+
         </div>
     </div>
 
@@ -169,7 +168,7 @@ https://templatemo.com/tm-559-zay-shop
                     <h2 class="h2 text-success border-bottom pb-3 border-light logo">WikiMad</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
-                            <i class="fas fa-map-marker-alt fa-fw"></i> 
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
                             Madagasikara
                         </li>
                         <li>
@@ -189,7 +188,7 @@ https://templatemo.com/tm-559-zay-shop
                         <li><a class="text-decoration-none" href="#">Lahatsoratra</a></li>
                         <li><a class="text-decoration-none" href="#">Horonam-Peo</a></li>
                         <li><a class="text-decoration-none" href="#">Horonan-Tsary</a></li>
-                        
+
                     </ul>
                 </div>
 
@@ -225,13 +224,13 @@ https://templatemo.com/tm-559-zay-shop
             </div>
     </div>
 
-        <div class="w-100 bg-black py-3"> 
+        <div class="w-100 bg-black py-3">
             <div class="container">
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light">
                             Copyright &copy; 2021 WikiMadagasikara
-                            | Namboarin'ny <a rel="sponsored" href="#" target="_blank">WeFly</a>
+                            | Namboarin'ny <a rel="sponsored" href="<?php echo site_url('controller/index'); ?>" target="_blank">WeFly</a>
                         </p>
                     </div>
                     <a class="btn  bg-success text-light" href="<?php echo site_url('controller/loadFPDF'); ?>">Version PDF</a>
@@ -240,7 +239,7 @@ https://templatemo.com/tm-559-zay-shop
         </div>
 
     </footer>
-    
+
     <!-- End Footer -->
 
     <!-- Start Script -->
@@ -259,7 +258,7 @@ https://templatemo.com/tm-559-zay-shop
     <script src="<?php echo site_url("assets/js/custom.js") ?>"></script>
 
 
-    
+
     <script src="<?php echo site_url("assets/js/jquery.jplayer.min.js") ?>"></script>
     <script src="<?php echo site_url("assets/js/wavesurfer.min.js") ?>"></script>
     <script src="<?php echo site_url("assets/js/WaveSurferInit.js") ?>"></script>

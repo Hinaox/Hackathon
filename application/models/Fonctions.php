@@ -16,7 +16,20 @@
     //   $query->freeResult();
     //   return $retour;
     // }
-
+    public function getCategorieFpdf()
+    {
+      $query = "select * from categorie order by nom asc";
+      $result = $this->db->query($query);
+      $i=0;
+      $retour = array();
+      foreach($result->result_array() as $row)
+      {
+        $retour[$i]=$row;
+        $i++;
+      }
+      $result->free_Result();
+      return $retour;
+    }
     public function getContentById($id,$type)
     {
       // $limit = 1;
@@ -113,7 +126,7 @@
       $result->freeResult();
       return $retour;
     }
-  
+
 
       public function getAllContent($pgActuel,$nbPage,$type)
       {
@@ -219,7 +232,7 @@
         return $retour;
       }
 
-      public function advancedSearchContent($titre,$categorie,$descri,$auteur,$nbdate,$nbPage,$type)      
+      public function advancedSearchContent($titre,$categorie,$descri,$auteur,$nbdate,$nbPage,$type)
       {
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
@@ -322,7 +335,6 @@
       public function deconnect()
       {
         $this->session->sess_destroy();
-        redirect(site_url());
       }
 
       public function tcheckLoginAdmin($login,$mdp)
