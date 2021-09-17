@@ -20,39 +20,6 @@ class Controller_admin extends CI_Controller {
 	 */
 
 	public function indexAdmin(){
-        $article="article";
-		$i=0;
-		$data['categ']=$this->Fonctions->getCategorie();
-		$data['article']=$this->Fonctions->getAllContent(0,3,$article);
-		foreach($data['article'] as $article)
-		{
-			$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
-			$i++;
-		}
-		$livre="livre";
-		$data['livre']=$this->Fonctions->getAllContent(0,3,$livre);
-		$data['livre_image']=array();
-		$j=0;
-		foreach($data['livre'] as $livre)
-		{
-			$data['livre_image'][$j]=$this->Picture->getPrincipalPics($livre['photo']);
-			$j++;
-		}
-		$data['video']=$this->Fonctions->getVideo();
-
-		// $pg=$this->input->get('pg');
-		// $nbParPage = 3;
-		// $pageActuel = 1;
-		// if($pg != null)
-		// {
-		// 	$pageActuel = $pg;
-		// }
-
-		// $livre="livre";
-
-		// $data['livre']=$this->Fonctions->getAllContent($pageActuel,$nbParPage,$livre);
-
-
 		$data['pageAdmin']='admin_accueil';
 		$this->load->view('template_admin',$data);
 	}
