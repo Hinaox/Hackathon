@@ -66,12 +66,17 @@ https://templatemo.com/tm-559-zay-shop
                 </div>
 
                 <div>
+
                     <a class="text-light" href="https://fb.com/" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
                     <a class="text-light mr-5" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
 
-                    <a class="btn  bg-success text-light" href="<?php echo site_url('controller/loadFPDF'); ?>">Mamadika ho Boky</a>
+                    <a class="btn  bg-success text-light mr-4" href="<?php echo site_url('controller/loadFPDF'); ?>">Mamadika ho Boky</a>
+
+                    <a style="text-decoration:none" href="#"><i class="fas fa-globe-europe"></i>  MG |</a>
+                    <a style="text-decoration:none" href="#">FR | </a>
+                    <a style="text-decoration:none" href="#">ANG</a>
                   </div>
 
             </div>
@@ -142,7 +147,7 @@ https://templatemo.com/tm-559-zay-shop
             <form action="<?php echo site_url('Controller/recherche')?>" method="post" class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
                     <input type="text" class="form-control" id="inputModalSearch" name="titre" placeholder="Hikaroka ...">
-                    
+
                     <button type="submit" class="input-group-text bg-success text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>
