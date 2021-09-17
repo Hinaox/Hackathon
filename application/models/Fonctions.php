@@ -56,22 +56,41 @@
       return $retour;
     }
 
-    public function getContentByCat($type,$idCat,$pageActuel,$nbPage)
+    // public function getContentByCat($type,$idCat,$pageActuel,$nbPage)
+    // {
+    //   $limite = 1;
+    //   $categorie='%'.$idCat.'%';
+    //   if($pageActuel != 1)  $limite = $pageActuel * $nbPage;
+    //   $retour = array();
+    //   $i = 0;
+    //   $query ="select * from %s where categories like %s limit %s,%s";
+    //   $query = sprintf($query,$type,$categorie,$limite,$nbPage);
+    //   $result = $this->db->query($query);
+    //   foreach($result->result_array() as $row)
+    //   {
+    //     $retour[$i]=$row;
+    //     $i++;
+    //   }
+    //   $query->freeResult();
+    //   return $retour;
+    // }
+
+    public function getContentByCat($type,$idCat)
     {
-      $limite = 1;
-      $categorie='%'.$categorie.'%';
-      if($pageActuel != 1)  $limite = $pageActuel * $nbPage;
+      // $limite = 1;
+        $categorie="%$idCat%";
+      // if($pageActuel != 1)  $limite = $pageActuel * $nbPage;
       $retour = array();
       $i = 0;
-      $query ="select * from %s where categories like %s limit %s,%s";
-      $query = sprintf($query,$type,$categorie,$limite,$nbPage);
+      $query ="select * from %s where categories like '%s'";
+      $query = sprintf($query,$type,$categorie);
       $result = $this->db->query($query);
       foreach($result->result_array() as $row)
       {
         $retour[$i]=$row;
         $i++;
       }
-      $query->freeResult();
+      $result->free_result();
       return $retour;
     }
 
@@ -118,6 +137,23 @@
         $retour = array();
         $i=0;
         $query = "select titre,video from contenu where video != 'null'";
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
+        {
+            $retour[$i]=$row;
+            $i++;
+        }
+        $result->free_result();
+        return $retour;
+      }
+
+      public function getVideoByCat($categ)
+      {
+        $cat = '%'.$categ.'%';
+        $retour = array();
+        $i=0;
+        $query = "select titre,video from contenu where video != 'null' and categories like '%s'";
+        $query = sprintf($query,$cat);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
         {
