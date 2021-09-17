@@ -414,7 +414,7 @@ class Controller extends CI_Controller {
 		$nbar=1;
 		foreach($categorie as $cat)
 		{
-			$retourarticle[$ar]=$nbar."-".strtoupper($cat['nom']);
+			$retourarticle[$ar]=$nbar."-".strtoupper($cat['nom']);	
 			$articl=$this->Fonctions->getAllContentByCat($cat['nom'],'article');
 			$ar++;
 
@@ -429,5 +429,10 @@ class Controller extends CI_Controller {
 		$data['livre']=$retourlivre;
 		$data['article']=$retourarticle;
 		$this->load->view('accueil_fpdf',$data);
+	}
+	public function rechercheAvance(){
+		$data['page']='rechercheAvancer';
+		$this->load->view('template',$data);
+		//this is test
 	}
 }

@@ -134,6 +134,21 @@
         return $retour;
       }
 
+      public function getAllContentFpdf($type)
+      {
+        $retour = array();
+        $i = 0;
+        $query = "select * from %s order by categories asc";
+        $query = sprintf($query,$type);
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
+        {
+          $retour[$i]=$row;
+          $i++;
+        }
+        $result->free_Result();
+        return $retour;
+      }
       public function getVideo()
       {
         $retour = array();
@@ -262,7 +277,7 @@
         return $retour;
       }
 
-      public function insertContent($titre,$desc,$auteur,$date,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin,$auteur)
+      public function insertContent($titre,$desc,$auteur,$date,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin)
       {
         $etat = "done";
         $visite = 0;
