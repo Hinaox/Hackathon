@@ -9,11 +9,11 @@
 
             <div class="col-lg-3">
                 <h1 class="h2 pb-4">Sokajin'Tahiry</h1>
-                <ul class="list-unstyled templatemo-accordion">
+                <ul>
 
                     <?php for($i=0;$i<count($categ);$i++) {?>
                         <li class="pb-3">
-                            <a class=" h4 text-decoration-none" href="#">
+                            <a href="#"  class=" h4 text-decoration-none">
                             <i class="<?php echo $categ[$i]['icone']; ?>"></i>
                             <?php echo $categ[$i]['nom']; ?>
                             </a>

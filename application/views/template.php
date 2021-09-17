@@ -196,8 +196,8 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Mombamomba</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Accueil</a></li>
-                        <li><a class="text-decoration-none" href="#">A Propos</a></li>
+                        <li><a class="text-decoration-none" href="#">Pejy</a></li>
+                        <li><a class="text-decoration-none" href="#">Ny antom pisiana</a></li>
                     </ul>
                 </div>
 
@@ -234,7 +234,7 @@ https://templatemo.com/tm-559-zay-shop
                             | Namboarin'ny <a rel="sponsored" href="#" target="_blank">WeFly</a>
                         </p>
                     </div>
-                    <a class="btn  bg-success text-light" href="<?php echo site_url('controller/loadFPDF'); ?>">Version PDF</a>
+                    <a class="btn  bg-success text-light" href="<?php echo site_url('controller/loadFPDF'); ?>"> Mamadika ho boky</a>
                 </div>
             </div>
         </div>
