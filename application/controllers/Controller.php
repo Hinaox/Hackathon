@@ -451,22 +451,25 @@ class Controller extends CI_Controller {
 	{
 		$livre = "livre";
 		$photo = $_FILES['nomfichier']['name'];
+		$name = explode(".",$photo);
+		$vName = $name[0];
 		$pdf = $_FILES['fichier']['name'];
-		// echo "fichier ".$fichier;
+
 		$titre = $this->input->post('titre');
 		$categ = $this->input->post('categorie');
 		$auteur = $this->input->post('auteur');
 		$texte = $this->input->post('texte');
 		$prix = 0;
-		$idadmin = null;
-		$iduser = null;
-		$video = null;
-		$audio = null;
+		$visite = 0;
+		$idadmin = "NULL";
+		$iduser = "NULL";
+		$video = "NULL";
+		$audio = "NULL";
 		if($auteur == null)
 		{
-			$auteur = null;
+			$auteur = "NULL";
 		}
-		$this->Fonctions->insertContent($titre,$texte,$auteur,$categ,$livre,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin);
+		$this->Fonctions->insertContent($titre,$categ,$livre,$texte,$vName,$video,$audio,$pdf,$visite,$prix,$iduser,$idadmin,$auteur);
 		$this->uploadPics();
 		$this->uploadPDF();
 
