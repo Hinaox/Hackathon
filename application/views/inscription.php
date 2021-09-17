@@ -37,7 +37,7 @@
                 <div class="" style="margin:auto">
                 <br>
                     <h2 style="text-align:center;color:#000" class="h2 border-bottom pb-3 ">Famoronana kaonty</h2>
-                    <form action="<?php echo site_url('ClientController/inscription'); ?>" method="post">
+                    <form action="<?php echo site_url('controller/inscriptionInsert'); ?>" method="post">
                         <div style="display: flex;">
                             <div class="col-md-6">
                                 <input type="text" name="nom" placeholder="Anarana" style="font-size: 15px; padding: 4px;" />
@@ -52,10 +52,8 @@
                         <div class="col-md-12">
                             <input type="password" name="mdp" placeholder="Teny miafina" style="font-size: 15px; padding: 4px;" />
                         </div>
-                        
-                            <button id="bt_connect_client">
-                                Hamorina kaonty
-                            </button>
+
+                            <input type="submit" id="bt_connect_client" value="Hamorina kaonty">
                         </div>
                     </form>
                 </div>

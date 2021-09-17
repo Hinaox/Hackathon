@@ -510,44 +510,7 @@ class Controller extends CI_Controller {
 		$data['page_insertion']='insertion_article';
 		$this->load->view('template',$data);
 	}
-	public function loginAdmin(){
-		$data['page']='login_admin';
-		$this->load->view('template',$data);
-	}
-	public function connectAdmin(){
-		$login = $this->input->post('email');
-		$mdp = $this->input->post('mdp');
-		$livre = "livre";
-		$article = "article";
-		$data['admin'] = $this->Fonctions->tcheckLoginAdmin($login,$mdp);
-		if( $data['admin'] == "ok")
-		{
-			$data['page']='accueil';
-			$data['book_visited']=$this->Fonctions->contentOrderByVisite($livre);
-			$data['nom_image']=array();
-			$i=0;
-			foreach($data['book_visited'] as $book)
-			{
-				$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
-				$i++;
-			}
 
-			$data['article_visited']=$this->Fonctions->contentOrderByVisite($article);
-			$data['article_image']=array();
-			$i=0;
-			foreach($data['article_visited'] as $article)
-			{
-				$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
-				$i++;
-			}
-		}
-		else
-		{
-			$data['erreur'] = "Diso ny mailaka na ny teny miafina !!!";
-			$data['page']='loginAdmin';
-		}
-		$this->load->view('template',$data);
-	}
 	public function deconnect()
 	{
 		$this->Fonctions->deconnect();
@@ -571,6 +534,16 @@ class Controller extends CI_Controller {
 			$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
 			$i++;
 		}
+		$this->load->view('template',$data);
+	}
+
+	public function inscriptionInsert(){
+		$email = $this->input->post('email');
+		$nom = $this->input->post('nom');
+		$prenom = $this->input->post('prenom');
+		$mdp = $this->input->post('mdp');
+		$this->Fonctions->inscription($email,$nom,$prenom,$mdp);
+		$data['page']='login';
 		$this->load->view('template',$data);
 	}
 }

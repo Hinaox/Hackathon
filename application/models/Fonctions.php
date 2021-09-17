@@ -53,7 +53,12 @@
       $query->freeResult();
       return $result;
     }
-
+    public function inscription($mail,$nom,$prenom,$mdp)
+    {
+      $query = "insert into user values (null,'%s','%s','%s',sha1('%s'))";
+      $query = sprintf($query,$mail,$nom,$prenom,$mdp);
+      $this->db->query($query);
+    }
     public function getCategorie()
     {
       $query = "select * from categorie";
