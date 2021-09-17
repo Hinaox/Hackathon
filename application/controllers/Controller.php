@@ -134,7 +134,7 @@ class Controller extends CI_Controller {
 	}
 
 
-	public function upload()
+	public function uploadPDF()
 	{
 		if ($$_FILES["nomfichier"]["size"] < 20000) 
 		{
@@ -162,6 +162,45 @@ class Controller extends CI_Controller {
 				if (file_exists("upload/" . $_FILES["file"]["name"]))
 				{
 					echo "efa misy anarana mitovy amin'ny ".$_FILES["file"]["name"]." ao";
+				}
+			}
+			
+		}
+		else
+		{
+			echo "tsy mety ny lahatsoratra ampitanao";
+		}
+		
+	}
+
+	public function uploadPics()
+	{
+		if ($$_FILES["nomfichier"]["size"] < 20000) 
+		{
+			if ($_FILES["nomfichier"]["error"] > 0)
+			{
+				switch ($_FILES['nomfichier']['error'])
+				{
+					case 1: // UPLOAD_ERR_PARTIAL
+					  echo "Tsy tontonsa hatramin'ny farany ny fangatahanao !";
+					  break;
+					case 2: // UPLOAD_ERR_NO_FILE
+					  echo "Tsy misy lanjany ny  fampitanao !";
+					  break;
+				}
+			}
+		  else
+			{
+				$nom = $_FILES['nomfichier']['name'];
+				$nomUpload = $_FILES['nomfichier']['tmp_name'];
+				// var_dump($nom);
+				$nomdestination = site_url('assets/img/'.nom.'');
+				move_uploaded_file($nomUpload, $nomdestination);
+				echo "tontonsa ny fampitanao";
+			
+				if (file_exists("upload/" . $_FILES["nomfichier"]["name"]))
+				{
+					echo "efa misy anarana mitovy amin'ny ".$_FILES["nomfichier"]["name"]." ao";
 				}
 			}
 			
