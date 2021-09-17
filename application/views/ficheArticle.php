@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_10.jpg'); ?>" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="<?php echo site_url("assets/img/").'/'.$article[0]["photo"].'1.png' ?>" alt="Card image cap" id="product-detail">
                     </div>
                     <div class="row">
                         <!--Start Controls-->
@@ -48,17 +48,17 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_01.jpg'); ?>" alt="Product Image 1">
+                                                <img class="card-img img-fluid" src="<?php echo site_url("assets/img/").'/'.$article[0]["photo"].'1.png' ?>" alt="Product Image 1">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_02.jpg'); ?>" alt="Product Image 2">
+                                                <img class="card-img img-fluid" src="<?php echo site_url("assets/img/").'/'.$article[0]["photo"].'2.png' ?>" alt="Product Image 2">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_03.jpg'); ?>" alt="Product Image 3">
+                                                <img class="card-img img-fluid" src="<?php echo site_url("assets/img/").'/'.$article[0]["photo"].'3.png' ?>" alt="Product Image 3">
                                             </a>
                                         </div>
                                     </div>
@@ -70,17 +70,17 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_04.jpg'); ?> " alt="Product Image 4">
+                                                <img class="card-img img-fluid" src="<?php echo site_url("assets/img/").'/'.$article[0]["photo"].'1.png' ?>" alt="Product Image 4">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_05.jpg'); ?> " alt="Product Image 5">
+                                                <img class="card-img img-fluid" src="<?php echo site_url("assets/img/").'/'.$article[0]["photo"].'2.png' ?>" alt="Product Image 5">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_06.jpg'); ?> " alt="Product Image 6">
+                                                <img class="card-img img-fluid" src="<?php echo site_url("assets/img/").'/'.$article[0]["photo"].'3.png' ?>" alt="Product Image 6">
                                             </a>
                                         </div>
                                     </div>
@@ -92,17 +92,17 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_07.jpg'); ?> " alt="Product Image 7">
+                                                <img class="card-img img-fluid" src="<?php echo site_url("assets/img/").'/'.$article[0]["photo"].'1.png' ?>" alt="Product Image 7">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_08.jpg'); ?> " alt="Product Image 8">
+                                                <img class="card-img img-fluid" src="<?php echo site_url("assets/img/").'/'.$article[0]["photo"].'2.png' ?>" alt="Product Image 8">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo site_url('assets/img/product_single_09.jpg'); ?> " alt="Product Image 9">
+                                                <img class="card-img img-fluid" src="<?php echo site_url("assets/img/").'/'.$article[0]["photo"].'3.png' ?>" alt="Product Image 9">
                                             </a>
                                         </div>
                                     </div>
@@ -126,33 +126,22 @@
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">Lahatsoratra Momban ny Vato</h1>
+                            <h1 class="h2"><?php echo $article[0]['titre']; ?></h1>
                             <p class="py-2">
-                                <span class="list-inline-item text-dark">Nojeren'olona 89  </span>
+                                <span class="list-inline-item text-dark"><?php echo $article[0]['visites']; ?></span>
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Sokajy:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>Angano</strong></p>
+                                    <p class="text-muted"><strong><?php echo $article[0]['categories']; ?></strong></p>
                                 </li>
                             </ul>
 
                             <h6>Mombamomba:</h6>
-                            <p> Généralement, on utilise un texte en faux latin (le texte ne veut rien dire, il a été modifié), le Lorem ipsum ou Lipsum. L'avantage du latin est que l'opérateur sait au premier coup d'œil que la page contenant ces lignes n'est pas valide et que l'attention du lecteur n'est pas dérangée par le contenu, lui permettant de demeurer concentré sur le seul aspect graphique.
-
-Il circule des centaines de versions différentes du lorem ipsum, mais ce texte aurait originellement été tiré de l'ouvrage écrit par Cicéron en 45 av. J.-C., De finibus bonorum et malorum (Liber Primus, 32), texte populaire à cette époque, dont l'une des premières phrases est : « Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit… » (« Il n'existe personne qui aime la souffrance pour elle-même, ni qui la recherche ni qui la veuille pour ce qu'elle est… »).
-
+                            <p> <?php echo $article[0]['texte']; ?>
                             </p>
-
-                            <h6>Specification:</h6>
-                            <ul class="list-unstyled pb-3">
-                                <li>Lorem ipsum dolor sit</li>
-                                <li>Amet, consectetur</li>
-                            </ul>
-
-
                         </div>
                     </div>
                 </div>
@@ -191,7 +180,6 @@ function initialize() {
 
   var liste = new Array();
 //atsofoka eto le data avy any am base
-  alert(liste.length);
   for(let i = 0; i < liste.length; i++){
     marks = new google.maps.Marker({
       position:liste[i], //coordonnée de la position du clic sur la carte

@@ -272,6 +272,13 @@ class Controller extends CI_Controller {
 		$data['page_contenu']='contenu_video';
 		$this->load->view('template',$data);
 	}
+
+	public function contenu_audio(){
+		$data['categ']=$this->Fonctions->getCategorie();
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_audio';
+		$this->load->view('template',$data);
+	}
 	public function contenu_livre(){
 
 		$livre="livre";
@@ -292,12 +299,6 @@ class Controller extends CI_Controller {
 		}
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_livre';
-		$this->load->view('template',$data);
-	}
-	public function contenu_audio(){
-		$data['categ']=$this->Fonctions->getCategorie();
-		$data['page']='contenu';
-		$data['page_contenu']='contenu_audio';
 		$this->load->view('template',$data);
 	}
 	public function contenu_article(){
