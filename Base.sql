@@ -277,3 +277,6 @@ insert into contenu values(NULL,CURRENT_DATE(),"Mitaraina ny tany","toerana","li
 insert into contenu values(NULL,CURRENT_DATE(),"Titre","Categorie","type",
 "descri descri descri "
 ,"photo","video","audio","pdf","done/no",12,7000,NULL,NULL,NULL);
+
+
+ update livre set photo='default' where photo is null;
