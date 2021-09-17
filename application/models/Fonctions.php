@@ -16,7 +16,20 @@
     //   $query->freeResult();
     //   return $retour;
     // }
-
+    public function getCategorieFpdf()
+    {
+      $query = "select * from categorie order by nom asc";
+      $result = $this->db->query($query);
+      $i=0;
+      $retour = array();
+      foreach($result->result_array() as $row)
+      {
+        $retour[$i]=$row;
+        $i++;
+      }
+      $result->free_Result();
+      return $retour;
+    }
     public function getContentById($id,$type)
     {
       // $limit = 1;
