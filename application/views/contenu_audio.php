@@ -3,8 +3,8 @@
         <div class="col-md-4 col-xl-4 col-sm-6">
             <div class="similar-song">
                 <img class="ss-thumb" src="<?php echo site_url('assets/img/vocal.jpg'); ?>" alt="">
-                <h4>Faramalemy sy Koto</h4>
-                <p>Nalefan'i Zety</p>
+                <h4>Test vocal 1</h4>
+                <p>Nalefan'i Rakoto</p>
                 <div class="single_player">
                     <div class="jp-jplayer jplayer" data-ancestor=".jp_container_9" data-url="<?php echo site_url('assets/audio/test.mp3'); ?>"></div>
                     <div class="jp-audio jp_container_9" role="application" aria-label="media player">
@@ -43,8 +43,8 @@
         <div class="col-md-4 col-xl-4 col-sm-6">
             <div class="similar-song">
                 <img class="ss-thumb" src="<?php echo site_url('assets/img/vocal.jpg'); ?>" alt="">
-                <h4>Faramalemy sy Koto</h4>
-                <p>Nalefan'i Zety</p>
+                <h4>Test vocal 2</h4>
+                <p>Nalefan'i Jean</p>
                 <div class="single_player">
                     <div class="jp-jplayer jplayer" data-ancestor=".jp_container_10" data-url="<?php echo site_url('assets/audio/test2.mp3'); ?>"></div>
                     <div class="jp-audio jp_container_10" role="application" aria-label="media player">
