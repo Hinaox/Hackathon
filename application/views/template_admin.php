@@ -92,7 +92,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('controller/index'); ?>">Pejy Fandraisana</a>
+                            <a class="nav-link" href="<?php echo site_url('controller_admin/indexAdmin'); ?>">Pejy Fandraisana</a>
                         </li>
                         
                     </ul>

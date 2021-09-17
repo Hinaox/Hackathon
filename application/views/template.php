@@ -175,6 +175,7 @@ https://templatemo.com/tm-559-zay-shop
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
                             <a class="text-decoration-none" href="tel:010-020-0340">+261 34 56 555 55</a>
+                            <i class="far fa-bookmark"></i>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>

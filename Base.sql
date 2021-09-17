@@ -56,6 +56,12 @@ create view video as select idcontenu,daty,titre,categories,texte,photo,video,vi
 create view audio as select idcontenu,daty,titre,categories,texte,photo,visites,prix,iduser,idadmin from contenu where typee='audio' and etat='done';
 create view livre as select idcontenu,daty,titre,categories,texte,photo,visites,prix,pdf,iduser,idadmin,auteur from contenu where typee='livre' and etat='done';
 
+
+create view allArticle as select idcontenu,daty,titre,categories,texte,photo,visites,prix,iduser,idadmin,etat from contenu where typee='article';
+create view allVideo as select idcontenu,daty,titre,categories,texte,photo,video,visites,prix,iduser,idadmin,etat from contenu where typee='video';
+create view allAudio as select idcontenu,daty,titre,categories,texte,photo,visites,prix,iduser,idadmin,etat from contenu where typee='audio';
+create view allLivre as select idcontenu,daty,titre,categories,texte,photo,visites,prix,pdf,iduser,idadmin,auteur,etat from contenu where typee='livre';
+
 insert into admin values(null,'admin1','admin1',sha1('mdp'));
 
 insert into user values(null,'user1','Princia','Dysan',sha1('mdp'));
