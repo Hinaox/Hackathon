@@ -277,12 +277,12 @@
         return $retour;
       }
 
-      public function insertContent($titre,$desc,$auteur,$date,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin)
+      public function insertContent($titre,$desc,$auteur,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin)
       {
         $etat = "done";
         $visite = 0;
         $query = "insert into contenu values (null,current_date(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)";
-        $query = sprintf($query,$titre,$date,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
+        $query = sprintf($query,$titre,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
         $this->db->query($query);
       }
 
