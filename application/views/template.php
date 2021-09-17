@@ -64,12 +64,16 @@ https://templatemo.com/tm-559-zay-shop
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">+261 34 34 334 34</a>
                 </div>
+                
                 <div>
                     <a class="text-light" href="https://fb.com/" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
-                </div>
+                    <a class="text-light mr-5" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                    
+                    <a class="btn  bg-success text-light" href="<?php echo site_url('controller/loadFPDF'); ?>">Mamadika ho Boky</a>
+                  </div>
+                
             </div>
         </div>
     </nav>
@@ -105,7 +109,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Hiraroka ...">
                             <div class="input-group-text">
                                 <i class="fa fa-fw fa-search"></i>
                             </div>
@@ -118,8 +122,9 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon position-relative text-decoration-none" href="<?php echo base_url('Controller/login'); ?>">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span> -->
-                    Hiditra
+                    Hiditra |
                     </a>
+                    <a class="nav-icon position-relative text-decoration-none" href="#">Hivoaka</a>
 
 
                 </div>
@@ -137,15 +142,15 @@ https://templatemo.com/tm-559-zay-shop
             </div>
             <form action="" method="get" class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Hikaroka ...">
+                    
                     <button type="submit" class="input-group-text bg-success text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>
+                    <a class="btn btn-dark btn-lg px-3" href="<?php echo site_url('controller/rechercheAvance'); ?>">Hikaroka an-tsipirihiny</a>
                 </div>
             </form>
-            <a href="#">Avancé
-              <i class="icon-forward-arrow Nav-advancedSearchCaret right"></i>
-            </a>
+            
         </div>
     </div>
 
@@ -160,12 +165,11 @@ https://templatemo.com/tm-559-zay-shop
     <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
             <div class="row">
-
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo"></h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">WikiMad</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
-                            <i class="fas fa-map-marker-alt fa-fw"></i>   0
+                            <i class="fas fa-map-marker-alt fa-fw"></i> 
                             Madagasikara
                         </li>
                         <li>
@@ -177,8 +181,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="text-decoration-none" href="mailto:info@company.com">WikiMadagasikara@gmail.com</a>
                         </li>
                     </ul>
-                </div>
-
+            </div>
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Karazan'Tahiry</h2>
                     <ul class="list-unstyled text-light footer-link-list">
@@ -199,7 +202,6 @@ https://templatemo.com/tm-559-zay-shop
                 </div>
 
             </div>
-
             <div class="row text-light mb-4">
                 <div class="col-12 mb-3">
                     <div class="w-100 my-3 border-top border-light"></div>
@@ -207,7 +209,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-auto me-auto">
                     <ul class="list-inline text-left footer-icons">
                         <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a rel="nofollow" class="text-light text-decoration-none" target="_blank" href="http://fb.com/templatemo"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                            <a rel="nofollow" class="text-light text-decoration-none" target="_blank" href="http://fb.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
                         </li>
                         <li class="list-inline-item border border-light rounded-circle text-center">
                             <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
@@ -220,16 +222,8 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                     </ul>
                 </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Email address</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribe</div>
-                    </div>
-                </div>
             </div>
-            
-        </div>
+    </div>
 
         <div class="w-100 bg-black py-3"> 
             <div class="container">
@@ -240,11 +234,13 @@ https://templatemo.com/tm-559-zay-shop
                             | Namboarin'ny <a rel="sponsored" href="#" target="_blank">WeFly</a>
                         </p>
                     </div>
+                    <a class="btn  bg-success text-light" href="<?php echo site_url('controller/loadFPDF'); ?>">Version PDF</a>
                 </div>
             </div>
         </div>
 
     </footer>
+    
     <!-- End Footer -->
 
     <!-- Start Script -->

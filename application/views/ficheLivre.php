@@ -116,18 +116,22 @@
                             
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row pb-3">
-
-                                    <form action="#" method="GET">
-                                        <div class="col d-grid">
-                                            <button type="submit" class="btn btn-success btn-lg" name="submit" value="regarder">Hijery</button>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <form action="#" method="GET">
+                                                <div class="col d-grid">
+                                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="regarder">Hijery</button>
+                                                </div>
+                                            </form>
                                         </div>
-                                    </form>
-
-                                    <form action="<?php echo site_url('Controller/download') ?>" method="post">
-                                        <div class="col d-grid">
-                                            <button type="submit" class="btn btn-success btn-lg" name="download" value="<?php echo $boky[$i]['pdf']; ?>">Haka</button>
+                                        <div class="col-md-6 mb-3">
+                                            <form action="<?php echo site_url('Controller/download') ?>" method="post">
+                                                <div class="col d-grid">
+                                                    <button type="submit" class="btn btn-success btn-lg" name="download" value="<?php echo $boky[$i]['pdf']; ?>">Haka</button>
+                                                </div>
+                                            </form>
                                         </div>
-                                    </form>
+                                    </div>
 
                                 </div>
                             

@@ -362,4 +362,8 @@ class Controller extends CI_Controller {
 		$data['article']=$retourarticle;
 		$this->load->view('accueil_fpdf',$data);
 	}
+	public function rechercheAvance(){
+		$data['page']='rechercheAvancer';
+		$this->load->view('template',$data);
+	}
 }
