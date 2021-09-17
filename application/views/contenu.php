@@ -11,15 +11,19 @@
                 <h1 class="h2 pb-4">Sokajin'Tahiry</h1>
                 <ul class="list-unstyled templatemo-accordion">
 
-                    <?php for($i=0;$i<count($categ);$i++) {?>
-                        <li class="pb-3">
-                            <a class=" h4 text-decoration-none" href="#">
+                        <!-- <li class="pb-3"> -->
+                        <?php for($i=0;$i<count($categ);$i++) {?>
+
                             <i class="<?php echo $categ[$i]['icone']; ?>"></i>
+
+                            <a style="text-decoration:none" href="<?php echo site_url("controller/contentCat?categ=".$categ[$i]['nom']); ?>">
                             <?php echo $categ[$i]['nom']; ?>
                             </a>
+
+                        
                             <hr>
-                        </li>
-                    <?php }?>
+                        <?php }?>
+                        <!-- </li> -->
                 </ul>
             </div>
 
@@ -58,13 +62,13 @@
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
                         <li class="page-item">
-                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="<?php echo site_url('Controller/contenu_livre?pg=1') ?>" tabindex="-1">1</a>
+                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="<?php echo site_url('Controller/contenu_article?pg=1') ?>" tabindex="-1">1</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="<?php echo site_url('Controller/contenu_livre?pg=2') ?>">2</a>
+                            <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="<?php echo site_url('Controller/contenu_article?pg=2') ?>">2</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="<?php echo site_url('Controller/contenu_livre?pg=3') ?>">3</a>
+                            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="<?php echo site_url('Controller/contenu_article?pg=3') ?>">3</a>
                         </li>
                     </ul>
                 </div>

@@ -134,9 +134,48 @@ class Controller extends CI_Controller {
 	}
 
 
-	public function upload()
+	public function uploadPDF()
 	{
-		if ($$_FILES["nomfichier"]["size"] < 20000) 
+		if ($$_FILES["fichier"]["size"] < 20000) 
+		{
+			if ($_FILES["fichier"]["error"] > 0)
+			{
+				switch ($_FILES['fichier']['error'])
+				{
+					case 1: // UPLOAD_ERR_PARTIAL
+					  echo "Tsy tontonsa hatramin'ny farany ny fangatahanao !";
+					  break;
+					case 2: // UPLOAD_ERR_NO_FILE
+					  echo "Tsy misy lanjany ny  fampitanao !";
+					  break;
+				}
+			}
+		  else
+			{
+				$nom = $_FILES['fichier']['name'];
+				$nomUpload = $_FILES['fichier']['tmp_name'];
+				// var_dump($nom);
+				$nomdestination = site_url('assets/pdf/'.nom.'');
+				move_uploaded_file($nomUpload, $nomdestination);
+				echo "tontonsa ny fampitanao";
+			
+				if (file_exists("upload/" . $_FILES["fichier"]["name"]))
+				{
+					echo "efa misy anarana mitovy amin'ny ".$_FILES["fichier"]["name"]." ao";
+				}
+			}
+			
+		}
+		else
+		{
+			echo "tsy mety ny lahatsoratra ampitanao";
+		}
+		
+	}
+
+	public function uploadPics()
+	{
+		if ($_FILES["nomfichier"]["size"] < 20000) 
 		{
 			if ($_FILES["nomfichier"]["error"] > 0)
 			{
@@ -155,13 +194,13 @@ class Controller extends CI_Controller {
 				$nom = $_FILES['nomfichier']['name'];
 				$nomUpload = $_FILES['nomfichier']['tmp_name'];
 				// var_dump($nom);
-				$nomdestination = site_url('assets/pdf/'.nom.'');
+				$nomdestination = 'F:/Info Mendrika/ITU LECONS/Rojo/PHP/05-php-S1/UwAmp/www/Hackathon/assets/img/'.$nom.'';
 				move_uploaded_file($nomUpload, $nomdestination);
 				echo "tontonsa ny fampitanao";
 			
-				if (file_exists("upload/" . $_FILES["file"]["name"]))
+				if (file_exists("upload/" . $_FILES["nomfichier"]["name"]))
 				{
-					echo "efa misy anarana mitovy amin'ny ".$_FILES["file"]["name"]." ao";
+					echo "efa misy anarana mitovy amin'ny ".$_FILES["nomfichier"]["name"]." ao";
 				}
 			}
 			
@@ -217,18 +256,6 @@ class Controller extends CI_Controller {
 		}
 		$data['video']=$this->Fonctions->getVideo();
 
-		// $pg=$this->input->get('pg');
-		// $nbParPage = 3;
-		// $pageActuel = 1;
-		// if($pg != null)
-		// {
-		// 	$pageActuel = $pg;
-		// }
-
-		// $livre="livre";
-
-		// $data['livre']=$this->Fonctions->getAllContent($pageActuel,$nbParPage,$livre);
-
 
 
 		$data['page']='contenu';
@@ -242,6 +269,8 @@ class Controller extends CI_Controller {
 	}
 	public function contenu_video(){
 		$data['categ']=$this->Fonctions->getCategorie();
+		$data['video']=$this->Fonctions->getVideo();
+
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_video';
 		$this->load->view('template',$data);
@@ -288,9 +317,9 @@ class Controller extends CI_Controller {
 		$data['categ']=$this->Fonctions->getCategorie();
 		$data['article']=$this->Fonctions->getAllContent($pageActuel,$nbParPage,$article);
 		$j=0;
-		foreach($data['article'] as $livre)
+		foreach($data['article'] as $articles)
 		{
-			$data['articleimage'][$j]=$this->Picture->getPrincipalPics($article['photo']);
+			$data['articleimage'][$j]=$this->Picture->getPrincipalPics($articles['photo']);
 			$j++;
 		}
 
@@ -299,9 +328,37 @@ class Controller extends CI_Controller {
 		$this->load->view('template',$data);
 	}
 
+	public function contentCat()
+	{
+		$livre="livre";
+		$article="article";
+		$categ=$this->input->get('categ');
+		$data['categ']=$this->Fonctions->getCategorie();
+		$data['artCateg']=$this->Fonctions->getContentByCat($article,$categ);
+		$data['livreCateg']=$this->Fonctions->getContentByCat($livre,$categ);
+		$data['videoCateg']=$this->Fonctions->getVideoByCat($categ);
+		$j=0;
+		$k=0;
+		foreach($data['artCateg'] as $categArt)
+		{
+			$data['imgArt'][$j] = $this->Picture->getPrincipalPics($categArt['photo']);
+			$j++;
+		}
+		foreach($data['livreCateg'] as $categLivre)
+		{
+			$data['imgLivre'][$k] = $this->Picture->getPrincipalPics($categLivre['photo']);
+			$k++;
+		}
+
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_accueil';
+		$this->load->view('template',$data);
+	}
+
 	//controller vers les pages d'insertion
 
 	public  function insertion_livre(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='insertion';
 		$data['page_insertion']='insertion_livre';
 		$this->load->view('template',$data);
@@ -325,7 +382,7 @@ class Controller extends CI_Controller {
 	{
 		$retourlivre=array();
 		$retourarticle=array();
-		$categorie=$this->Fonctions->getCategorieFpdf();
+		$categorie=$this->Fonctions->getCategorie();
 		$i=0;
 		$nb=1;
 		foreach($categorie as $cat)
@@ -346,7 +403,7 @@ class Controller extends CI_Controller {
 		$nbar=1;
 		foreach($categorie as $cat)
 		{
-			$retourarticle[$ar]=$nbar."-".strtoupper($cat['nom']);
+			$retourarticle[$ar]=$nbar."-".strtoupper($cat['nom']);	
 			$articl=$this->Fonctions->getAllContentByCat($cat['nom'],'article');
 			$ar++;
 
@@ -358,35 +415,65 @@ class Controller extends CI_Controller {
 
 			$nbar++;
 		}
-
-		$bookPdf=array();
-		$picBook=array();	
-		$myBook=$this->Fonctions->getAllContentFpdf("livre");
-		$b=0;
-		foreach($myBook as $myBookPdf)
-		{
-			$bookPdf[$b]=$myBookPdf;
-			$picBook[$b]=$this->Picture->getPrincipalPics($myBookPdf['photo']);
-			$picBook[$b]=explode(".",$picBook[$b])[0];
-			$b++;
-		}
-		$articlePdf=array();
-		$picArticle=array();
-		$myArticle=$this->Fonctions->getAllContentFpdf("article");
-		$a=0;
-		foreach($myArticle as $myArPdf)
-		{
-			$articlePdf[$a]=$myArPdf;
-			$picArticle[$a]=$this->Picture->getPrincipalPics($myArPdf['photo']);
-			$a++;
-		}
-		$data['articlePdf']=$articlePdf;
-		$data['bookPdf']=$bookPdf;
 		$data['livre']=$retourlivre;
 		$data['article']=$retourarticle;
-		$data['picBook']=$picBook;
-		$data['picArticle']=$picArticle;
 		$this->load->view('accueil_fpdf',$data);
+	}
+
+	public function insertBook()
+	{
+		$livre = "livre";
+		$photo = $_FILES['nomfichier']['name'];
+		$pdf = $_FILES['fichier']['name'];
+		// echo "fichier ".$fichier;
+		$titre = $this->input->post('titre');
+		$categ = $this->input->post('categorie');
+		$auteur = $this->input->post('auteur');
+		$texte = $this->input->post('texte');
+		$prix = 0;
+		$idadmin = null;
+		$iduser = null;
+		$video = null;
+		$audio = null;
+		if($auteur == null)
+		{
+			$auteur = null;
+		}
+		$this->Fonctions->insertContent($titre,$texte,$auteur,$categ,$livre,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin);
+		$this->uploadPics();
+		$this->uploadPDF();
+
+		$article="article";
+		$i=0;
+		$data['categ']=$this->Fonctions->getCategorie();
+		$data['article']=$this->Fonctions->getAllContent(0,3,$article);
+		foreach($data['article'] as $article)
+		{
+			$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
+			$i++;
+		}
+		$livre="livre";
+		$data['livre']=$this->Fonctions->getAllContent(0,3,$livre);
+		$data['livre_image']=array();
+		$j=0;
+		foreach($data['livre'] as $livre)
+		{
+			$data['livre_image'][$j]=$this->Picture->getPrincipalPics($livre['photo']);
+			$j++;
+		}
+		$data['video']=$this->Fonctions->getVideo();
+
+
+
+		$data['page']='contenu';
+		$this->load->view('template',$data);
+
+	}
+
+	public function rechercheAvance(){
+		$data['page']='rechercheAvancer';
+		$this->load->view('template',$data);
+		//this is test
 	}
 
 	public function insererArticle()
