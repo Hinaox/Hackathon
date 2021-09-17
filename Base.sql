@@ -8,6 +8,7 @@ create table admin(
   login varchar(100) not null,
   mdp varchar(100)
 );
+insert into admin values(null,"Hiaro Nathanael","Nathanael@gmail.com",sha1('mdp'));
 
 create table user(
   iduser int not null auto_increment primary key,
@@ -16,6 +17,7 @@ create table user(
   prenom varchar(100),
   mdp varchar(100)
 );
+insert into user values(null,"Rakoto@gmail.com","Rakoto","Maurice",sha1('mdp'));
 
 create table categorie(
   idcategorie int not null auto_increment primary key,
@@ -266,8 +268,8 @@ ampiasaina mba hanalefaka ny kakao hanesorana ilay tsiro mangidy. Misy karazany 
 
 insert into contenu values(NULL,CURRENT_DATE(),"Afindrafindrao Malagasy","fomba sy vakoka","article",
 "18 ny foko misy eto Madagasikara ary samy manana ny fomba ara-mozikany avy izy ireo. Fa ny dihy afindrafindrao dia malaza tokoa manerana an'i Madagasikara satria manome fahafinaretana tokoa ity gadona mozika ity.
-Anisan'ny kolon-tsaina Malagasy tokoa ny afindrafindrao, izany hoe mozika nentim-paharazana izy io. Ny gadona afindrafindrao dia azo avy amin'ny 
-fampivondronan'ny mozika Basesa sy mozika eoropeana ary ampiasaina hanomboana sy hanafana lanonana. Ny afindrafindrao dia 
+Anisan'ny kolon-tsaina Malagasy tokoa ny afindrafindrao, izany hoe mozika nentim-paharazana izy io. Ny gadona afindrafindrao dia azo avy amin'ny
+fampivondronan'ny mozika Basesa sy mozika eoropeana ary ampiasaina hanomboana sy hanafana lanonana. Ny afindrafindrao dia
 fandihan'olon-droa, ny vehivavy eo aloha de lahy ao aorina, mifanao aloha sy aoriana lavalava ary mifampitantana ny olon-droa ary ny sandry sy tongotra mande avia sy havanana. Izany dihy izany dia maneho firaisan-kina
 sy fiaraha-mientana ny vahoaka tsirairay ao amin'ny foko samihafa eto Madagasikara","afindrafindrao","afindrafindrao.mp4",NULL,
 NULL,"done",20,0,NULL,NULL,NULL);
