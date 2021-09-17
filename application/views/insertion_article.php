@@ -12,7 +12,7 @@
     <br>
     <hr>
     <div class="row py-5">
-        <form class="col-md-9 m-auto" method="post" role="form">
+        <form action="#" class="col-md-9 m-auto" method="post" role="form" enctype="multipart/form-data">
             <h3 class="h3">Hampiditra sary : </h3>
                 <br>
                 <div class="row">   
