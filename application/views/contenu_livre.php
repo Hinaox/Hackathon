@@ -13,7 +13,11 @@
             <div class="card-body">
                 <p style="text-align:center" ><a href="<?php echo site_url("controller/ficheLivre?id=".$livre[$i]['idcontenu']."&type=livre"); ?>" class="h3 text-decoration-none"><?php echo $livre[$i]['titre']; ?></a></p>
                 <br>
-                <p style="text-align:center"><a class="btn btn-success" href="<?php echo site_url("controller/ficheLivre?id=".$livre[$i]['idcontenu']."&type=livre"); ?>">Hijery</a></p>
+                <p style="text-align:center"><a class="btn btn-success" href="<?php echo site_url("controller/ficheLivre?id=".$livre[$i]['idcontenu']."&type=livre"); ?>">Hijery</a>
+                <?php if(isset($_SESSION['admin']) || isset($_SESSION['user']) && $_SESSION['user']==$article[$i]['iduser']) {?>
+                    <a class="btn btn-danger" style="color:#000" href=""><i class="fas fa-trash-alt"></i></a>
+                <?php }?>
+                </p>
             </div>
         </div>
     </div>

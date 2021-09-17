@@ -22,6 +22,10 @@
             <!-- <span  class="publiedBy">Publié par Jean  </span> -->
             
         </div>
+        <?php if(isset($_SESSION['admin']) || isset($_SESSION['user']) && $_SESSION['user']==$article[$i]['iduser']) {?>
+                    <p><a class="btn btn-danger" style="color:#000" href=""><i class="fas fa-trash-alt"></i></a></p>
+                <?php }?>
+                <p><a class="btn btn-danger" style="color:#000" href=""><i class="fas fa-trash-alt"></i></a></p>
     </div>
     <?php }?>
 </div>

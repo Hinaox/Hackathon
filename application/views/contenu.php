@@ -19,7 +19,7 @@
                             <a style="text-decoration:none" href="<?php echo site_url("controller/contentCat?categ=".$categ[$i]['nom']); ?>">
                             <?php echo $categ[$i]['nom']; ?>
                             </a>
-
+                            
                         
                             <hr>
                         <?php }?>

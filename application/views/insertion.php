@@ -6,7 +6,7 @@
 
 <div class="container py-5">
     <div class="row">
-        <h2 class="h2" style="text-align:center">Safidy ny sokajy hampidirina :<i class="far fa-bookmark"></i> </h2>
+        <h2 class="h2" style="text-align:center">Safidy ny sokajy hampidirina : </h2>
         <div class="row"><br><hr><br></div>
         
         <div class="col-md-6 col-lg-3 pb-5">
