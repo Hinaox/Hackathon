@@ -16,7 +16,20 @@
     //   $query->freeResult();
     //   return $retour;
     // }
-
+    public function getCategorieFpdf()
+    {
+      $query = "select * from categorie order by nom asc";
+      $result = $this->db->query($query);
+      $i=0;
+      $retour = array();
+      foreach($result->result_array() as $row)
+      {
+        $retour[$i]=$row;
+        $i++;
+      }
+      $result->free_Result();
+      return $retour;
+    }
     public function getContentById($id,$type)
     {
       // $limit = 1;
@@ -56,37 +69,42 @@
       return $retour;
     }
 
-    public function getCategorieFpdf()
-    {
-      $query = "select * from categorie order by nom asc";
-      $result = $this->db->query($query);
-      $i=0;
-      $retour = array();
-      foreach($result->result_array() as $row)
-      {
-        $retour[$i]=$row;
-        $i++;
-      }
-      $result->free_Result();
-      return $retour;
-    }
+    // public function getContentByCat($type,$idCat,$pageActuel,$nbPage)
+    // {
+    //   $limite = 1;
+    //   $categorie='%'.$idCat.'%';
+    //   if($pageActuel != 1)  $limite = $pageActuel * $nbPage;
+    //   $retour = array();
+    //   $i = 0;
+    //   $query ="select * from %s where categories like %s limit %s,%s";
+    //   $query = sprintf($query,$type,$categorie,$limite,$nbPage);
+    //   $result = $this->db->query($query);
+    //   foreach($result->result_array() as $row)
+    //   {
+    //     $retour[$i]=$row;
+    //     $i++;
+    //   }
+    //   $query->freeResult();
+    //   return $retour;
+    // }
 
-    public function getContentByCat($type,$idCat,$pageActuel,$nbPage)
+    public function getContentByCat($type,$idCat)
     {
-      $limite = 1;
-      $categorie='%'.$categorie.'%';
-      if($pageActuel != 1)  $limite = $pageActuel * $nbPage;
+      // $limite = 1;
+        $categorie="%$idCat%";
+      // if($pageActuel != 1)  $limite = $pageActuel * $nbPage;
       $retour = array();
       $i = 0;
-      $query ="select * from %s where categories like %s limit %s,%s";
-      $query = sprintf($query,$type,$categorie,$limite,$nbPage);
+      $query ="select idcontenu,titre,categories,substring(texte,1,200) as texte,photo,
+      visites,prix from %s where categories like '%s'";
+      $query = sprintf($query,$type,$categorie);
       $result = $this->db->query($query);
       foreach($result->result_array() as $row)
       {
         $retour[$i]=$row;
         $i++;
       }
-      $query->freeResult();
+      $result->free_result();
       return $retour;
     }
 
@@ -108,7 +126,7 @@
       $result->freeResult();
       return $retour;
     }
-
+  
 
       public function getAllContent($pgActuel,$nbPage,$type)
       {
@@ -116,7 +134,8 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query = "select * from %s limit %s,%s";
+        $query = "select idcontenu,titre,categories,substring(texte,1,200) as texte,photo,
+        visites,prix from %s limit %s,%s";
         $query = sprintf($query,$type,$limite,$nbPage);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
@@ -141,6 +160,7 @@
           $i++;
         }
         $result->free_Result();
+        return $retour;
       }
       public function getVideo()
       {
@@ -157,12 +177,30 @@
         return $retour;
       }
 
+      public function getVideoByCat($categ)
+      {
+        $cat = '%'.$categ.'%';
+        $retour = array();
+        $i=0;
+        $query = "select titre,video from contenu where video != 'null' and categories like '%s'";
+        $query = sprintf($query,$cat);
+        $result = $this->db->query($query);
+        foreach($result->result_array() as $row)
+        {
+            $retour[$i]=$row;
+            $i++;
+        }
+        $result->free_result();
+        return $retour;
+      }
+
       public function getAllContentByCat($cat,$type)
       {
         $categorie='%'.$cat.'%';
         $retour = array();
         $i = 0;
-        $query = "select * from %s where categories like '%s' and prix=0 order by categories asc";
+        $query = "select idcontenu,titre,categories,substring(texte,1,200) as texte,photo,
+        visites,prix from %s where categories like '%s'";
         $query = sprintf($query,$type,$categorie);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
@@ -181,7 +219,8 @@
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
         $retour = array();
         $i = 0;
-        $query = "select * from %s where categories like %s limit %s,%s";
+        $query = "select idcontenu,titre,categories,substring(texte,1,200) as texte,photo,
+        visites,prix from %s where categories like %s limit %s,%s";
         $query = sprintf($query,$type,$categorie,$limite,$nbPage);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
@@ -193,7 +232,7 @@
         return $retour;
       }
 
-      public function advancedSearchContent($titre,$categorie,$descri,$auteur,$nbdate,$nbPage,$type)
+      public function advancedSearchContent($titre,$categorie,$descri,$auteur,$nbdate,$nbPage,$type)      
       {
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
@@ -238,7 +277,8 @@
       {
         $retour = array();
         $i = 0;
-        $query = "select * from %s order by visites desc limit 3";
+        $query = "select idcontenu,titre,categories,substring(texte,1,200) as texte,photo,
+        visites,prix from %s order by visites desc limit 3";
         $query=sprintf($query,$type);
         $result = $this->db->query($query);
         foreach($result->result_array() as $row)
@@ -250,12 +290,12 @@
         return $retour;
       }
 
-      public function insertContent($titre,$desc,$auteur,$date,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin)
+      public function insertContent($titre,$desc,$auteur,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin)
       {
         $etat = "done";
         $visite = 0;
         $query = "insert into contenu values (null,current_date(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)";
-        $query = sprintf($query,$titre,$date,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
+        $query = sprintf($query,$titre,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
         $this->db->query($query);
       }
 
@@ -305,27 +345,7 @@
         $result->free_result();
         return "ko";
       }
-      public function tcheckOwner($userContenu)
-      {
-        if($this->session->userdata('admin')!=null || $this->session->userdata('user')==$userContenu){
-          return true;
-        }
-        return false;
-      }
-      public function tcheckSessionUser()
-      {
-        if($this->session->userdata('user')!=null){
-          return true;
-        }
-        return false;
-      }
-      public function tcheckSessionAdmin()
-      {
-        if($this->session->userdata('admin')!=null){
-          return true;
-        }
-        return false;
-      }
+
       public function tcheckLoginUser($login,$mdp)
       {
         $query = "select count(iduser) as c,iduser from user where login= %s and mdp=sha1(%s)";
@@ -360,12 +380,17 @@
         }
       }
 
-      public function visiteContenuCount($idContenu){
-        $query = "update contenu set visites = (visites+1) where idContenu=%s";
-        $query = sprintf($query,$idContenu);
+      public function visiteLivreCount($idLivre){
+        $query = "update livre set visites = (visites+1) where idlivre=%s";
+        $query = sprintf($query,$idLivre);
         $this->db->query($query);
       }
 
+      public function visiteArticleCount($idArticle){
+        $query = "update article set visites = (visites+1) where idArticle=%s";
+        $query = sprintf($query,$idArticle);
+        $this->db->query($query);
+      }
       public function getAllCoord($strLat,$strLong){
         $retour = array();
         for($i=0;$i<$strLat.length;$i++){
@@ -375,26 +400,6 @@
         }
         return $retour;
       }
-      // public function traiterLatLong($l){
-      //   $retour = array();
-      //   for($i=0;$i<count(explode("###",$l));$i++){
-      //     array_push($retour,explode("###",$l)[$i+1]);
-      //   }
-      //   return $retour;
-      // }
-      public function getLastContenu(){
-        return $this->db->query("select max(idcontenu) from contenu")->row_array();
-      }
-      // public function insertCoord($idcontenu,$latitude,$longitude){
-      //   $latitudes = $this->traiterLatLong($latitude);
-      //   $longitudes = $this->traiterLatLong($longitude);
-      //   $query = "";
-      //   for($i=0;$i<count($latitudes);$i++){
-      //     $query="insert into geolocalisation values('%s','%s','%s')";
-      //     $query = sprintf($query,$latitudes[$i],$longitudes[$i]);
-      //     $this->db->query($query);
-      //   }
-      // }
 
   }
  ?>
