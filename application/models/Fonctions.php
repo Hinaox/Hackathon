@@ -126,7 +126,7 @@
       $result->freeResult();
       return $retour;
     }
-  
+
 
       public function getAllContent($pgActuel,$nbPage,$type)
       {
@@ -232,7 +232,7 @@
         return $retour;
       }
 
-      public function advancedSearchContent($titre,$categorie,$descri,$auteur,$nbdate,$nbPage,$type)      
+      public function advancedSearchContent($titre,$categorie,$descri,$auteur,$nbdate,$nbPage,$type)
       {
         $limite = 1;
         if($pgActuel != 1)  $limite = $pgActuel * $nbPage;
@@ -328,7 +328,6 @@
       public function deconnect()
       {
         $this->session->sess_destroy();
-        redirect(site_url());
       }
 
       public function tcheckLoginAdmin($login,$mdp)

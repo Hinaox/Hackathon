@@ -2,6 +2,7 @@
   if (!isset($page) || $page == null ) {
       $page = 'accueil';
   }
+  // var_dump($_SESSION['admin']);
   // echo $page;
 ?>
 <!DOCTYPE html>
@@ -83,7 +84,7 @@ https://templatemo.com/tm-559-zay-shop
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="#">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="<?php echo site_url('controller/index'); ?>">
              <img src="<?php echo site_url("assets/img/logo.png") ?>" >
             </a>
 
@@ -117,15 +118,12 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <?php if( (!isset($_SESSION['admin'])) || (!isset($_SESSION['user']))) { ?>
+                    <?php if( (!isset($_SESSION['admin'])) && (!isset($_SESSION['user']))) { ?>
                     <a class="nav-icon position-relative text-decoration-none" href="<?php echo base_url('Controller/login'); ?>">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span> -->
-                    Miditra |
-                    </a>
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>Miditra</a>
                     <?php } ?>
                     <?php if(isset($_SESSION['admin']) || isset($_SESSION['user'])){ ?>
-                      <a class="nav-icon position-relative text-decoration-none" href="#">Mivoaka</a>
+                      <a class="nav-icon position-relative text-decoration-none" href="<?php echo site_url('controller/deconnect') ?>">Mivoaka</a>
                     <?php } ?>
 
                 </div>
@@ -232,7 +230,7 @@ https://templatemo.com/tm-559-zay-shop
                     <div class="col-12">
                         <p class="text-left text-light">
                             Copyright &copy; 2021 WikiMadagasikara
-                            | Namboarin'ny <a rel="sponsored" href="#" target="_blank">WeFly</a>
+                            | Namboarin'ny <a rel="sponsored" href="<?php echo site_url('controller/index'); ?>" target="_blank">WeFly</a>
                         </p>
                     </div>
                     <a class="btn  bg-success text-light" href="<?php echo site_url('controller/loadFPDF'); ?>">Version PDF</a>
