@@ -61,11 +61,11 @@ insert into admin values(null,'admin1','admin1',sha1('mdp'));
 insert into user values(null,'user1','Princia','Dysan',sha1('mdp'));
 
 insert into categorie values(null,"zava-maniry","fas fa-leaf");
-insert into categorie values(null,"biby","fas fa-monkey");
+insert into categorie values(null,"biby","fas fa-paw");
 insert into categorie values(null,"tantara","fas fa-landmark");
 insert into categorie values(null,"harena an-kibon ny tany","fas fa-gem");
 insert into categorie values(null,"toerana","fas fa-map-marked-alt");
-insert into categorie values(null,"fomba sy vakoka","fas fa-scroll-old");
+insert into categorie values(null,"fomba sy vakoka","fas fa-scroll");
 insert into categorie values(null,"isan-karazany","fas fa-ellipsis-h");
 
 --type livre--
