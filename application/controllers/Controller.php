@@ -103,7 +103,7 @@ class Controller extends CI_Controller {
 				$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
 				$i++;
 			}
-	
+
 			$data['article_visited']=$this->Fonctions->contentOrderByVisite($article);
 			$data['article_image']=array();
 			$i=0;
@@ -133,7 +133,7 @@ class Controller extends CI_Controller {
 
 	public function uploadPDF()
 	{
-		if ($$_FILES["fichier"]["size"] < 20000) 
+		if ($$_FILES["fichier"]["size"] < 20000)
 		{
 			if ($_FILES["fichier"]["error"] > 0)
 			{
@@ -155,24 +155,24 @@ class Controller extends CI_Controller {
 				$nomdestination = site_url('assets/pdf/'.nom.'');
 				move_uploaded_file($nomUpload, $nomdestination);
 				echo "tontonsa ny fampitanao";
-			
+
 				if (file_exists("upload/" . $_FILES["fichier"]["name"]))
 				{
 					echo "efa misy anarana mitovy amin'ny ".$_FILES["fichier"]["name"]." ao";
 				}
 			}
-			
+
 		}
 		else
 		{
 			echo "tsy mety ny lahatsoratra ampitanao";
 		}
-		
+
 	}
 
 	public function uploadPics()
 	{
-		if ($_FILES["nomfichier"]["size"] < 20000) 
+		if ($_FILES["nomfichier"]["size"] < 20000)
 		{
 			if ($_FILES["nomfichier"]["error"] > 0)
 			{
@@ -194,44 +194,44 @@ class Controller extends CI_Controller {
 				$nomdestination = 'F:/Info Mendrika/ITU LECONS/Rojo/PHP/05-php-S1/UwAmp/www/Hackathon/assets/img/'.$nom.'';
 				move_uploaded_file($nomUpload, $nomdestination);
 				echo "tontonsa ny fampitanao";
-			
+
 				if (file_exists("upload/" . $_FILES["nomfichier"]["name"]))
 				{
 					echo "efa misy anarana mitovy amin'ny ".$_FILES["nomfichier"]["name"]." ao";
 				}
 			}
-			
+
 		}
 		else
 		{
 			echo "tsy mety ny lahatsoratra ampitanao";
 		}
-		
+
 	}
 
 	public function download()
 	{
 		$file_name=$this->input->post('download');
 		echo "file : ".$file_name;
-		$url = site_url('assets/pdf/'.$file_name.''); 
+		$url = site_url('assets/pdf/'.$file_name.'');
 		echo "url : ".$url;
 
 		// $fichier_nom = basename($url);
 		$fichier_contenu = file_get_contents($url);
 		// $dossier_enregistrement = "telechargement/";
 
-		// if(file_put_contents($dossier_enregistrement . $fichier_nom, $fichier_contenu)) 
-		// { 
-		// 	echo "Fichier téléchargé avec succès"; 
-		// } 
-		// else 
-		// { 
-		// 	echo "Fichier non téléchargé"; 
-		// } 
+		// if(file_put_contents($dossier_enregistrement . $fichier_nom, $fichier_contenu))
+		// {
+		// 	echo "Fichier téléchargé avec succès";
+		// }
+		// else
+		// {
+		// 	echo "Fichier non téléchargé";
+		// }
 		force_download($file_name,$url);
 	}
 
-	
+
 	public function contenu(){
 		$article="article";
 		$i=0;
@@ -414,14 +414,16 @@ class Controller extends CI_Controller {
 		}
 
 		$bookPdf=array();
-		$picBook=array();	
+		$picBook=array();
 		$myBook=$this->Fonctions->getAllContentFpdf("livre");
 		$b=0;
 		foreach($myBook as $myBookPdf)
 		{
 			$bookPdf[$b]=$myBookPdf;
 			$picBook[$b]=$this->Picture->getPrincipalPics($myBookPdf['photo']);
-			$picBook[$b]=explode(".",$picBook[$b])[0];
+			$string=explode(".",$picBook[$b]);
+			$picBook[$b]=$string[0];
+
 			$b++;
 		}
 		$articlePdf=array();
@@ -446,22 +448,25 @@ class Controller extends CI_Controller {
 	{
 		$livre = "livre";
 		$photo = $_FILES['nomfichier']['name'];
+		$name = explode(".",$photo);
+		$vName = $name[0];
 		$pdf = $_FILES['fichier']['name'];
-		// echo "fichier ".$fichier;
+
 		$titre = $this->input->post('titre');
 		$categ = $this->input->post('categorie');
 		$auteur = $this->input->post('auteur');
 		$texte = $this->input->post('texte');
 		$prix = 0;
-		$idadmin = null;
-		$iduser = null;
-		$video = null;
-		$audio = null;
+		$visite = 0;
+		$idadmin = "NULL";
+		$iduser = "NULL";
+		$video = "NULL";
+		$audio = "NULL";
 		if($auteur == null)
 		{
-			$auteur = null;
+			$auteur = "NULL";
 		}
-		$this->Fonctions->insertContent($titre,$texte,$auteur,$categ,$livre,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin);
+		$this->Fonctions->insertContent($titre,$categ,$livre,$texte,$vName,$video,$audio,$pdf,$visite,$prix,$iduser,$idadmin,$auteur);
 		$this->uploadPics();
 		$this->uploadPDF();
 
@@ -528,6 +533,42 @@ class Controller extends CI_Controller {
 		$data["confirm"]="tafiditra!";
 		$data['page']='insertion';
 		$data['page_insertion']='insertion_article';
+		$this->load->view('template',$data);
+	}
+
+	public function deconnect()
+	{
+		$this->Fonctions->deconnect();
+		$data['page']='accueil';
+		$livre = "livre";
+		$data['book_visited']=$this->Fonctions->contentOrderByVisite($livre);
+		$data['nom_image']=array();
+		$i=0;
+		foreach($data['book_visited'] as $book)
+		{
+			$data['nom_image'][$i]=$this->Picture->getPrincipalPics($book['photo']);
+			$i++;
+		}
+
+		$article = "article";
+		$data['article_visited']=$this->Fonctions->contentOrderByVisite($article);
+		$data['article_image']=array();
+		$i=0;
+		foreach($data['article_visited'] as $article)
+		{
+			$data['article_image'][$i]=$this->Picture->getPrincipalPicsArticle($article['photo']);
+			$i++;
+		}
+		$this->load->view('template',$data);
+	}
+
+	public function inscriptionInsert(){
+		$email = $this->input->post('email');
+		$nom = $this->input->post('nom');
+		$prenom = $this->input->post('prenom');
+		$mdp = $this->input->post('mdp');
+		$this->Fonctions->inscription($email,$nom,$prenom,$mdp);
+		$data['page']='login';
 		$this->load->view('template',$data);
 	}
 }

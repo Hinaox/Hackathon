@@ -53,7 +53,12 @@
       $query->freeResult();
       return $result;
     }
-
+    public function inscription($mail,$nom,$prenom,$mdp)
+    {
+      $query = "insert into user values (null,'%s','%s','%s',sha1('%s'))";
+      $query = sprintf($query,$mail,$nom,$prenom,$mdp);
+      $this->db->query($query);
+    }
     public function getCategorie()
     {
       $query = "select * from categorie";
@@ -126,7 +131,7 @@
       $result->free_Result();
       return $retour;
     }
-  
+
 
       public function getAllContent($pgActuel,$nbPage,$type)
       {
@@ -290,12 +295,19 @@
         return $retour;
       }
 
-      public function insertContent($titre,$desc,$auteur,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin)
+      // public function insertContent($titre,$desc,$auteur,$categories,$type,$photo,$video,$audio,$pdf,$prix,$iduser,$idadmin)
+      // {
+      //   $etat = "done";
+      //   $visite = 0;
+      //   $query = "insert into contenu values (null,current_date(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)";
+      //   $query = sprintf($query,$titre,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
+      //   $this->db->query($query);
+      // }
+
+      public function insertContent($titre,$categ,$type,$texte,$photo,$video,$audio,$pdf,$visite,$prix,$iduser,$idadmin,$auteur)
       {
-        $etat = "done";
-        $visite = 0;
-        $query = "insert into contenu values (null,current_date(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)";
-        $query = sprintf($query,$titre,$categories,$type,$desc,$photo,$video,$audio,$pdf,$etat,$visite,$prix,$iduser,$idadmin,$auteur);
+        $query = "insert into contenu values(NULL,current_date(),'%s','%s','%s','%s','%s','%s','%s','%s','done','%s','%s','%s','%s','%s')";
+        $query = sprintf($query,$titre,$categ,$type,$texte,$photo,$video,$audio,$pdf,$visite,$prix,$iduser,$idadmin,$auteur);
         $this->db->query($query);
       }
 
@@ -328,7 +340,6 @@
       public function deconnect()
       {
         $this->session->sess_destroy();
-        redirect(site_url());
       }
 
       public function tcheckLoginAdmin($login,$mdp)

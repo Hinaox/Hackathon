@@ -13,7 +13,7 @@
     <br>
     <hr>
     <div class="row py-5">
-        <form class="col-md-9 m-auto" method="post" action="insererArticle">
+        <form class="col-md-9 m-auto" method="post" action="insererArticle" >
             <input type="hidden" name="latitude" id="latitude" value="">
             <input type="hidden" name="longitude" id="longitude" value="">
             <h3 class="h3">Hampiditra sary : </h3>
