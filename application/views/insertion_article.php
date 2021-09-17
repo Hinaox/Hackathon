@@ -15,6 +15,7 @@
         <form class="col-md-9 m-auto" action="<?php echo site_url("Controller/insertion") ?>" method="post" role="form">
           <input type="hidden" name="latitude" id="latitude" value="###">
           <input type="hidden" name="longitude" id="longitude" value="###">
+
             <h3 class="h3">Hampiditra sary : </h3>
                 <br>
                 <div class="row">
@@ -62,7 +63,7 @@
             </section>
             <div class="row">
                 <div class="col text-end mt-2">
-                    <button type="submit" onclick="annuler()" value="lol" class="btn btn-success btn-lg px-3">Mampiditra</button>
+                    <button  onclick="inserer()" value="lol" class="btn btn-success btn-lg px-3">Mampiditra</button>
                 </div>
             </div>
         </form>
@@ -79,50 +80,47 @@
 <script type="text/javascript" src="<?php echo site_url("assets/js/owl.carousel.min.js") ?>"></script>
 <script type="text/javascript" src="<?php echo site_url("assets/js/custom.js") ?>"></script>
 <script type="text/javascript">
-// function initialize() {
-//   var mapOptions =
-//       {
-//             center: new google.maps.LatLng(-18.9651023,46.3496537),
-//             zoom: 6,
-//             mapTypeId:google.maps.MapTypeId.ROADMAP
-//         };
-//       var carte = new google.maps.Map(document.getElementById("carteId"),
-//       mapOptions);
-//
-//        let infoWindow = new google.maps.InfoWindow({
-//                 content: "Tondroy ilay toerana tadiavina",
-//                 position: mapOptions.center,
-//             });
-//             infoWindow.open(carte);
-//
-//             var listMarkers = new Array();
-//     var taille = 0;
-//     google.maps.event.addListener(carte, 'click', function(event) {
-//       marks = new google.maps.Marker({
-//       position: event.latLng, //coordonnée de la position du clic sur la carte
-//       map: carte, //la carte sur laquelle le marqueur doit être affiché
-//     });
-//     google.maps.event.addListener(marks, "click", function() {
-//       infowindow = new google.maps.InfoWindow({
-//         content: maison[taille]
-//       });
-//       infowindow.open(carte, marks);
-//     });
-//     listMarkers.push(marks);
-//     taille++;
-//   });
-//
-// }
-//       google.maps.event.addDomListener(window, 'load', initialize);
+var listCoord = new Array();
+var listMarkers = new Array();
+function initialize() {
+
+  var mapOptions =
+  {
+      center: new google.maps.LatLng(-18.9651023,46.3496537),
+      zoom: 6,
+      mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var carte = new google.maps.Map(document.getElementById("carteId"),mapOptions);
+
+  let infoWindow = new google.maps.InfoWindow({
+      content: "Tondroy ilay toerana tadiavina",
+      position: mapOptions.center,
+  });
+  infoWindow.open(carte);
+
+  google.maps.event.addListener(carte, 'click', function(event) {
+      console.log(listCoord);
+        marks = new google.maps.Marker({
+        position: event.latLng, //coordonnée de la position du clic sur la carte
+        map: carte, //la carte sur laquelle le marqueur doit être affiché
+        });
+        listCoord.push({lat:event.latLng.lat(),long:event.latLng.lng()});
+        listMarkers.push(marks);
+  });
+}
+google.maps.event.addDomListener(window, 'load', initialize);
   function inserer() {
-      listMarkers.pop();
       for( let i = 0 ; i < listCoord.length ; i++)
        {
-          document.getElementById('latitude').value = document.getElementById('latitude').value+listCoord[i]['lat']+"###";
-          document.getElementById('longitude').value =  document.getElementById('longitude').value+listCoord[i]['long']+"###";
-          alert(document.getElementById('latitude').value);
-          alert(document.getElementById('longitude').value);
+         listCoord[$i]['lat']+=listCoord[$i]['lat']+listCoord[$i]['lat']+"###";
+         listCoord[$i]['lng']+=listCoord[$i]['lng']+listCoord[$i]['lng']+"###";
+         document.getElementById("latitude").value =  listCoord[$i]['lat'];
+         document.getElementById("longitude").value =  listCoord[$i]['lng'];
         }
+        alert(document.getElementById("longitude").value);
+      }
+      function d() {
+        alert("lollllllll");
       }
  function getCoordinates(carte) {
           google.maps.event.addListener(carte,"click",function(event){

@@ -132,9 +132,11 @@ class Controller extends CI_Controller {
 		$data['page']='insertion';
 		$latitude = $this->input->post('latitude');
 		$longitude = $this->input->post('longitude');
+		var_dump($latitude);
+		var_dump($longitude);
 		$idcontenu = $this->Fonctions->getLastContenu();
-		$this->Fonctions->insertCoord($idcontenu,$latitude,$longitude);
-		$this->load->view('template',$data);
+		// $this->Fonctions->insertCoord($idcontenu,$latitude,$longitude);
+		//$this->load->view('template',$data);
 	}
 
 
@@ -364,7 +366,7 @@ class Controller extends CI_Controller {
 		}
 
 		$bookPdf=array();
-		$picBook=array();	
+		$picBook=array();
 		$myBook=$this->Fonctions->getAllContentFpdf("livre");
 		$b=0;
 		foreach($myBook as $myBookPdf)
