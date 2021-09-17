@@ -141,6 +141,8 @@
           $i++;
         }
         $result->free_Result();
+        return $retour;
+      }
       public function getVideo()
       {
         $retour = array();

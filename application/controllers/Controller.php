@@ -388,4 +388,12 @@ class Controller extends CI_Controller {
 		$data['picArticle']=$picArticle;
 		$this->load->view('accueil_fpdf',$data);
 	}
+
+	public function insererArticle()
+	{
+		$data["confirm"]="tafiditra!";
+		$data['page']='insertion';
+		$data['page_insertion']='insertion_article';
+		$this->load->view('template',$data);
+	}
 }
