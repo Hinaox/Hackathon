@@ -61,6 +61,7 @@ class Controller extends CI_Controller {
 	public function ficheLivre(){
 		$vue = $this->input->get('id');
 		$type = $this->input->get('type');
+		$this->Fonctions->visiteContenuCount($type,$vue);
 		$i=0;
 		$data['boky'] = $this->Fonctions->getContentById($vue,$type);
 		foreach($data['boky'] as $book)
@@ -75,6 +76,7 @@ class Controller extends CI_Controller {
 	public function ficheArticle(){
 		$vue = $this->input->get('id');
 		$type = $this->input->get('type');
+		$this->Fonctions->visiteContenuCount($type,$vue);
 		$data['article'] = $this->Fonctions->getContentById($vue,$type);
 		foreach($data['article'] as $article)
 		{

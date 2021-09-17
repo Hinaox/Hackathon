@@ -13,7 +13,7 @@
                             <p class="afficherDesc">    
                                 <?php echo $article[$i]['texte']; ?>
                             </p>
-                            <p class="text-muted">Isan ny nijery(<?php echo $article[$i]['visites']; ?>)</p>
+                            <p class="text-muted">Isan ny nijery (<?php echo $article[$i]['visites']; ?>)</p>
                         </div>
                         <p class="text-center"><a href="<?php echo site_url("controller/ficheArticle?id=".$article[$i]['idcontenu']."&type=article"); ?>" class="btn btn-success">Hamaky ny tohiny</a></p>
                     </div>

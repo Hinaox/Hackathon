@@ -391,17 +391,12 @@
         }
       }
 
-      public function visiteLivreCount($idLivre){
-        $query = "update livre set visites = (visites+1) where idlivre=%s";
-        $query = sprintf($query,$idLivre);
+      public function visiteContenuCount($type,$idLivre){
+        $query = "update %s set visites = (visites+1) where idcontenu=%s";
+        $query = sprintf($query,$type,$idLivre);
         $this->db->query($query);
       }
 
-      public function visiteArticleCount($idArticle){
-        $query = "update article set visites = (visites+1) where idArticle=%s";
-        $query = sprintf($query,$idArticle);
-        $this->db->query($query);
-      }
       public function getAllCoord($strLat,$strLong){
         $retour = array();
         for($i=0;$i<$strLat.length;$i++){

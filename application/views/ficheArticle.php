@@ -128,7 +128,7 @@
                         <div class="card-body">
                             <h1 class="h2"><?php echo $article[0]['titre']; ?></h1>
                             <p class="py-2">
-                                <span class="list-inline-item text-dark"><?php echo $article[0]['visites']; ?></span>
+                                <span class="list-inline-item text-dark"><?php echo $article[0]['visites']; ?> olona nijery</span>
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
