@@ -364,6 +364,7 @@ class Controller extends CI_Controller {
 		$this->load->view('template',$data);
 	}
 	public  function insertion_article(){
+		$data['categ']=$this->Fonctions->getCategorie();
 		$data['page']='insertion';
 		$data['page_insertion']='insertion_article';
 		$this->load->view('template',$data);
