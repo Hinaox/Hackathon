@@ -242,6 +242,8 @@ class Controller extends CI_Controller {
 	}
 	public function contenu_video(){
 		$data['categ']=$this->Fonctions->getCategorie();
+		$data['video']=$this->Fonctions->getVideo();
+
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_video';
 		$this->load->view('template',$data);
@@ -288,14 +290,41 @@ class Controller extends CI_Controller {
 		$data['categ']=$this->Fonctions->getCategorie();
 		$data['article']=$this->Fonctions->getAllContent($pageActuel,$nbParPage,$article);
 		$j=0;
-		foreach($data['article'] as $livre)
+		foreach($data['article'] as $articles)
 		{
-			$data['articleimage'][$j]=$this->Picture->getPrincipalPics($article['photo']);
+			$data['articleimage'][$j]=$this->Picture->getPrincipalPics($articles['photo']);
 			$j++;
 		}
 
 		$data['page']='contenu';
 		$data['page_contenu']='contenu_article';
+		$this->load->view('template',$data);
+	}
+
+	public function contentCat()
+	{
+		$livre="livre";
+		$article="article";
+		$categ=$this->input->get('categ');
+		$data['categ']=$this->Fonctions->getCategorie();
+		$data['artCateg']=$this->Fonctions->getContentByCat($article,$categ);
+		$data['livreCateg']=$this->Fonctions->getContentByCat($livre,$categ);
+		$data['videoCateg']=$this->Fonctions->getVideoByCat($categ);
+		$j=0;
+		$k=0;
+		foreach($data['artCateg'] as $categArt)
+		{
+			$data['imgArt'][$j] = $this->Picture->getPrincipalPics($categArt['photo']);
+			$j++;
+		}
+		foreach($data['livreCateg'] as $categLivre)
+		{
+			$data['imgLivre'][$k] = $this->Picture->getPrincipalPics($categLivre['photo']);
+			$k++;
+		}
+
+		$data['page']='contenu';
+		$data['page_contenu']='contenu_accueil';
 		$this->load->view('template',$data);
 	}
 

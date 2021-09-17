@@ -11,15 +11,18 @@
                 <h1 class="h2 pb-4">Sokajin'Tahiry</h1>
                 <ul class="list-unstyled templatemo-accordion">
 
-                    <?php for($i=0;$i<count($categ);$i++) {?>
-                        <li class="pb-3">
-                            <a class=" h4 text-decoration-none" href="#">
-                            <i class="<?php echo $categ[$i]['icone']; ?>"></i>
+                        <!-- <li class="pb-3"> -->
+                        <?php for($i=0;$i<count($categ);$i++) {?>
+
+                            <a href="<?php echo site_url("controller/contentCat?categ=".$categ[$i]['nom']); ?>">
                             <?php echo $categ[$i]['nom']; ?>
                             </a>
+
+                            <!-- <i class=""></i> -->
+                        
                             <hr>
-                        </li>
-                    <?php }?>
+                        <?php }?>
+                        <!-- </li> -->
                 </ul>
             </div>
 
