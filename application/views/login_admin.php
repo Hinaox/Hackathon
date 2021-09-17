@@ -23,7 +23,7 @@
                 <h2 style="text-align:center" class="h2  border-bottom pb-3 ">Fidirana ho an'ny mpandraharaha</h2>
                 <div class="col-md-12">
                     <div class="" style="">
-                        <div style="">
+                        <div style=" ">
                             <form action="<?php echo base_url('Controller/authentification'); ?>" method="post">
                                 <div>
                                     <input id="champ_email_client" name="email" type="text" placeholder="Mailaka" />
